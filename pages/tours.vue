@@ -13,11 +13,8 @@
       :rating="5"
       :reviewCount="30"
       :price="12000"
-
-
-
     >
-      <template #image>
+      <template>
         <img src="/images/complecs.webp" alt="Image 1" class="main-content__image">
       </template>
     </MainContent>
@@ -32,9 +29,6 @@
       :rating="5"
       :reviewCount="30"
       :price="12000"
-
-
-
     >
       <template #image>
         <img src="/images/complecs2.webp" alt="Image 1" class="main-content__image">
@@ -51,9 +45,6 @@
       :rating="5"
       :reviewCount="30"
       :price="12000"
-
-
-
     >
       <template #image>
         <img src="/images/hat.webp" alt="Image 1" class="main-content__image">
@@ -70,9 +61,6 @@
       :rating="5"
       :reviewCount="30"
       :price="12000"
-
-
-
     >
       <template #image>
         <img src="/images/pair.webp" alt="Image 1" class="main-content__image">
@@ -89,9 +77,6 @@
       :rating="5"
       :reviewCount="30"
       :price="12000"
-
-
-
     >
       <template #image>
         <img src="/images/pairWedding.webp" alt="Image 1" class="main-content__image">
@@ -108,9 +93,6 @@
       :rating="5"
       :reviewCount="30"
       :price="12000"
-
-
-
     >
       <template #image>
         <img src="/images/ler.webp" alt="Image 1" class="main-content__image">
@@ -127,40 +109,27 @@
       :rating="5"
       :reviewCount="30"
       :price="12000"
-
-
-
     >
       <template #image>
         <img src="/images/lc.webp" alt="Image 1" class="main-content__image">
       </template>
     </MainContent>
-    <!-- <div class="slider">
-      <Slider />
-    </div> -->
+    <FAQ>
+      
+    </FAQ>
+    <Footer>
 
-    <!-- <Discription :articleText="article" /> -->
-    <!-- <PreFooter /> -->
-    <FAQ></FAQ>
-    <Footer></Footer>
-    <!-- Модальное окно -->
-
+    </Footer>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import NavMenu from '@/components/header/NavMenu.vue';
-// import Slider from '@/components/swiper/Slider.vue';
-import Discription from '@/components/main-content/Discription.vue';
 import MainContent from '@/components/main-content/MainContent.vue';
-import TitleImage from '@/components/main-content/TitleImage.vue';
 import ContentTitle from '@/components/main-content/ContentTitle.vue';
 import Footer from '@/components/main-content/Footer.vue';
 import FAQ from '@/components/main-content/FAQ.vue';
-
-// import PreFooter from '@/components/main-content/PreFooter.vue';
-const imageSrc = new URL('@/assets/titleImages/6.png', import.meta.url).href;
 
 const contentTitle = 'Все включено';
 const contentTitleDiscription = 'Доверьте нам организацию отдыха';
@@ -289,21 +258,16 @@ const closeModal = () => {
 </script>
 
 <style scoped>
-/* .gallery {
-  padding-top: 80px;
-} */
+
 
 .nav {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 100;
+  margin-top: -70px;
 }
 
-/* .content-title {
-  padding-top: 70px;
-} */
+
 
 .main-content__image {
   width: 100%;

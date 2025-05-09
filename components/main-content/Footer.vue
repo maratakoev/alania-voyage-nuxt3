@@ -28,9 +28,9 @@
         <h3 class="footer__title">Навигация</h3>
         <div class="footer__nav-links">
           <a href="/" class="footer__link">Главная</a>
-          <a href="/routs" class="footer__link">Экскурсии</a>
+          <a href="/excursions" class="footer__link">Экскурсии</a>
           <a href="/living" class="footer__link">Проживание</a>
-          <a href="/galery" class="footer__link">Тур под ключ</a>
+          <a href="/tours" class="footer__link">Тур под ключ</a>
           <a href="/about" class="footer__link">О нас</a>
         </div>
       </nav>
@@ -38,7 +38,7 @@
       <nav class="footer__section footer__section--legal">
         <h3 class="footer__title">Правовая информация</h3>
         <div class="footer__nav-links">
-          <a href="/PrivacyPolicy" class="footer__link">Политика конфиденциальности</a>
+          <a href="/privacyPolicy" class="footer__link">Политика конфиденциальности</a>
           <a href="/using" class="footer__link">Условия использования</a>
           <a href="/oferta" class="footer__link">Договор оферты</a>
           <a href="/FaqPage" class="footer__link">FAQ</a>

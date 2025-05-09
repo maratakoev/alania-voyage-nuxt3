@@ -2,22 +2,6 @@
   <div class="routs">
     <NavMenu class="nav" />
     <Content-title :title="contentTitle" :discription="contentTitleDiscription" class="content-title"/>
-    <!-- <Title-image :imageSrc="imageSrc"></Title-image> -->
-    
-    <!-- <MainContent 
-      class="hero-section"
-      title="Осетия ждёт вас!"
-      sub-title="Идеальный отдых без забот"
-      :marginTop="-70"
-      :modalData="modalData[0]"
-      videoSrc="/videos/hero-background.mov"
-      videoPoster="/images/hero-poster.png"
-
-    >
-    </MainContent> -->
-    <!-- <ContentSubTitle :title="contentSubTitle"></ContentSubTitle> -->
-    <!-- <VerticalSlider ></VerticalSlider> -->
-    
     <MainContent      
       title="Древние тропы"
       sub-title="Ближе к небу, ближе к легендам"
@@ -31,7 +15,6 @@
       :ButtonSecText="ButtonSecText"
       :buttonColor="'white'"
       :buttonFontColor="'black'"
-
     >
       <template #image>
         <img 
@@ -39,7 +22,6 @@
         decoding="async"
         src="/images/dargavs.jpeg" alt="Image 1" class="main-content__image">
       </template>
-      
     </MainContent>
     <div class="home__table">
       <MainContent 
@@ -78,8 +60,6 @@
         :ButtonSecText="ButtonSecText"
         :buttonColor="'white'"
         :buttonFontColor="'black'"
-        
-
       >
         <template #image>
           <img 
@@ -93,10 +73,9 @@
       <MainContent 
         title="Дорога пяти рек"
         sub-title="Почувствуй свободу мысли"
-
         :marginTop="-80"
         :price="15000"
-      duration="5 часа"
+        duration="5 часа"
         distance="190 км"
         :rating="4.5"
         :reviewCount="3"
@@ -104,7 +83,6 @@
         :ButtonSecText="ButtonSecText"
         :buttonColor="'white'"
         :buttonFontColor="'black'"
-
       >
         <template #image>
           <img 
@@ -118,7 +96,7 @@
         sub-title="Счастье не за горами, оно в горах"
         :marginTop="50"
         :price="20000"
-      duration="4 часа"
+        duration="4 часа"
         distance="140 км"
         :rating="5"
         :reviewCount="11"
@@ -143,13 +121,12 @@
         :buttonColor="'white'"
         :marginTop="190"
         :price="15000"
-      duration="5 часов"
+        duration="5 часов"
         distance="210 км"
         :rating="4.9"
         :reviewCount="2"
         :modalData="modalData[5]"
         :ButtonSecText="ButtonSecText"
-
       >
         <template #image>
           <img 
@@ -162,9 +139,8 @@
         title="Згидский перевал"
         sub-title="Выше облаков на внедорожнике"
         :marginTop="170"
-
         :price="18000"
-      duration="7 часов"
+        duration="7 часов"
         distance="220 км"
         :rating="5"
         :reviewCount="9"
@@ -172,7 +148,6 @@
         :ButtonSecText="ButtonSecText"
         :buttonColor="'white'"
         :buttonFontColor="'black'"
-
       >
       <template #image>
           <img 
@@ -183,46 +158,6 @@
       </MainContent> 
     </div>
     <div class="home__table">
-
-
-      <!-- <MainContent 
-        title="По долине реки Ардон"
-        sub-title="Самая крупная гэс республики"
-        :marginTop="-250"
-
-
-      >
-        <template #image>
-          <img 
-          loading="lazy"
-          decoding="async"
-          src="/images/alagir-ardon.webp" alt="Image 1" class="main-content__image-small">
-        </template>
-      </MainContent>  -->
-      <!-- <MainContent 
-        title="Кармадон и Даргавс"
-        sub-title="Это чуть дешевле"
-        :buttonFontColor="'black'"
-        :buttonColor="'white'"
-        :marginTop="190"
-        :price="15000"
-      duration="4 часа"
-        distance="8 км"
-        :rating="4.9"
-        :reviewCount="124"
-        :modalData="modalData"
-        :ButtonSecText="ButtonSecText"
-
-
-      >
-        <template #image>
-          <img 
-          loading="lazy"
-          decoding="async"
-          src="/images/karmadon-darg.webp" alt="Image 1" class="main-content__image">
-        </template>
-      </MainContent> -->
-
     </div>
     <div class="home__table">
       <MainContent 
@@ -232,14 +167,12 @@
         :buttonColor="'white'"
         :marginTop="-270"
         :price="18000"
-      duration="10 часов"
+        duration="10 часов"
         distance="275 км"
         :rating="5"
         :reviewCount="8"
         :modalData="modalData[7]"
         :ButtonSecText="ButtonSecText"
-
-
       >
         <template #image>
           <img 
@@ -255,7 +188,7 @@
         :buttonFontColor="'black'"
         :buttonColor="'white'"
         :price="25000"
-      duration="3 часа"
+        duration="3 часа"
         distance="85 км"
         :rating="4.5"
         :reviewCount="2"
@@ -272,30 +205,20 @@
     </div>
     <FAQ/>
     <Footer></Footer>
-    <!-- <Booking/> -->
-    <!-- <Discription :articleText="article"></Discription> -->
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-
 import NavMenu from '@/components/header/NavMenu.vue';
 import ContentTitle from '@/components/main-content/ContentTitle.vue';
-import TitleImage from '@/components/main-content/TitleImage.vue';
-import ContentSubTitle from '@/components/main-content/ContentSubTitle.vue';
-// import VerticalSlider from '@/components/swiper/VerticalSlider.vue';
-import Discription from '@/components/main-content/Discription.vue';
 import MainContent from '@/components/main-content/MainContent.vue';
-import Booking from '@/components/main-content/Booking.vue';
 import Footer from '@/components/main-content/Footer.vue';
 import FAQ from '@/components/main-content/FAQ.vue';
 
 const contentTitle = 'Экскурсии';
 const contentTitleDiscription = 'Увидеть своими глазами.';
-const contentSubTitle = 'Выбери маршрут';
 const ButtonSecText = 'Написать в чат'
-const imageSrc = new URL('@/assets/titleImages/6.png', import.meta.url).href;
 
 const modalData = ref([
 {
@@ -514,7 +437,6 @@ const modalData = ref([
 
 
   
-  // Добавляйте другие объекты с данными для других модалок по мере необходимости.
 ]
 );
 </script>
@@ -533,9 +455,6 @@ position: absolute;
 margin-top: -70px;
 }
 
-/* .content-title {
-  padding-top: 70px;
-} */
 
 .main-content__image {
   width: 100%;

@@ -1,13 +1,12 @@
 <template>
   <div class="about-page">
     <NavMenu class="nav" />
-    <Content-title 
+    <ContentTitle 
       :title="contentTitle" 
       :discription="contentTitleDiscription" 
       class="content-title"
     />
-    <Title-image :imageSrc="imageSrc" />
-
+    <TitleImage :imageSrc="imageSrc" />
 
     <!-- Новый блок: Менеджер и контакты -->
     <section class="manager-section" id="social">
@@ -80,13 +79,6 @@
         </div>
       </transition>
     </section>
-
-    <!-- Slider -->
-    <!-- <div class="slider">
-      <Slider />
-    </div> -->
-
-    <!-- Footer -->
     <Footer />
   </div>
 </template>
@@ -94,12 +86,11 @@
 <script setup>
 import { ref } from 'vue';
 import NavMenu from '@/components/header/NavMenu.vue';
-// import Slider from '@/components/swiper/Slider.vue';
 import Footer from '@/components/main-content/Footer.vue';
 import TitleImage from '@/components/main-content/TitleImage.vue';
 import ContentTitle from '@/components/main-content/ContentTitle.vue';
 
-const imageSrc = new URL('/public/images/us.jpg', import.meta.url).href;
+const imageSrc = '/images/us.jpg';
 const contentTitle = 'Наша история';
 const contentTitleDiscription = 'началась в 2010г';
 const activeTab = ref(0);
@@ -108,7 +99,7 @@ const activeTab = ref(0);
 const manager = ref({
   name: "Марат Акоев",
   position: "Координатор приключений",
-  photo: new URL('/public/images/me.webp', import.meta.url).href,
+  photo: "/images/me.webp",
   bio: "Помогу организовать ваше идеальное путешествие по Кавказу. Лично знаю всех гидов и каждый маршрут. Отвечаю в течение 15 минут!",
   contacts: [
     { icon: "📞", text: "+7 (988) 835-72-27", link: "tel:+79888357227" },

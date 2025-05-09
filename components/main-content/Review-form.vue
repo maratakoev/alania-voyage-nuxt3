@@ -113,7 +113,7 @@
 <script setup>
 import { reactive, ref } from 'vue'
 import StarRating from 'vue3-star-ratings'
-import { useReviewsStore } from '../../store/reviews'
+import { useReviewsStore } from '~/stores/reviews'
 
 const reviewsStore = useReviewsStore()
 

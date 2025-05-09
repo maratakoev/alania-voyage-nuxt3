@@ -2,8 +2,6 @@
   <div class="living">
     <NavMenu class="nav" />
     <Content-title :title="contentTitle" :discription="contentTitleDiscription" class="content-title"/>
-    <!-- <Title-image :imageSrc="imageSrc"></Title-image> -->
-    <!-- <ContentSubTitle :title="contentSubTitle"></ContentSubTitle> -->
     <MainContent 
       id="mountains"
       class="home__container"
@@ -15,9 +13,6 @@
       :rating="5"
       :reviewCount="30"
       :price="12000"
-
-
-
     >
       <template #image>
         <img src="@/public/images/hero-poster.webp" alt="Image 1" class="main-content__image">
@@ -34,34 +29,27 @@
       :rating="5"
       :reviewCount="30"
       :price="3000"
-
     >
-      <template #image>
+      <template >
         <img src="@/public/images/hero-poster.webp" alt="Image 1" class="main-content__image">
       </template>
     </MainContent>
     <Footer></Footer>
-    <!-- <Discription :articleText="article"></Discription> -->
   </div>
 </template>
 
 <script setup>
 import NavMenu from '@/components/header/NavMenu.vue';
 import ContentTitle from '@/components/main-content/ContentTitle.vue';
-import TitleImage from '@/components/main-content/TitleImage.vue';
-import ContentSubTitle from '@/components/main-content/ContentSubTitle.vue';
-import Discription from '@/components/main-content/Discription.vue';
 import MainContent from '@/components/main-content/MainContent.vue';
 import Footer from '@/components/main-content/Footer.vue';
 import { ref } from 'vue';
 
 const contentTitle = 'Проживание';
 const contentTitleDiscription = 'Сказочные панорамы';
-const contentSubTitle = 'Узнать подробнее';
 const ButtonSecText = 'Написать в чат'
 
 
-const imageSrc = new URL('@/assets/titleImages/11.png', import.meta.url).href;
 
 const modalData = ref([
 {

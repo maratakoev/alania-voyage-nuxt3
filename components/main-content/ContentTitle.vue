@@ -57,7 +57,6 @@ const contentSubTitle = 'Увидеть своими глазами.';
 .content-title__title {
   font-size: 80px;
   color: black;
-  font-weight: 800;
   word-spacing: 2px;
 
 }
@@ -65,7 +64,6 @@ const contentSubTitle = 'Увидеть своими глазами.';
 .content-title__subtitle {
   font-size: 30px;
   color: black;
-  font-weight: 600;
   word-spacing: 2px;
   max-width: 300px;
   align-items: baseline;

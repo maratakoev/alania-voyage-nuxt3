@@ -12,6 +12,7 @@
           </router-link>
         </span>
         <router-link 
+        @click="hideSubMenu"
           v-for="(item, index) in menuItems"
           :key="index"
           class="header__item" 
@@ -31,7 +32,7 @@
               class="header__submenu-subtitle" 
               :style="getItemStyle(index)"
             >
-            <router-link :to="item.route">{{ item.label }}</router-link>
+            <router-link :to="item.route" @click="hideSubMenu">{{ item.label }}</router-link>
           </li>
           </ul>
         </div>
@@ -44,7 +45,7 @@
               class="header__submenu-item" 
               :style="getItemStyle(index)"
             >
-              <router-link :to="item.route">{{ item.label }}</router-link>
+              <router-link :to="item.route" @click="hideSubMenu">{{ item.label }}</router-link>
             </li>
           </ul>
         </div>
@@ -57,7 +58,7 @@
               class="header__submenu-item" 
               :style="getItemStyle(index)"
             >
-            <router-link :to="item.route">{{ item.label }}</router-link>
+            <router-link :to="item.route" @click="hideSubMenu">{{ item.label }}</router-link>
           </li>
           </ul>
         </div>
@@ -80,28 +81,47 @@ const isSubMenuActive = ref(false);
 const submenuItems = ref([]);
 const additionalItems = ref([]);
 const discriptionItems = ref([]);
-
+const activeIndex = ref(-1); // Добавляем отслеживание активного индекса
 let hideTimeout = null;
-
-const showSubMenu = (index) => {
-  submenuItems.value = props.menuItems[index].submenu || [];
-  additionalItems.value = props.menuItems[index].additional || [];
-  discriptionItems.value = props.menuItems[index].discription || [];
-  isSubMenuActive.value = submenuItems.value.length > 0;
-  clearTimeout(hideTimeout);
-
-  emit('update:blurActive', isSubMenuActive.value); // Сообщаем родителю о изменении
-};
-
-const hideSubMenu = () => {
-  hideTimeout = setTimeout(() => {
-    isSubMenuActive.value = false;
-    emit('update:blurActive', false); // Сообщаем родителю о скрытии
-  }, 300);
-};
+const hoverEnabled = ref(true);
 
 const cancelHide = () => {
   clearTimeout(hideTimeout);
+};
+
+
+// const showSubMenu = (index) => {
+//   if (!hoverEnabled.value) return; // блок по флагу
+//   clearTimeout(hideTimeout);
+//   if (activeIndex.value === index) return;
+
+//   activeIndex.value = index;
+//   const item = props.menuItems[index];
+//   submenuItems.value = item.submenu || [];
+//   additionalItems.value = item.additional || [];
+//   discriptionItems.value = item.discription || [];
+//   isSubMenuActive.value = submenuItems.value.length > 0;
+
+//   emit('update:blurActive', isSubMenuActive.value);
+// };
+
+
+
+const hideSubMenu = () => {
+  hoverEnabled.value = true;
+  hideTimeout = setTimeout(() => {
+    activeIndex.value = -1;
+    submenuItems.value = [];
+    additionalItems.value = [];
+    discriptionItems.value = [];
+    isSubMenuActive.value = false;
+    emit('update:blurActive', false);
+  }, 200); // задержка на скрытие
+};
+
+const handleClick = () => {
+  hoverEnabled.value = false;
+  hideSubMenu();
 };
 
 const emit = defineEmits();
