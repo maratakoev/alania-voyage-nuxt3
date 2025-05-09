@@ -15,7 +15,7 @@
       :price="12000"
     >
       <template #image>
-        <img src="/images/complecs.webp" alt="Image 1" class="main-content__image">
+        <img src="/images/complecs.webp" alt="Кармадон, Даргавс, Фиагдон" class="main-content__image">
       </template>
     </MainContent>
     <MainContent 
@@ -31,7 +31,7 @@
       :price="12000"
     >
       <template #image>
-        <img src="/images/complecs2.webp" alt="Image 1" class="main-content__image">
+        <img src="/images/complecs2.webp" alt="Половина горной части Осетии" class="main-content__image">
       </template>
     </MainContent>
     <MainContent 
@@ -47,7 +47,7 @@
       :price="12000"
     >
       <template #image>
-        <img src="/images/hat.webp" alt="Image 1" class="main-content__image">
+        <img src="/images/hat.webp" alt="Гастро тур в Осетию" class="main-content__image">
       </template>
     </MainContent>
     <MainContent 
@@ -63,7 +63,7 @@
       :price="12000"
     >
       <template #image>
-        <img src="/images/pair.webp" alt="Image 1" class="main-content__image">
+        <img src="/images/pair.webp" alt="Аренда жилья в горах" class="main-content__image">
       </template>
     </MainContent>
     <MainContent 
@@ -79,7 +79,7 @@
       :price="12000"
     >
       <template #image>
-        <img src="/images/pairWedding.webp" alt="Image 1" class="main-content__image">
+        <img src="/images/pairWedding.webp" alt="Коттедж Фиагдон" class="main-content__image">
       </template>
     </MainContent>
     <MainContent 
@@ -95,7 +95,7 @@
       :price="12000"
     >
       <template #image>
-        <img src="/images/ler.webp" alt="Image 1" class="main-content__image">
+        <img src="/images/ler.webp" alt="Проживание в Осетии" class="main-content__image">
       </template>
     </MainContent>
     <MainContent 
@@ -111,7 +111,7 @@
       :price="12000"
     >
       <template #image>
-        <img src="/images/lc.webp" alt="Image 1" class="main-content__image">
+        <img src="/images/lc.webp" alt="Тур под ключ в Осетию" class="main-content__image">
       </template>
     </MainContent>
     <FAQ>

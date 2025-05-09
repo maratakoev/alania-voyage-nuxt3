@@ -20,7 +20,7 @@
         <img 
         loading="lazy"
         decoding="async"
-        src="/images/dargavs.jpeg" alt="Image 1" class="main-content__image">
+        src="/images/dargavs.jpeg" alt="Фиагдон, Даргавс, Кармадон" class="main-content__image">
       </template>
     </MainContent>
     <div class="home__table">
@@ -44,7 +44,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/karmadon.webp" alt="Image 1" class="main-content__image">
+          src="/images/karmadon.webp" alt="Индивидуальные экскурсии в Осетии" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -65,7 +65,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/insta.webp" alt="Image 1" class="main-content__image-small">
+          src="/images/insta.webp" alt="Фото тур в Осетию" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
@@ -88,7 +88,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/alagirskoe.webp" alt="Image 1" class="main-content__image">
+          src="/images/alagirskoe.webp" alt="Горы Осетии" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -109,7 +109,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/lavochka.webp" alt="Image 1" class="main-content__image-small">
+          src="/images/lavochka.webp" alt="Тур все включено Осетия" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
@@ -132,7 +132,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/mamison.webp" alt="Image 1" class="main-content__image">
+          src="/images/mamison.webp" alt="Экскурсии по Осетии" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -153,7 +153,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/zgid-poster.webp" alt="Image 1" class="main-content__image">
+          src="/images/zgid-poster.webp" alt="Над облаками в Осетии" class="main-content__image">
         </template>
       </MainContent> 
     </div>
@@ -178,7 +178,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/zadalesk.webp" alt="Image 1" class="main-content__image">
+          src="/images/zadalesk.webp" alt="Горная Дигория" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -199,7 +199,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/darial.webp" alt="Image 1" class="main-content__image-small">
+          src="/images/darial.webp" alt="Все ущелья Северной Осетии" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>

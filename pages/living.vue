@@ -15,7 +15,7 @@
       :price="12000"
     >
       <template #image>
-        <img src="@/public/images/hero-poster.webp" alt="Image 1" class="main-content__image">
+        <img src="@/public/images/hero-poster.webp" alt="Жилье снять в Осетии" class="main-content__image">
       </template>
     </MainContent>
     <MainContent 
@@ -31,7 +31,7 @@
       :price="3000"
     >
       <template #image>
-        <img src="@/public/images/hero-poster.webp" alt="Image 1" class="main-content__image">
+        <img src="@/public/images/hero-poster.webp" alt="Аренда квартиры Владикавказ" class="main-content__image">
       </template>
     </MainContent>
     <Footer></Footer>
