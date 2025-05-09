@@ -14,7 +14,7 @@
       :reviewCount="30"
       :price="12000"
     >
-      <template>
+      <template #image>
         <img src="/images/complecs.webp" alt="Image 1" class="main-content__image">
       </template>
     </MainContent>
@@ -115,7 +115,7 @@
       </template>
     </MainContent>
     <FAQ>
-      
+
     </FAQ>
     <Footer>
 

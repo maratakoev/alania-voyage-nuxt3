@@ -30,13 +30,7 @@ const contentSubTitle = 'Увидеть своими глазами.';
 </script>
 
 <style scoped>
-/* .content {
-  max-width: 1064px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-} */
+
 .content-title {
   max-width: 1064px;
   height: 90px;
@@ -47,18 +41,14 @@ const contentSubTitle = 'Увидеть своими глазами.';
   justify-content: space-between;
   align-items: center;
   vertical-align: baseline;
-  width: 100%; /* Добавляем */
+  width: 100%; 
   box-sizing: border-box;
-
-  
-  
-
 }
+
 .content-title__title {
   font-size: 80px;
   color: black;
   word-spacing: 2px;
-
 }
 
 .content-title__subtitle {

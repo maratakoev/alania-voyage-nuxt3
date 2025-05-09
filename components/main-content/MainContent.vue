@@ -1,5 +1,5 @@
 <template>
-  <div class="main-content" ref="container">
+  <article class="main-content" ref="container">
     <div class="background-container">
       <slot name="image"></slot>
       <video 
@@ -11,6 +11,7 @@
         playsinline
         :poster="shouldLoadPoster ? videoPoster : ''"
         preload="none"
+        alt="Видео отдыха в Осетии"
       >
         <source :src="videoSrc" type="video/webm">
         Ваш браузер не поддерживает видео тег.
@@ -19,52 +20,40 @@
 
     </div>
     <div class="main-content__content" :style="{ marginTop: marginTop + 'px' }">
-      
-      <!-- <div v-if="difficulty" class="difficulty-badge" :class="difficultyClass">
-        {{ difficulty }}
-      </div> -->
-
       <h2 class="main-content__title">{{ title }}</h2>
       <h3 class="main-content__subtitle"> {{subTitle}}</h3>
-      
 
-
-
-
-      <!-- <p v-if="shortDescription" class="short-description">
-        {{ shortDescription }}
-      </p> -->
       <div v-if="rating" class="tour-meta">
-  <div class="meta-item">
-    <!-- Звезда (рейтинг) -->
-    <span class="icon">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-      </svg>
-    </span>
-    <span>{{ rating }} ({{ reviewCount }} отзывов)</span>
-  </div>
+        <div class="meta-item">
+          <!-- Звезда (рейтинг) -->
+          <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+            </svg>
+          </span>
+          <span>{{ rating }} ({{ reviewCount }} отзывов)</span>
+        </div>
   
-  <div v-if="duration" class="meta-item">
-    <!-- Часы (длительность) -->
-    <span class="icon">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-.5-13H12v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-      </svg>
-    </span>
-    <span>{{ duration }}</span>
-  </div>
+        <div v-if="duration" class="meta-item">
+          <!-- Часы (длительность) -->
+          <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-.5-13H12v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+            </svg>
+          </span>
+          <span>{{ duration }}</span>
+        </div>
   
-  <div v-if="distance" class="meta-item">
-    <!-- Расстояние -->
-    <span class="icon">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-      </svg>
-    </span>
-    <span>{{ distance }}</span>
-  </div>
-</div>
+        <div v-if="distance" class="meta-item">
+          <!-- Расстояние -->
+          <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </span>
+          <span>{{ distance }}</span>
+        </div>
+      </div>
       <div v-if="price" class="price-badge">
         Цена {{ price }} ₽ / до 4 чел.
       </div>
@@ -83,9 +72,7 @@
 
         />
       </div> 
-
     </div>
-
     <Modal
       :isOpen="isModalOpen"
       :modalData="modalData"
@@ -93,21 +80,14 @@
       @button1-click="onButton1Click"
       @button2-click="onButton2Click"
     />
-    
-    
-    
-  </div>
+  </article>
 </template>
 
 <script setup>
 import { ref,onMounted, onBeforeUnmount  } from 'vue';
 import BtnOne from '../buttons/BtnOne.vue';
 import BtnSecond from '../buttons/BtnSecond.vue';
-import Modal from '../Modal.vue'; // путь укажи, как у тебя в проекте
-
-// import StarIcon from '../icons/StarIcon.vue';
-// import ClockIcon from '../icons/ClockIcon.vue';
-// import RouteIcon from '../icons/RouteIcon.vue';
+import Modal from '../Modal.vue'; 
 
 
 const props = defineProps({
@@ -134,11 +114,7 @@ const props = defineProps({
     type: Number,
     default: 0
   },
-  // difficulty: {
-  //   type: String,
-  //   default: '',
-  //   validator: (value) => !value || ['Легкий', 'Средний', 'Сложный', 'Средней сложности'].includes(value)
-  // },
+
   modalData: {
     type: Object,
     required: true,
@@ -167,20 +143,6 @@ const props = defineProps({
 
 });
 
-// const difficultyClass = computed(() => {
-//   if (!props.difficulty) return '';
-  
-//   const lower = props.difficulty.toLowerCase();
-//   if (lower.includes('легк')) return 'difficulty-легкий';
-//   if (lower.includes('средн')) return 'difficulty-средней_сложности';
-//   if (lower.includes('сложн')) return 'difficulty-сложный';
-//   return '';
-// });
-
-
-
-
-
 const isBookingModal = ref (false);
 
 function openBookingModal () {
@@ -207,31 +169,15 @@ function closeModal() {
   isModalOpen.value = false;
 }
 
-// Функция для кнопки 1
 function onButton1Click() {
-  // Логика для кнопки 1, например, переход на другой раздел
   console.log('Перехожу на секцию 1');
-  closeModal();  // Закрытие модалки
+  closeModal();  
 }
 
-// Функция для кнопки 2
 function onButton2Click() {
-  // Логика для кнопки 2, например, закрытие модалки
   console.log('Закрываю модалку');
   closeModal();
 }
-
-
-
-
-// Методы
-// const openModal = () => {
-//   isModalOpen.value = true;
-// };
-
-// const closeModal = () => {
-//   isModalOpen.value = false;
-// };
 
 
 
@@ -258,24 +204,6 @@ onBeforeUnmount(() => {
   observer.value?.disconnect();
 });
 
-// Логика модального окна
-
-// const openModal = () => {
-//   isModalOpen.value = true;
-// };
-
-// const closeModal = () => {
-//   isModalOpen.value = false;
-// };
-
-// const onButton1Click = () => {
-//   console.log('Бронирование экскурсии');
-//   closeModal();
-// };
-
-// const onButton2Click = () => {
-//   closeModal();
-// };
 </script>
 
 <style scoped>
@@ -287,7 +215,7 @@ onBeforeUnmount(() => {
   justify-content: center;
   width: 100%;
   min-height: 580px;
-  overflow: hidden;/* Или нужная вам высота */
+  overflow: hidden;
 }
 
 .background-container {

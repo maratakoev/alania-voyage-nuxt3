@@ -30,7 +30,7 @@
       :reviewCount="30"
       :price="3000"
     >
-      <template >
+      <template #image>
         <img src="@/public/images/hero-poster.webp" alt="Image 1" class="main-content__image">
       </template>
     </MainContent>

@@ -1,7 +1,8 @@
 <template>
-  <div class="home">
+  <main class="home">
     <NavMenu class="nav" />
-    <MainContent 
+    <section aria-label="Организуем отдых в Осетии">
+      <MainContent 
       class="hero-section"
       title="Осетия ждет!"
       sub-title="Твоё приключение начинается..."
@@ -9,17 +10,20 @@
       :marginTop="-70"
       :modalData="modalData[0]"
       videoSrc="/videos/hero-background.webm"
-      videoPoster="@/public/images/hero-poster.webp"
+      videoPoster="/images/hero-poster.webp"
       :lazyLoad="false"
       :ButtonSecText="ButtonSecText"
     >
     </MainContent>
-    <MainContent 
+    </section>
+
+    <section aria-label="Отдых в горах">
+      <MainContent 
       :buttonFontColor="black"
       :buttonColor="white"
       :marginTop="-110"
       videoSrc="/videos/tours.webm"
-      videoPoster="@/public/images/hero-poster.webp"
+      videoPoster="/images/hero-poster.webp"
       title="Выходные в горах"
       sub-title="Прочувствуй энергию гор" 
       :modalData="modalData[1]"
@@ -27,45 +31,62 @@
       :ButtonSecText="ButtonSecText"
     >
     </MainContent>
-    <div class="home__table"> 
-      <MainContent 
-        :marginTop="235"
-        :buttonColor="'#1D68F0'"
-        title="Экскурсия "
-        sub-title="С комфортом на внедорожнике"
-        :modalData="modalData[2]"
-        :ButtonSecText="ButtonSecText"
-      >
+    </section>
+
+    <section aria-label="Экскурсии и проживание в Осетии">
+      <div class="home__table"> 
+        <MainContent 
+          :marginTop="235"
+          :buttonColor="'#1D68F0'"
+          title="Экскурсия"
+          sub-title="С комфортом на внедорожнике"
+          :modalData="modalData[2]"
+          :ButtonSecText="ButtonSecText"
+        >
         <template #image>
           <img 
             loading="lazy"
             decoding="async"
-            src="@/public/images/zgid.webp" alt="Image 1" class="main-content__image-small">
+            src="/images/zgid.webp" alt="Экскурсии по Осетии на Внедорожнике" class="main-content__image-small">
         </template>
-      </MainContent> 
-      <MainContent 
-      title="Проживание"
-      sub-title="Лучшие виды из окна"
-      :buttonColor="'#1D68F0'"
-      :modalData="modalData[3]"
-      :marginTop="-235"
-      :ButtonSecText="ButtonSecText"
-    >
-      <template #image>       
-        <img             
-          loading="lazy"
-          decoding="async"
-          src="@/public/images/11.png" alt="Image 1" class="main-content__image">
-      </template>
-    </MainContent>
-    </div>
-    <Trust></Trust>    
-    <ReviewForm/>
-    <HotOffers></HotOffers>
-    <InteractiveMap></InteractiveMap>
-    <FAQ/>
+        </MainContent> 
+        <MainContent 
+          title="Проживание"
+          sub-title="Лучшие виды из окна"
+          :buttonColor="'#1D68F0'"
+          :modalData="modalData[3]"
+          :marginTop="-235"
+          :ButtonSecText="ButtonSecText"
+        >
+        <template #image>       
+          <img             
+            loading="lazy"
+            decoding="async"
+            src="/images/11.png" alt="Коттедж в Осетии для аренды" class="main-content__image"
+          >
+        </template>
+        </MainContent>
+      </div>
+    </section>
+    <section aria-label="Нам доверяют отдых в Осетии">
+      <Trust></Trust>  
+    </section>
+    <section aria-label="Отзывы об отдыхе в Осетии">
+      <ReviewForm/>
+    </section>
+    <section aria-label="Горящие экскурсии">
+      <HotOffers></HotOffers>
+    </section>
+
+    <section aria-label="Карта горных ущелий Осетии">
+      <InteractiveMap></InteractiveMap>
+    </section>
+    <section aria-label="Частые вопросы по экскурсиям">
+      <FAQ/>
+    </section>
+    
     <Footer> </Footer>
-  </div>
+  </main>
 </template>
 
 <script setup>
@@ -244,8 +265,6 @@ const modalData = ref([
   position: fixed;
   margin-top: -70px;
 }
-
-
 
 .main-content {
   margin-bottom: 20px; 
