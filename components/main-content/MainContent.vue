@@ -73,13 +73,23 @@
         />
       </div> 
     </div>
-    <Modal
-      :isOpen="isModalOpen"
-      :modalData="modalData"
-      @close="closeModal"
-      @button1-click="onButton1Click"
-      @button2-click="onButton2Click"
-    />
+        <!-- Suspense для модала -->
+        <Suspense>
+      <template #default>
+        <Modal
+          :isOpen="isModalOpen"
+          :modalData="modalData"
+          @close="closeModal"
+          @button1-click="onButton1Click"
+          @button2-click="onButton2Click"
+        />
+      </template>
+      <template #fallback>
+        <div class="loading-overlay">
+          Загрузка...
+        </div>
+      </template>
+    </Suspense>
   </article>
 </template>
 
