@@ -27,7 +27,7 @@
       title="Выходные в горах"
       sub-title="Прочувствуй энергию гор" 
       :modalData="modalData[1]"
-      :lazyLoad="false"
+      :lazyLoad="true"
       :ButtonSecText="ButtonSecText"
     >
     </MainContent>
