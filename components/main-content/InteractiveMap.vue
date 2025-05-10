@@ -4,7 +4,7 @@
       <h2 class="section-title">Основные ущелья на Яндекс картах</h2>
     </div>
 
-    <div id="yandex-map" ref="mapContainer"></div>
+    <div  id="yandex-map" ref="mapContainer"></div>
 
     <div v-if="!selectedLocation" class="placeholder-info">
       <p>Выберите точку на карте, чтобы увидеть подробную информацию</p>
@@ -13,7 +13,10 @@
     <transition name="fade">
       <div v-if="selectedLocation" class="location-info-container">
         <div class="location-image-wrapper">
-          <img :src="selectedLocation.preview" :alt="selectedLocation.name" class="location-image">
+          <img :src="selectedLocation.preview" 
+          :alt="selectedLocation.name" 
+          class="location-image"
+          loading="lazy">
         </div>
         <div class="location-details">
           <h3>{{ selectedLocation.name }}</h3>
@@ -62,7 +65,7 @@ const locations = ref([
     name: "Кармадон",
     coords: [42.862970, 44.518812],
     type: "village",
-    preview: "/images/locations/Karmadon.webp",
+    preview: "/images/locations/Karmadon.",
     description: "30км от Владикавказа, В этом ущелье, после схода ледника Колка, пропала группа Сергея Бодрова"
   },
   {
@@ -70,7 +73,7 @@ const locations = ref([
     name: "Даргавс",
     coords: [42.834115, 44.431108],
     type: "village",
-    preview: "/images/locations/Dargavs.webp",
+    preview: "/images/locations/Dargavs.",
     description: "44 км от Владикавказа, Древний город мёртвых с каменными склепами"
   },
   {
@@ -78,7 +81,7 @@ const locations = ref([
     name: "Фиагдон",
     coords: [42.859167, 44.312383],
     type: "village",
-    preview: "/images/locations/Fiagdon.webp",
+    preview: "/images/locations/Fiagdon.",
     description: "48км от Владикавказа, Самый крупный горный поселок Осетии"
   },
   {
@@ -86,7 +89,7 @@ const locations = ref([
     name: "Мидагарабинские водопады",
     coords: [42.769626, 44.363269],
     type: "village",
-    preview: "/images/locations/Midag.webp",
+    preview: "/images/locations/Midag.",
     description: "70 км от Владикавказа, Самый высокий водопад в Европе"
   },
   {
@@ -94,7 +97,7 @@ const locations = ref([
     name: "Алагирское ущелье",
     coords: [42.875341, 44.152894],
     type: "village",
-    preview: "/images/locations/Alagir.webp",
+    preview: "/images/locations/Alagir.",
     description: "60 км от Владикавказа, Живописное ущелье идиально для фототуров"
   },
   {
@@ -102,7 +105,7 @@ const locations = ref([
     name: "Мамисонское ущелье",
     coords: [42.666777, 43.853172],
     type: "village",
-    preview: "/images/locations/Mamison.webp",
+    preview: "/images/locations/Mamison.",
     description: "100км от Владиквказа, Горнолыжный курорт"
   },
   {
@@ -110,7 +113,7 @@ const locations = ref([
     name: "Высокогорный Уаллагком",
     coords: [42.907886, 43.853208],
     type: "village",
-    preview: "/images/locations/Zgid.webp",
+    preview: "/images/locations/Zgid.",
     description: "116км от Владикавказа, Высокогорное село с руинами XIV в"
   },
   {
@@ -118,7 +121,7 @@ const locations = ref([
     name: "Горная Дигория",
     coords: [42.910014, 43.554438],
     type: "village",
-    preview: "/images/locations/vodopad.webp",
+    preview: "/images/locations/vodopad.",
     description: " 128км от Владиккавказа, Самое живописное место по мнению большинства местных жителей"
   },
   {
@@ -126,7 +129,7 @@ const locations = ref([
     name: "Беслан",
     coords: [43.193, 44.541],
     type: "history",
-    preview: "/images/locations/Beslan.webp",
+    preview: "/images/locations/Beslan.",
     description: " 30 км от Владикавказа, печально известный Беслан"
   },
   {
@@ -134,7 +137,7 @@ const locations = ref([
     name: "Владикавказ",
     coords: [43.024, 44.681],
     type: "culture",
-    preview: "/images/locations/Vld.webp",
+    preview: "/images/locations/Vld.",
     description: "Столица Республики Северная Осетия - Алания"
   },
 ]);
@@ -224,10 +227,15 @@ const filters = ref([
   { type: "ski", label: "Горные лыжи", icon: "/icons/map/ski.svg" }
 ]);
 
+const observer = ref(null); // Добавляем реф для observer
+
 const activeFilter = ref("all");
 const selectedLocation = ref(null);
 const mapContainer = ref(null);
 let ymap = null;
+// const isVisible = ref(false);
+const isClient = typeof window !== 'undefined';
+
 
 const filteredTours = computed(() => {
   if (!selectedLocation.value) return [];
@@ -319,9 +327,9 @@ const getPresetByType = (type) => {
   };
 };
 
-const setActiveFilter = (type) => {
-  activeFilter.value = type;
-};
+// const setActiveFilter = (type) => {
+//   activeFilter.value = type;
+// };
 
 const openBooking = (tour) => {
   router.push({
@@ -343,21 +351,40 @@ const scrollToMap = () => {
 };
 
 onMounted(() => {
+  if (!isClient) return;
+
+  observer.value = new IntersectionObserver(([entry]) => {
+    if (entry?.isIntersecting) {
+      loadMap();
+      observer.value?.disconnect();
+    }
+  }, {
+    threshold: 0.1,
+    rootMargin: '200px'
+  });
+
+  if (mapContainer.value) {
+    observer.value.observe(mapContainer.value);
+  }
+});
+function loadMap() {
+  if (!isClient) return;
+
   if (window.ymaps) {
     initMap();
-  } else {
+    return;
+  }
+  
+  if (!document.querySelector('#yandex-map-script')) {
+    // Заменяем useHead на прямое создание элемента
     const script = document.createElement('script');
-    script.src = 'https://api-maps.yandex.ru/2.1/?apikey=ВАШ_API_KEY&lang=ru_RU';
-    script.onload = initMap;
+    script.id = 'yandex-map-script';
+    script.src = 'https://api-maps.yandex.ru/2.1/?apikey=ВАШ_РЕАЛЬНЫЙ_КЛЮЧ&lang=ru_RU';
+    script.onload = () => ymaps.ready(initMap);
     document.head.appendChild(script);
   }
-});
+}
 
-onUnmounted(() => {
-  if (ymap) {
-    ymap.destroy();
-  }
-});
 </script>
 
 <style scoped>

@@ -144,7 +144,7 @@
     </section>
 
     <section aria-label="Карта горных ущелий Осетии">
-      <InteractiveMap></InteractiveMap>
+      <InteractiveMap ></InteractiveMap>
     </section>
     <section aria-label="Частые вопросы по экскурсиям">
       <FAQ/>
