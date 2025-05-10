@@ -10,7 +10,7 @@
       :marginTop="-70"
       :modalData="modalData[0]"
       videoSrc="/videos/hero-background.mp4"
-      videoPoster="/images/hero-poster.webp"
+      videoPoster="/images/complecs.webp"
       :lazyLoad="false"
       :ButtonSecText="ButtonSecText"
     >
@@ -23,7 +23,7 @@
       :buttonColor="white"
       :marginTop="-110"
       videoSrc="/videos/tours.mp4"
-      videoPoster="/images/hero-poster.webp"
+      videoPoster="/images/complecs.webp"
       title="Выходные в горах"
       sub-title="Прочувствуй энергию гор" 
       :modalData="modalData[1]"
