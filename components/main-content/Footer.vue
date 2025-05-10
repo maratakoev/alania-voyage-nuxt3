@@ -3,7 +3,7 @@
     <div class="footer__container">
       <div class="footer__section footer__section--info">
         <div class="footer__logo">
-          <img src='/images/logo.png' class="footer__logo-img">
+          <img src='/images/logo.png' alt="Логотип Яблоко Нартов" class="footer__logo-img">
           <span>Яблоко нартов</span>
         </div>
         <p class="footer__text">© 2025 Все права защищены</p>
@@ -49,13 +49,13 @@
         <h3 class="footer__title">Социальные сети</h3>
         <div class="footer__social-links">
           <a href="https://vk.com/ossetours" target="_blank" class="footer__social-link">
-            <img src="/images/icons/vk.png" class="footer__social-img">
+            <img src="/images/icons/vk.png" alt="Яблоко нартов в VK" class="footer__social-img">
           </a>
           <a href="https://t.me/ossetours" target="_blank" class="footer__social-link">
-            <img src="/images/icons/tg.png" class="footer__social-img">
+            <img src="/images/icons/tg.png" alt="Яблоко нартов в Telegram" class="footer__social-img">
           </a>
           <a href="https://wa.me/79880000000" target="_blank" class="footer__social-link">
-            <img src="/images/icons/inst.png" class="footer__social-img">
+            <img src="/images/icons/inst.png" alt="Яблоко нартов в Inst" class="footer__social-img">
           </a>
         </div>
         <div class="footer__subscribe">
