@@ -62,7 +62,7 @@
           <img             
             loading="lazy"
             decoding="async"
-            src="/images/11.png" alt="Коттедж в Осетии для аренды" class="main-content__image"
+            src="/images/11.webp" alt="Коттедж в Осетии для аренды" class="main-content__image"
           >
         </template>
         </MainContent>
