@@ -3,7 +3,8 @@
     <div class="background-container">
       <slot name="image"></slot>
       <video 
-        v-if="shouldLoadVideo"
+      v-if="shouldLoadVideo && !isMobile"
+
         class="video-background"
         autoplay
         loop
@@ -191,8 +192,35 @@ function onButton2Click() {
 
 
 
+// onMounted(() => {
+//   if (props.lazyLoad && container.value) {
+//     observer.value = new IntersectionObserver((entries) => {
+//       entries.forEach(entry => {
+//         if (entry.isIntersecting) {
+//           shouldLoadVideo.value = true;
+//           shouldLoadPoster.value = true;
+//           observer.value?.disconnect();
+//         }
+//       });
+//     }, {
+//       rootMargin: '200px',
+//       threshold: 0.01
+//     });
+
+//     observer.value.observe(container.value);
+//   }
+// });
+
+onBeforeUnmount(() => {
+  observer.value?.disconnect();
+});
+
+const isMobile = ref(false);
+
 onMounted(() => {
-  if (props.lazyLoad && container.value) {
+  isMobile.value = window.innerWidth <= 768;
+
+  if (props.lazyLoad && container.value && !isMobile.value) {
     observer.value = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -207,12 +235,13 @@ onMounted(() => {
     });
 
     observer.value.observe(container.value);
+  } else if (!props.lazyLoad && !isMobile.value) {
+    shouldLoadVideo.value = true;
+    shouldLoadPoster.value = true;
   }
 });
 
-onBeforeUnmount(() => {
-  observer.value?.disconnect();
-});
+
 
 </script>
 
