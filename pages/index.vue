@@ -44,11 +44,44 @@
           :ButtonSecText="ButtonSecText"
         >
         <template #image>
-          <img 
-            loading="lazy"
-            decoding="async"
-            src="/images/zgid.webp" alt="Экскурсии по Осетии на Внедорожнике" class="main-content__image-small">
+          <picture>
+            <!-- WebP форматы -->
+            <source 
+              srcset="
+                /images/zgid-480.webp 480w,
+                /images/zgid-768.webp 768w,
+                /images/zgid-960.webp 960w
+              "
+              sizes="(max-width: 480px) 480px, 
+                      (max-width: 768px) 768px, 
+                      960px"
+              type="image/webp"
+            >
+          
+            <!-- JPEG fallback -->
+            <source 
+              srcset="
+                /images/zgid-480.jpg 480w,
+                /images/zgid-768.jpg 768w,
+                /images/zgid-960.jpg 960w
+              "
+              sizes="(max-width: 480px) 480px, 
+                      (max-width: 768px) 768px, 
+                      960px"
+              type="image/jpeg"
+            >
+          
+            <!-- Fallback <img> -->
+            <img 
+              src="/images/zgid-960.jpg" 
+              alt="Экскурсии по Осетии на Внедорожнике"
+              loading="lazy" 
+              decoding="async" 
+              class="main-content__image-small">
+          </picture>
         </template>
+
+
         </MainContent> 
         <MainContent 
           title="Проживание"
@@ -58,13 +91,44 @@
           :marginTop="-235"
           :ButtonSecText="ButtonSecText"
         >
-        <template #image>       
-          <img             
-            loading="lazy"
-            decoding="async"
-            src="/images/11.webp" alt="Коттедж в Осетии для аренды" class="main-content__image"
-          >
+        <template #image>
+          <picture>
+            <!-- WebP форматы -->
+            <source 
+              srcset="
+                /images/fiagdon-house-480.webp 480w,
+                /images/fiagdon-house-768.webp 768w,
+                /images/fiagdon-house-960.webp 960w
+              "
+              sizes="(max-width: 480px) 480px, 
+                      (max-width: 768px) 768px, 
+                      960px"
+              type="image/webp"
+            >
+          
+            <!-- JPEG fallback -->
+            <source 
+              srcset="
+                /images/fiagdon-house-480.jpg 480w,
+                /images/fiagdon-house-768.jpg 768w,
+                /images/fiagdon-house-960.jpg 960w
+              "
+              sizes="(max-width: 480px) 480px, 
+                      (max-width: 768px) 768px, 
+                      960px"
+              type="image/jpeg"
+            >
+          
+            <!-- Fallback <img> -->
+            <img 
+              src="/images/fiagdon-house-960.jpg" 
+              alt="Коттедж в Осетии для аренды"
+              loading="lazy" 
+              decoding="async" 
+              class="main-content__image-small">
+          </picture>
         </template>
+
         </MainContent>
       </div>
     </section>
