@@ -158,6 +158,14 @@ const menuStyle = computed(() => ({
     color: #1D68F0;
   }
 
+
+  @media (min-width: 901px) {
+  .mobile-menu {
+    display: none;
+  }
+
+}
+
   @media (max-width: 900px) {
   .mobile-menu__item {
     
