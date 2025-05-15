@@ -1,22 +1,43 @@
 <template>
   <article class="main-content" ref="container">
     <div class="background-container">
-      <slot name="image"></slot>
+      
+      <template v-if="!isMobile">
+        <slot v-if="!showVideo" name="image"></slot>
       <video 
-      v-if="shouldLoadVideo && !isMobile"
-
+        v-if="showVideo"
         class="video-background"
         autoplay
         loop
         muted
         playsinline
-        :poster="shouldLoadPoster ? videoPoster : ''"
+        :poster="showPoster ? videoPoster : undefined"
         preload="none"
         alt="Видео отдыха в Осетии"
+        aria-label="Видео отдыха в Осетии"
+        @loadeddata="handleVideoLoaded"
+        @error="handleVideoError"
       >
         <source :src="videoSrc" type="video/webm">
         Ваш браузер не поддерживает видео тег.
       </video>
+      </template>
+      <template v-else>
+      <!-- Мобильные: слот image ИЛИ постер (если есть videoSrc) -->
+      <div class="poster-fallback">
+        <template v-if="videoSrc">
+          <!-- Если есть видео, показываем постер -->
+          <img :src="videoPoster">
+        </template>
+        <template v-else>
+          <!-- Если видео нет, показываем слот (даже если он пустой) -->
+          <slot name="image"></slot>
+        </template>
+      </div>
+    </template>
+
+
+
       <div v-if="videoSrc" class="video-overlay"></div>
 
     </div>
@@ -95,11 +116,72 @@
 </template>
 
 <script setup>
-import { ref,onMounted, onBeforeUnmount  } from 'vue';
+import { ref,onMounted, onBeforeUnmount, watchEffect  } from 'vue';
 import BtnOne from '../buttons/BtnOne.vue';
 import BtnSecond from '../buttons/BtnSecond.vue';
 import Modal from '../Modal.vue'; 
 
+const isMobile = ref(false);
+const showVideo = ref(false);
+const showPoster = ref(false);
+const videoLoaded = ref(false);
+const videoError = ref(false);
+
+const updateMobileStatus = () => {
+  isMobile.value = window.innerWidth <= 768;
+};
+
+const handleVideoLoaded = () => {
+  videoLoaded.value = true;
+  videoError.value = false;
+};
+
+const handleVideoError = () => {
+  videoError.value = true;
+  showVideo.value = false;
+  showPoster.value = true;
+};
+
+const isModalOpen = ref(false);
+const isBookingModal = ref (false);
+const container = ref(null);
+
+const observer = ref(null);
+
+
+function openBookingModal () {
+  isBookingModal.value = true;
+}
+
+function closeBookingModal () {
+  isBookingModal.value = false
+}
+
+const updateVideoStatus = () => {
+  // Проверяем, если видео не загружено, показываем изображение.
+  if (!showVideo.value) {
+    showPoster.value = true;
+  }
+};
+
+
+function openModal() {
+  isModalOpen.value = true;
+}
+
+function closeModal() {
+  isModalOpen.value = false;
+}
+
+function onButton1Click() {
+  console.log('Перехожу на секцию 1');
+  closeModal();  
+}
+
+function onButton2Click() {
+  console.log('Закрываю модалку');
+  closeModal();
+}
 
 const props = defineProps({
   lazyLoad: { type: Boolean, default: true },
@@ -108,11 +190,9 @@ const props = defineProps({
   marginTop: { type: Number, default: 70 },
   buttonColor: String,
   buttonFontColor: String,
-  videoSrc: String,
-  videoPoster: String,
-  modalData: Object,
+  videoSrc: { type: String, default: '' },
+  videoPoster: { type: String, default: '' },
   ButtonSecText: String,
-
   shortDescription: String,
   price: Number,
   duration: String,
@@ -149,103 +229,89 @@ const props = defineProps({
     type: Array,
     default: () => []
   }
-
-
-
 });
 
-const isBookingModal = ref (false);
-
-function openBookingModal () {
-  isBookingModal.value = true;
-}
-
-function closeBookingModal () {
-  isBookingModal.value = false
-}
-
-const isModalOpen = ref(false);
-
-const container = ref(null);
 const shouldLoadVideo = ref(!props.lazyLoad);
 const shouldLoadPoster = ref(!props.lazyLoad);
-const observer = ref(null);
+onMounted(() => {
+  updateMobileStatus();
+  window.addEventListener('resize', updateMobileStatus);
 
-
-function openModal() {
-  isModalOpen.value = true;
-}
-
-function closeModal() {
-  isModalOpen.value = false;
-}
-
-function onButton1Click() {
-  console.log('Перехожу на секцию 1');
-  closeModal();  
-}
-
-function onButton2Click() {
-  console.log('Закрываю модалку');
-  closeModal();
-}
-
-
-
-// onMounted(() => {
-//   if (props.lazyLoad && container.value) {
-//     observer.value = new IntersectionObserver((entries) => {
-//       entries.forEach(entry => {
-//         if (entry.isIntersecting) {
-//           shouldLoadVideo.value = true;
-//           shouldLoadPoster.value = true;
-//           observer.value?.disconnect();
-//         }
-//       });
-//     }, {
-//       rootMargin: '200px',
-//       threshold: 0.01
-//     });
-
-//     observer.value.observe(container.value);
-//   }
-// });
+  if (props.videoSrc) {
+    if (!isMobile.value && props.videoSrc) {
+      // Десктоп и есть видео
+      if (props.lazyLoad && container.value) {
+        observer.value = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              showVideo.value = true;
+              showPoster.value = false; // Показываем видео, не постер
+              observer.value?.disconnect();
+            }
+          });
+        }, {
+          rootMargin: '200px',
+          threshold: 0.01
+        });
+        observer.value.observe(container.value);
+      } else {
+        showVideo.value = true;
+        showPoster.value = false; // Показываем видео
+      }
+    } else {
+      // Либо мобильное устройство, либо десктоп без видео → показываем постер
+      showPoster.value = true;
+      showVideo.value = false;
+    }
+  } else {
+    // Если видео не передано, показываем только постер
+    showPoster.value = true;
+    showVideo.value = false;
+  }
+});
 
 onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateMobileStatus);
   observer.value?.disconnect();
 });
 
-const isMobile = ref(false);
-
-onMounted(() => {
-  isMobile.value = window.innerWidth <= 768;
-
-  if (props.lazyLoad && container.value && !isMobile.value) {
-    observer.value = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          shouldLoadVideo.value = true;
-          shouldLoadPoster.value = true;
-          observer.value?.disconnect();
-        }
-      });
-    }, {
-      rootMargin: '200px',
-      threshold: 0.01
-    });
-
-    observer.value.observe(container.value);
-  } else if (!props.lazyLoad && !isMobile.value) {
-    shouldLoadVideo.value = true;
-    shouldLoadPoster.value = true;
+// Автоматически скрываем видео при ошибке загрузки
+watchEffect(() => {
+  if (videoError.value || isMobile.value || !props.videoSrc) {
+    showVideo.value = false;
+    showPoster.value = true; // Показываем постер, если видео не загружено
   }
 });
+
 
 
 
 </script>
 
 <style scoped>
+
+.poster-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.poster-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-background {
+  transition: opacity 0.5s ease;
+}
+
+.video-background[data-loaded] {
+  opacity: 1;
+}
   .main-content {
     position: relative;
   display: flex;
