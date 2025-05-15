@@ -12,7 +12,7 @@
         muted
         playsinline
         :poster="showPoster ? videoPoster : undefined"
-        preload="none"
+        preload="metadata"
         alt="Видео отдыха в Осетии"
         aria-label="Видео отдыха в Осетии"
         @loadeddata="handleVideoLoaded"

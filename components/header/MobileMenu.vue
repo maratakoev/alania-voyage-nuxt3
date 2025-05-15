@@ -171,10 +171,5 @@ const menuStyle = computed(() => ({
     
     font-size: 28px;
   }
-
-  /* .mobile-menu__list {
-            margin-top: -30px;
-        margin-left: -20px;
-  } */
 }
 </style>

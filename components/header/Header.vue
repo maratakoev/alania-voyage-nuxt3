@@ -38,68 +38,8 @@ const props = defineProps({
 });
 
 const isSubMenuActive = ref(false);
-// const submenuItems = ref([]);
-// const additionalItems = ref([]);
-// const discriptionItems = ref([]);
-// const activeIndex = ref(-1); // Добавляем отслеживание активного индекса
-// let hideTimeout = null;
-// const hoverEnabled = ref(true);
-
-// const cancelHide = () => {
-//   clearTimeout(hideTimeout);
-// };
-
-
-// const showSubMenu = (index) => {
-//   if (!hoverEnabled.value) return; // блок по флагу
-//   clearTimeout(hideTimeout);
-//   if (activeIndex.value === index) return;
-
-//   activeIndex.value = index;
-//   const item = props.menuItems[index];
-//   submenuItems.value = item.submenu || [];
-//   additionalItems.value = item.additional || [];
-//   discriptionItems.value = item.discription || [];
-//   isSubMenuActive.value = submenuItems.value.length > 0;
-
-//   emit('update:blurActive', isSubMenuActive.value);
-// };
-
-
-
-// const hideSubMenu = () => {
-//   hoverEnabled.value = true;
-//   hideTimeout = setTimeout(() => {
-//     activeIndex.value = -1;
-//     submenuItems.value = [];
-//     additionalItems.value = [];
-//     discriptionItems.value = [];
-//     isSubMenuActive.value = false;
-//     emit('update:blurActive', false);
-//   }, 200); // задержка на скрытие
-// };
-
-// const handleClick = () => {
-//   hoverEnabled.value = false;
-//   hideSubMenu();
-// };
 
 const emit = defineEmits();
-
-// const submenuStyle = computed(() => ({
-//   height: isSubMenuActive.value ? `${submenuItems.value.length * 50}px` : '0',
-//   opacity: isSubMenuActive.value ? '1' : '0',
-//   paddingTop: isSubMenuActive.value ? '25px' : '0',
-//   paddingBottom: isSubMenuActive.value ? '35px' : '0',
-//   overflow: 'hidden',
-//   transition: 'height 0.3s ease, opacity 0.3s ease',
-// }));
-
-// const getItemStyle = (index) => ({
-//   opacity: isSubMenuActive.value ? '1' : '0',
-//   transform: isSubMenuActive.value ? 'translateY(0)' : 'translateY(-10px)',
-//   transition: `transform 0.3s ease ${index * 0.1}s, opacity 0.3s ease ${index * 0.1}s`,
-// });
 </script>
 
 <style>
@@ -169,59 +109,7 @@ const emit = defineEmits();
 .header__logo:hover {
   transform: scale(1.1);
 }
-/* 
-.header__submenu {
-  display: flex;
-  opacity: 0; 
-  height: 0;  
-  overflow: hidden;  
-  transition: height 0.3s ease, opacity 0.3s ease; 
-  padding: 0 50px;
 
-} */
-
-/* .header__submenu-column {
-  margin-right: 65px;
-} */
-
-/* .header__submenu-title {
-  height: 15px;
-  font-size: 15px;
-  margin-bottom: 20px;
-} */
-
-/* .header__submenu-subtitle {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  height: 20px;
-  font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 25px;
-  cursor: pointer;
-} */
-
-/* .header__submenu-subtitle:hover {
-  transform: scale(1.1);
-} */
-
-/* .header__submenu-list {
-  padding-top: 25px;
-  padding-left: 0;
-  margin: 0;
-  list-style: none;
-} */
-
-/* .header__submenu-item {
-  padding: 0;
-  margin: 10px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  height: 15px;
-  font-size: 15px;
-  cursor: pointer;
-} */
-
-/* .header__submenu-item:hover {
-  transform: scale(1.1);
-} */
 
 @media (max-width: 900px) { /* Настроить под ваш брейкпоинт */
   .header__item {
