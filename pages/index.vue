@@ -43,6 +43,8 @@
           sub-title="С комфортом на внедорожнике"
           :modalData="modalData[2]"
           :ButtonSecText="ButtonSecText"
+          :lazyLoad="true"
+
         >
         <template #image>
           <picture>
@@ -91,6 +93,8 @@
           :modalData="modalData[3]"
           :marginTop="-235"
           :ButtonSecText="ButtonSecText"
+          :lazyLoad="true"
+
         >
         <template #image>
           <picture>
