@@ -12,7 +12,7 @@
         muted
         playsinline
         :poster="showPoster ? videoPoster : undefined"
-        preload="metadata"
+        preload="none"
         alt="Видео отдыха в Осетии"
         aria-label="Видео отдыха в Осетии"
         @loadeddata="handleVideoLoaded"
@@ -121,7 +121,7 @@ import BtnOne from '../buttons/BtnOne.vue';
 import BtnSecond from '../buttons/BtnSecond.vue';
 import Modal from '../Modal.vue'; 
 
-const isMobile = ref(false);
+const isMobile = ref(window.innerWidth <= 768); // прямо здесь
 const showVideo = ref(false);
 const showPoster = ref(false);
 const videoLoaded = ref(false);

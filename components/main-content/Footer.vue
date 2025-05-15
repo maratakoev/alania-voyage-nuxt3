@@ -3,7 +3,7 @@
     <div class="footer__container">
       <div class="footer__section footer__section--info">
         <div class="footer__logo">
-          <img src='/images/logo.png' alt="Логотип Яблоко Нартов" class="footer__logo-img">
+          <img src='/images/logo.webp' alt="Логотип Яблоко Нартов" class="footer__logo-img">
           <span>Яблоко нартов</span>
         </div>
         <p class="footer__text">© 2025 Все права защищены</p>
