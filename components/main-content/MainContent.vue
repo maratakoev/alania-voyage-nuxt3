@@ -25,11 +25,10 @@
       <template v-else>
       <div class="poster-fallback">
         <template v-if="videoSrc">
-          <img  :src="videoPoster">
+          <img alt="Яблоко нартов в Inst"  :src="videoPoster">
         </template>
         <template v-else>
-          <slot name="image"
-          ></slot>
+          <slot name="image"></slot>
         </template>
       </div>
     </template>
@@ -228,7 +227,10 @@ const props = defineProps({
     type: Array,
     default: () => []
   },
-
+  isHero: {
+      type: Boolean,
+      default: false
+    }
 });
 
 const shouldLoadVideo = ref(!props.lazyLoad);
