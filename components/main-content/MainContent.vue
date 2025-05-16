@@ -1,6 +1,6 @@
 <template>
   <article class="main-content" ref="container">
-    <!-- <div class="background-container">
+    <div class="background-container">
       
       <template v-if="!isMobile">
         <slot v-if="!showVideo" name="image"></slot>
@@ -37,7 +37,7 @@
 
       <div v-if="videoSrc" class="video-overlay"></div>
 
-    </div> -->
+    </div>
     <div class="main-content__content" :style="{ marginTop: marginTop + 'px' }">
       <h2 class="main-content__title">{{ title }}</h2>
       <h3 class="main-content__subtitle"> {{subTitle}}</h3>

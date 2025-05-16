@@ -137,37 +137,78 @@
         </MainContent>
       </div>
     </section>
-    <section aria-label="Нам доверяют отдых в Осетии">
+
+    <div ref="trustObserver"></div>  <!-- Пустой блок для наблюдения -->
+    <section aria-label="Нам доверяют отдых в Осетии" v-if="isTrustVisible">
       <Trust></Trust>  
     </section>
-    <section aria-label="Отзывы об отдыхе в Осетии">
+
+    <div ref="reviewObserver"></div>  <!-- Пустой блок для наблюдения -->
+    <section aria-label="Отзывы об отдыхе в Осетии" 
+    v-if="isReviewVisible">
       <ReviewForm/>
     </section>
-    <section aria-label="Горящие экскурсии">
+
+    <div ref="hotoffersObserver"></div>  <!-- Пустой блок для наблюдения -->
+    <section aria-label="Горящие экскурсии" 
+    v-if="isHotOffersVisible">
       <HotOffers></HotOffers>
     </section>
 
-    <section aria-label="Карта горных ущелий Осетии">
+    <div ref="interactivemapObserver"></div>  <!-- Пустой блок для наблюдения -->
+    <section aria-label="Карта горных ущелий Осетии" 
+    v-if="isInteractiveMapVisible">
       <InteractiveMap ></InteractiveMap>
     </section>
-    <section aria-label="Частые вопросы по экскурсиям">
+
+    <div ref="faqObserver"></div>  <!-- Пустой блок для наблюдения -->
+    <section aria-label="Частые вопросы по экскурсиям" v-if="isFAQVisible">
       <FAQ/>
     </section>
-    
-    <Footer> </Footer>
+
+    <div ref="footerObserver"></div>  <!-- Пустой блок для наблюдения -->
+    <Footer  v-if="isFooterVisible"> </Footer>
   </main>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, defineAsyncComponent } from 'vue';
 import MainContent from '@/components/main-content/MainContent.vue';
 import NavMenu from '@/components/header/NavMenu.vue';
-import ReviewForm from '@/components/main-content/Review-form.vue';
-import HotOffers from '@/components/main-content/HotOffers.vue';
-import InteractiveMap from '@/components/main-content/InteractiveMap.vue';
-import Trust from '@/components/main-content/Trust.vue';
-import FAQ from '@/components/main-content/FAQ.vue';
-import Footer from '@/components/main-content/Footer.vue';
+// import ReviewForm from '@/components/main-content/Review-form.vue';
+// import HotOffers from '@/components/main-content/HotOffers.vue';
+// import InteractiveMap from '@/components/main-content/InteractiveMap.vue';
+// import Trust from '@/components/main-content/Trust.vue';
+// import FAQ from '@/components/main-content/FAQ.vue';
+// import Footer from '@/components/main-content/Footer.vue';
+
+const Trust = defineAsyncComponent(() => import('@/components/main-content/Trust.vue'))
+const ReviewForm = defineAsyncComponent(() => import('@/components/main-content/Review-form.vue'))
+const InteractiveMap = defineAsyncComponent(() => import('@/components/main-content/InteractiveMap.vue'))
+const HotOffers = defineAsyncComponent(() => import('@/components/main-content/HotOffers.vue'))
+const FAQ = defineAsyncComponent(() => import('@/components/main-content/FAQ.vue'))
+const Footer = defineAsyncComponent(() => import('@/components/main-content/Footer.vue'))
+
+
+
+
+const reviewObserver = ref (null)
+const isReviewVisible = ref (false)
+
+
+const hotoffersObserver = ref (null)
+const isHotOffersVisible = ref (false)
+
+const interactivemapObserver = ref (null)
+const isInteractiveMapVisible = ref (false)
+
+const faqObserver = ref (null)
+const isFAQVisible = ref (false)
+
+const footerObserver = ref (null)
+const isFooterVisible = ref (false)
+
+
 
 const ButtonSecText = 'Написать в чат'
 
@@ -325,6 +366,32 @@ const modalData = ref([
   },
 ]);
 
+onMounted(() => {
+  const createObserver = (elementRef, visibilityFlag) => {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        const entry = entries[0]
+        if (entry.isIntersecting) {
+          visibilityFlag.value = true
+          obs.disconnect()
+        }
+      },
+      {
+        rootMargin: '100px',
+      }
+    )
+
+    if (elementRef.value) {
+      observer.observe(elementRef.value)
+    }
+  }
+
+  createObserver(reviewObserver, isReviewVisible)
+  createObserver(hotoffersObserver, isHotOffersVisible)
+  createObserver(interactivemapObserver, isInteractiveMapVisible)
+  createObserver(faqObserver, isFAQVisible)
+  createObserver(footerObserver, isFooterVisible)
+})
 
 </script>
 
