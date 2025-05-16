@@ -19,7 +19,7 @@
         @error="handleVideoError"
       >
         <source :src="videoSrc" type="video/webm">
-        Ваш браузер не поддерживает видео тег.
+        Ваш браузер не поддерживает видео теги.
       </video>
       </template>
       <template v-else>
