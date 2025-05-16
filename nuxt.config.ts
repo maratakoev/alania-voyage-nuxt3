@@ -22,14 +22,8 @@ export default defineNuxtConfig({
         { property: 'og:url', content: 'https://example.com' },
         { property: 'og:image', content: 'https://example.com/image.jpg' },
         { name: 'twitter:card', content: 'summary_large_image' }
-      ],
-      script: [
-        {
-          src: 'https://mc.yandex.ru/metrika/tag.js',
-          defer: true
-        }
       ]
-  
+      
     }
   }
 })
