@@ -25,10 +25,11 @@
       <template v-else>
       <div class="poster-fallback">
         <template v-if="videoSrc">
-          <img :src="videoPoster">
+          <img  :src="videoPoster">
         </template>
         <template v-else>
-          <slot name="image"></slot>
+          <slot name="image"
+          ></slot>
         </template>
       </div>
     </template>
@@ -118,7 +119,7 @@ import BtnOne from '../buttons/BtnOne.vue';
 import BtnSecond from '../buttons/BtnSecond.vue';
 import Modal from '../Modal.vue'; 
 
-const isMobile = ref(true);
+const isMobile = ref(false);
 const showVideo = ref(false);
 const showPoster = ref(false);
 const videoLoaded = ref(false);
@@ -226,7 +227,8 @@ const props = defineProps({
   includes: {
     type: Array,
     default: () => []
-  }
+  },
+
 });
 
 const shouldLoadVideo = ref(!props.lazyLoad);
