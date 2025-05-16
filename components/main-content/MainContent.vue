@@ -121,7 +121,7 @@ import BtnOne from '../buttons/BtnOne.vue';
 import BtnSecond from '../buttons/BtnSecond.vue';
 import Modal from '../Modal.vue'; 
 
-const isMobile = ref(window.innerWidth <= 768); // прямо здесь
+const isMobile = ref(false);
 const showVideo = ref(false);
 const showPoster = ref(false);
 const videoLoaded = ref(false);
