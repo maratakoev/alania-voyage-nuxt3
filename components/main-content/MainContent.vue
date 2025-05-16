@@ -127,6 +127,8 @@ const videoError = ref(false);
 const updateMobileStatus = () => {
   isMobile.value = window.innerWidth <= 768;
 };
+updateMobileStatus();
+
 
 const handleVideoLoaded = () => {
   videoLoaded.value = true;
