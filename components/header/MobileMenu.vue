@@ -8,7 +8,6 @@
             <img :src="logo" 
               alt="Logo" 
               class="mobile-menu__img"
-              @mouseenter="hideSubMenu" 
               v-if="!isOpen">
             
             

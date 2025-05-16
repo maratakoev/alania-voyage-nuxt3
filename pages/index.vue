@@ -14,92 +14,10 @@
 
     >
     <template #image>
-          <picture>
-            <!-- WebP форматы -->
-            <source 
-              srcset="
-                /images/zgid-480.webp 480w,
-                /images/zgid-768.webp 768w,
-                /images/zgid-960.webp 960w
-              "
-              sizes="(max-width: 480px) 480px, 
-                      (max-width: 768px) 768px, 
-                      960px"
-              type="image/webp"
-            >
-          
-            <!-- JPEG fallback -->
-            <source 
-              srcset="
-                /images/zgid-480.jpg 480w,
-                /images/zgid-768.jpg 768w,
-                /images/zgid-960.jpg 960w
-              "
-              sizes="(max-width: 480px) 480px, 
-                      (max-width: 768px) 768px, 
-                      960px"
-              type="image/jpeg"
-            >
-          
-            <!-- Fallback <img> -->
-            <img 
-              src="/images/zgid-960.jpg" 
-              alt="Экскурсии по Осетии на Внедорожнике"
-              loading="lazy" 
-              decoding="async" 
-              class="main-content__image-small">
-          </picture>
-        </template>
-    </MainContent>
-    </section>
-
-    <section aria-label="Отдых в горах">
-      <MainContent 
-      :buttonFontColor="black"
-      :buttonColor="white"
-      :marginTop="-110"
-      title="Выходные в горах"
-      sub-title="Прочувствуй энергию гор" 
-      :modalData="modalData[1]"
-      :lazyLoad="true"
-      :ButtonSecText="ButtonSecText"
-    >
-    <template #image>
-          <picture>
-            <!-- WebP форматы -->
-            <source 
-              srcset="
-                /images/zgid-480.webp 480w,
-                /images/zgid-768.webp 768w,
-                /images/zgid-960.webp 960w
-              "
-              sizes="(max-width: 480px) 480px, 
-                      (max-width: 768px) 768px, 
-                      960px"
-              type="image/webp"
-            >
-          
-            <!-- JPEG fallback -->
-            <source 
-              srcset="
-                /images/zgid-480.jpg 480w,
-                /images/zgid-768.jpg 768w,
-                /images/zgid-960.jpg 960w
-              "
-              sizes="(max-width: 480px) 480px, 
-                      (max-width: 768px) 768px, 
-                      960px"
-              type="image/jpeg"
-            >
-          
-            <!-- Fallback <img> -->
-            <img 
-              src="/images/zgid-960.jpg" 
-              alt="Экскурсии по Осетии на Внедорожнике"
-              loading="lazy" 
-              decoding="async" 
-              class="main-content__image-small">
-          </picture>
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/insta.webp" alt="Фото тур в Осетию" class="main-content__image-small">
         </template>
     </MainContent>
     </section>
@@ -117,41 +35,10 @@
 
         >
         <template #image>
-          <picture>
-            <!-- WebP форматы -->
-            <source 
-              srcset="
-                /images/zgid-480.webp 480w,
-                /images/zgid-768.webp 768w,
-                /images/zgid-960.webp 960w
-              "
-              sizes="(max-width: 480px) 480px, 
-                      (max-width: 768px) 768px, 
-                      960px"
-              type="image/webp"
-            >
-          
-            <!-- JPEG fallback -->
-            <source 
-              srcset="
-                /images/zgid-480.jpg 480w,
-                /images/zgid-768.jpg 768w,
-                /images/zgid-960.jpg 960w
-              "
-              sizes="(max-width: 480px) 480px, 
-                      (max-width: 768px) 768px, 
-                      960px"
-              type="image/jpeg"
-            >
-          
-            <!-- Fallback <img> -->
-            <img 
-              src="/images/zgid-960.jpg" 
-              alt="Экскурсии по Осетии на Внедорожнике"
-              loading="lazy" 
-              decoding="async" 
-              class="main-content__image-small">
-          </picture>
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/insta.webp" alt="Фото тур в Осетию" class="main-content__image-small">
         </template>
 
 

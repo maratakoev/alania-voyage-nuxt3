@@ -7,17 +7,14 @@
             <img :src="logo" 
               alt="Logo" 
               class="header__logo"
-              @mouseenter="hideSubMenu"  
             >            
           </router-link>
         </span>
         <router-link 
-        @click="hideSubMenu"
           v-for="(item, index) in menuItems"
           :key="index"
           class="header__item" 
           :to="item.route"
-          @mouseenter="showSubMenu(index)"
         >{{ item.label }}
         </router-link>
         <burger></burger>
@@ -28,7 +25,6 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
 import Burger from '../buttons/Burger.vue';
 
 // Получаем данные от родителя через props
@@ -37,7 +33,6 @@ const props = defineProps({
   menuItems: Array,  // Пункты меню
 });
 
-const isSubMenuActive = ref(false);
 
 const emit = defineEmits();
 </script>
