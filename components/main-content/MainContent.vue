@@ -1,6 +1,6 @@
 <template>
   <article class="main-content" ref="container">
-    <div class="background-container">
+    <!-- <div class="background-container">
       
       <template v-if="!isMobile">
         <slot v-if="!showVideo" name="image"></slot>
@@ -23,14 +23,11 @@
       </video>
       </template>
       <template v-else>
-      <!-- Мобильные: слот image ИЛИ постер (если есть videoSrc) -->
       <div class="poster-fallback">
         <template v-if="videoSrc">
-          <!-- Если есть видео, показываем постер -->
           <img :src="videoPoster">
         </template>
         <template v-else>
-          <!-- Если видео нет, показываем слот (даже если он пустой) -->
           <slot name="image"></slot>
         </template>
       </div>
@@ -40,7 +37,7 @@
 
       <div v-if="videoSrc" class="video-overlay"></div>
 
-    </div>
+    </div> -->
     <div class="main-content__content" :style="{ marginTop: marginTop + 'px' }">
       <h2 class="main-content__title">{{ title }}</h2>
       <h3 class="main-content__subtitle"> {{subTitle}}</h3>
