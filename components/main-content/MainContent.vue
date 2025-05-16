@@ -118,7 +118,7 @@ import BtnOne from '../buttons/BtnOne.vue';
 import BtnSecond from '../buttons/BtnSecond.vue';
 import Modal from '../Modal.vue'; 
 
-const isMobile = ref(false);
+const isMobile = ref(true);
 const showVideo = ref(false);
 const showPoster = ref(false);
 const videoLoaded = ref(false);
@@ -127,7 +127,6 @@ const videoError = ref(false);
 const updateMobileStatus = () => {
   isMobile.value = window.innerWidth <= 768;
 };
-updateMobileStatus();
 
 
 const handleVideoLoaded = () => {
