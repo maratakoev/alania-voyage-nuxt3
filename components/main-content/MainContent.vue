@@ -25,10 +25,10 @@
       <template v-else>
       <div class="poster-fallback">
         <template v-if="videoSrc">
-          <img alt="Отдых в Осетии"  :src="videoPoster">
+          <img class="poster-img" alt="Отдых в Осетии"  :src="videoPoster">
         </template>
         <template v-else>
-          <slot name="image"></slot>
+          <slot  name="image"></slot>
         </template>
       </div>
     </template>
@@ -291,6 +291,9 @@ watchEffect(() => {
 </script>
 
 <style scoped>
+.poster-img {
+  height: 600px;
+}
 
 .poster-fallback {
   position: absolute;
