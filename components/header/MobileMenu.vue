@@ -29,7 +29,6 @@
       >
         {{ item.label }}
       </router-link>
-      <span class="mobile-menu__number">+79888357227 </span>
     </div>
   </div>
 </template>
@@ -115,18 +114,7 @@ const menuStyle = computed(() => ({
     
   }
 
-  .mobile-menu__number {
-    color: rgb(242, 188, 11);
-    text-decoration: none;
-    letter-spacing: 2px;
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    cursor: pointer;
-    transform: translateY(-10px);  /* Начальное смещение по вертикали */
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    margin-top: 60px;
-  }
+  
 
   .mobile-menu__item {
     color: white;

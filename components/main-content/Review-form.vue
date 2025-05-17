@@ -503,7 +503,7 @@ const handleTouchEnd = (e) => {
 }
 
 .review-image img {
-  max-width: 200px ;
+  max-width: 100%;
   max-height: 300px ; /* Оптимальная высота для просмотра */
   width: auto;
   height: auto;

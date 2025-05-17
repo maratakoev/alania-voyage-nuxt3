@@ -30,7 +30,7 @@
               </div>
               <div class="tour-price-block">
                 <span class="tour-price">{{ tour.price }} ₽</span>
-                <button @click="openBooking(tour)" class="book-button">Выбрать</button>
+                <button @click="openTelegram" class="book-button">Выбрать</button>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@ const locations = ref([
     name: "Кармадон",
     coords: [42.862970, 44.518812],
     type: "village",
-    preview: "/images/locations/Karmadon.",
+    preview: "/images/locations/Karmadon.webp",
     description: "30км от Владикавказа, В этом ущелье, после схода ледника Колка, пропала группа Сергея Бодрова"
   },
   {
@@ -73,7 +73,7 @@ const locations = ref([
     name: "Даргавс",
     coords: [42.834115, 44.431108],
     type: "village",
-    preview: "/images/locations/Dargavs.",
+    preview: "/images/locations/Dargavs.webp",
     description: "44 км от Владикавказа, Древний город мёртвых с каменными склепами"
   },
   {
@@ -81,7 +81,7 @@ const locations = ref([
     name: "Фиагдон",
     coords: [42.859167, 44.312383],
     type: "village",
-    preview: "/images/locations/Fiagdon.",
+    preview: "/images/locations/Fiagdon.webp",
     description: "48км от Владикавказа, Самый крупный горный поселок Осетии"
   },
   {
@@ -89,7 +89,7 @@ const locations = ref([
     name: "Мидагарабинские водопады",
     coords: [42.769626, 44.363269],
     type: "village",
-    preview: "/images/locations/Midag.",
+    preview: "/images/locations/Midag.webp",
     description: "70 км от Владикавказа, Самый высокий водопад в Европе"
   },
   {
@@ -97,7 +97,7 @@ const locations = ref([
     name: "Алагирское ущелье",
     coords: [42.875341, 44.152894],
     type: "village",
-    preview: "/images/locations/Alagir.",
+    preview: "/images/locations/Alagir.webp",
     description: "60 км от Владикавказа, Живописное ущелье идиально для фототуров"
   },
   {
@@ -105,7 +105,7 @@ const locations = ref([
     name: "Мамисонское ущелье",
     coords: [42.666777, 43.853172],
     type: "village",
-    preview: "/images/locations/Mamison.",
+    preview: "/images/locations/Mamison.webp",
     description: "100км от Владиквказа, Горнолыжный курорт"
   },
   {
@@ -113,7 +113,7 @@ const locations = ref([
     name: "Высокогорный Уаллагком",
     coords: [42.907886, 43.853208],
     type: "village",
-    preview: "/images/locations/Zgid.",
+    preview: "/images/locations/Zgid.webp",
     description: "116км от Владикавказа, Высокогорное село с руинами XIV в"
   },
   {
@@ -121,7 +121,7 @@ const locations = ref([
     name: "Горная Дигория",
     coords: [42.910014, 43.554438],
     type: "village",
-    preview: "/images/locations/vodopad.",
+    preview: "/images/locations/vodopad.webp",
     description: " 128км от Владиккавказа, Самое живописное место по мнению большинства местных жителей"
   },
   {
@@ -129,7 +129,7 @@ const locations = ref([
     name: "Беслан",
     coords: [43.193, 44.541],
     type: "history",
-    preview: "/images/locations/Beslan.",
+    preview: "/images/locations/Beslan.webp",
     description: " 30 км от Владикавказа, печально известный Беслан"
   },
   {
@@ -137,7 +137,7 @@ const locations = ref([
     name: "Владикавказ",
     coords: [43.024, 44.681],
     type: "culture",
-    preview: "/images/locations/Vld.",
+    preview: "/images/locations/Vld.webp",
     description: "Столица Республики Северная Осетия - Алания"
   },
 ]);
@@ -384,6 +384,9 @@ function loadMap() {
     document.head.appendChild(script);
   }
 }
+const openTelegram = () => {
+  window.open("https://t.me/maratakoev", "_blank", "noopener,noreferrer");
+};
 
 </script>
 

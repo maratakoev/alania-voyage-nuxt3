@@ -397,7 +397,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
+.home {
+  padding-top: 70px;
+}
 .nav {
   position: fixed;
   margin-top: -70px;

@@ -28,31 +28,31 @@ import { ref, computed, onMounted } from 'vue';
 
 const allOffers = ref([
   {
-    title: "Треккинг в Цей",
+    title: "Индивидуальная экскурсия в Фиагдон",
     image: "/images/locations/Alagir.webp",
     oldPrice: 15000,
     price: 12000,
     discount: 12
   },
   {
-    title: "Гостевой дом у водопада",
+    title: "Экскурсия в Даргавс",
     image: "/images/locations/Dargavs.webp",
     oldPrice: 15000,
-    price: 11000,
+    price: 9900,
     discount: 15
   },
   {
-    title: "Экскурсия по крепостям",
+    title: "Экскурсия к Урсдоской Крепости",
     image: "/images/locations/Fiagdon.webp",
     oldPrice: 18000,
-    price: 14400,
+    price: 12400,
     discount: 20
   },
   {
-    title: "Горнолыжный курорт",
+    title: "Мамисон",
     image: "/images/locations/Darial.webp",
     oldPrice: 18000,
-    price: 15400,
+    price: 11950,
     discount: 20
   }
 ]);

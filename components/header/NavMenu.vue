@@ -18,6 +18,10 @@ import Header from './Header.vue';
 const name = ref('');
 const logo = '/images/logo.webp';  // Логотип
 const menuItems = [
+{
+    label: 'Главная',
+    route: '/',
+  },
   {
     label: 'Экскурсии',
     route: '/excursions',
@@ -32,6 +36,10 @@ const menuItems = [
   },
   { label: 'Контакты', 
     route: '/about', 
+    
+  },
+  { label: '+7 988 835 7227', 
+    route: '', 
     
   },
   

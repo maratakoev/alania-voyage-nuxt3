@@ -128,9 +128,9 @@
         <img src="/images/lc.webp" alt="Тур под ключ в Осетию" class="main-content__image">
       </template>
     </MainContent>
-    <FAQ>
+    <!-- <FAQ>
 
-    </FAQ>
+    </FAQ> -->
     <Footer>
 
     </Footer>
@@ -273,6 +273,10 @@ const closeModal = () => {
 
 <style scoped>
 
+.gallery {
+  padding-top: 70px;
+
+}
 
 .nav {
   position: sticky;

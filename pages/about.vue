@@ -157,6 +157,8 @@ const tabs = ref([
   color: #333;
   max-width: 1400px;
   margin: 0 auto;
+  padding-top: 70px;
+
 }
 
 .nav {

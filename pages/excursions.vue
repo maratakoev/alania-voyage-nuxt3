@@ -218,7 +218,7 @@
         </template>
       </MainContent> 
     </div>
-    <FAQ/>
+    <!-- <FAQ/> -->
     <Footer></Footer>
   </div>
 </template>
@@ -459,10 +459,13 @@ const modalData = ref([
 
 <style scoped>
 
+.routs {
+  padding-top: 70px;
 
+}
 .nav {
-position: absolute;
-margin-top: -70px;
+  position: fixed;
+  margin-top: -70px;
 }
 
 

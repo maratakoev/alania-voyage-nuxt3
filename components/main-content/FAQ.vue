@@ -5,8 +5,9 @@
     <div class="faq-section" v-for="(section, sectionIndex) in sections" :key="sectionIndex">
       <h3 class="section-title">{{ section.title }}</h3>
       <div class="faq-item" v-for="(item, itemIndex) in section.questions" :key="itemIndex"
-           @click="toggleAnswer(sectionIndex, itemIndex)"
-           :class="{ 'active': activeIndices[sectionIndex] === itemIndex }">
+          @click="toggleAnswer(sectionIndex, itemIndex)"
+          :class="{ 'active': activeIndices[sectionIndex] === itemIndex }"
+          >
         <div class="question">
           <span>{{ item.question }}</span>
           <span class="icon">
@@ -32,7 +33,7 @@
 
     <div class="contact-prompt">
       <p>Не нашли ответ?</p>
-      <button class="contact-button" @click="openContactForm">
+      <button class="contact-button" @click="openTelegram">
         Напишите нам
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="#0071E3" stroke-width="2" stroke-linecap="round"/>
@@ -61,9 +62,9 @@ const sections = ref([
     questions: [
       {
         question: "Как забронировать тур?",
-        answer: "Выберите тур на сайте, нажмите «Забронировать», укажите даты и количество человек. Мы свяжемся с вами в течение 15 минут для подтверждения.",
+        answer: "Выберите тур на сайте, нажмите «Написать в чат», откроется телеграм где мы сможем оперативно договориться.",
         actions: [
-          { text: "Посмотреть туры", action: "showTours" }
+          // { text: "Посмотреть туры", action: "showTours" }
         ]
       },
       {
@@ -73,6 +74,10 @@ const sections = ref([
       {
         question: "Есть ли скидки для групп?",
         answer: "Да! От 5 человек — -10%, от 10 человек — -20%."
+      },
+      {
+        question: "А если дождь?",
+        answer: "В дождь мы тоже выезжаем и показываем интересные красивые локации. К тому же есть шанс оказаться над облаками!"
       }
     ]
   },
@@ -81,13 +86,13 @@ const sections = ref([
     questions: [
       {
         question: "На каких машинах проходят туры?",
-        answer: "Внедорожники 4×4 (Toyota Land Cruiser, Nissan Patrol) с опытными водителями."
+        answer: "Внедорожники 4×4 (Внедорожники Toyota/Lexus) с опытными водителями."
       },
       {
         question: "Можно ли с детьми?",
         answer: "Да, для детей от 6 лет. Для малышей — индивидуальные туры с адаптированным маршрутом.",
         actions: [
-          { text: "Семейные туры", action: "showFamilyTours" }
+          // { text: "Семейные туры", action: "showFamilyTours" }
         ]
       }
     ]
@@ -101,6 +106,9 @@ const handleAction = (action) => {
 
 const openContactForm = () => {
   console.log("Opening contact form...");
+};
+const openTelegram = () => {
+  window.open("https://t.me/maratakoev", "_blank", "noopener,noreferrer");
 };
 </script>
 
