@@ -7,10 +7,10 @@
       title="Осетия ждет!"
       sub-title="Твоё приключение начинается..."
       :buttonColor="'#1D68F0'"
-      :marginTop="-70"
+      :marginTop="20"
       :modalData="modalData[0]"
       videoSrc="/videos/hero-background.mp4"
-      videoPoster="/images/complecs-poster.webp"
+      videoPoster="/images/complecs.webp"
       :lazyLoad="false"
       :ButtonSecText="ButtonSecText"
 

@@ -292,7 +292,10 @@ watchEffect(() => {
 
 <style scoped>
 .poster-img {
-  height: 600px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
 }
 
 .poster-fallback {
