@@ -10,7 +10,7 @@
       :marginTop="-70"
       :modalData="modalData[0]"
       videoSrc="/videos/hero-background.mp4"
-      videoPoster="/images/complecs-poster.webp"
+      videoPoster="/images/insta.webp"
       :lazyLoad="false"
       :ButtonSecText="ButtonSecText"
 
