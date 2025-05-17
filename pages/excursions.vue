@@ -15,6 +15,7 @@
       :ButtonSecText="ButtonSecText"
       :buttonColor="'white'"
       :buttonFontColor="'black'"
+      :lazyLoad="false"
     >
       <template #image>
         <img 
@@ -39,6 +40,8 @@
         difficulty="Средний"
         shortDescription="Увлекательная экскурсия по живописным горным тропам с профессиональным гидом"
         :modalData="modalData[1]"
+        :lazyLoad="true"
+
         >
         <template #image>
           <img 
@@ -60,6 +63,8 @@
         :ButtonSecText="ButtonSecText"
         :buttonColor="'white'"
         :buttonFontColor="'black'"
+        :lazyLoad="true"
+
       >
         <template #image>
           <img 
@@ -83,6 +88,8 @@
         :ButtonSecText="ButtonSecText"
         :buttonColor="'white'"
         :buttonFontColor="'black'"
+        :lazyLoad="true"
+
       >
         <template #image>
           <img 
@@ -104,6 +111,8 @@
         :ButtonSecText="ButtonSecText"
         :buttonColor="'white'"
         :buttonFontColor="'black'"
+        :lazyLoad="true"
+
       >
         <template #image>
           <img 
@@ -127,6 +136,8 @@
         :reviewCount="2"
         :modalData="modalData[5]"
         :ButtonSecText="ButtonSecText"
+        :lazyLoad="true"
+
       >
         <template #image>
           <img 
@@ -148,6 +159,8 @@
         :ButtonSecText="ButtonSecText"
         :buttonColor="'white'"
         :buttonFontColor="'black'"
+        :lazyLoad="true"
+
       >
       <template #image>
           <img 
@@ -156,8 +169,6 @@
           src="/images/zgid-poster.webp" alt="Над облаками в Осетии" class="main-content__image">
         </template>
       </MainContent> 
-    </div>
-    <div class="home__table">
     </div>
     <div class="home__table">
       <MainContent 
@@ -173,6 +184,8 @@
         :reviewCount="8"
         :modalData="modalData[7]"
         :ButtonSecText="ButtonSecText"
+        :lazyLoad="true"
+
       >
         <template #image>
           <img 
@@ -194,6 +207,8 @@
         :reviewCount="2"
         :modalData="modalData[8]"
         :ButtonSecText="ButtonSecText"
+        :lazyLoad="true"
+
       >
         <template #image>
           <img 
@@ -443,12 +458,7 @@ const modalData = ref([
 
 
 <style scoped>
-.routs {
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 
 .nav {
 position: absolute;

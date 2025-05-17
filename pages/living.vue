@@ -5,34 +5,108 @@
     <MainContent 
       id="mountains"
       class="home__container"
-      title="Фиагдон"
-      sub-title="Панорамный коттедж"
+      title="Горная Осетия"
+      sub-title="Панорамные коттеджи"
       :marginTop="130"
       :ButtonSecText="ButtonSecText"
       :modalData="modalData[0]"
       :rating="5"
       :reviewCount="30"
       :price="12000"
+      :lazyLoad="true"
+
     >
-      <template #image>
-        <img src="@/public/images/hero-poster.webp" alt="Жилье снять в Осетии" class="main-content__image">
-      </template>
+    <template #image>
+          <picture>
+            <!-- WebP форматы -->
+            <source 
+              srcset="
+                /images/fiagdon-house-480.webp 480w,
+                /images/fiagdon-house-768.webp 768w,
+                /images/fiagdon-house-960.webp 960w
+              "
+              sizes="(max-width: 480px) 480px, 
+                      (max-width: 768px) 768px, 
+                      960px"
+              type="image/webp"
+            >
+          
+            <!-- JPEG fallback -->
+            <source 
+              srcset="
+                /images/fiagdon-house-480.jpg 480w,
+                /images/fiagdon-house-768.jpg 768w,
+                /images/fiagdon-house-960.jpg 960w
+              "
+              sizes="(max-width: 480px) 480px, 
+                      (max-width: 768px) 768px, 
+                      960px"
+              type="image/jpeg"
+            >
+          
+            <!-- Fallback <img> -->
+            <img 
+              src="/images/fiagdon-house-960.jpg" 
+              alt="Коттедж в Осетии для аренды"
+              loading="lazy" 
+              decoding="async" 
+              class="main-content__image-small">
+          </picture>
+        </template>
     </MainContent>
     <MainContent 
       id="vladikavkaz"
       class="home__container"
       title="Владикавказ"
-      sub-title="Уютная квартира с видом на горы"
+      sub-title="Уютные квартиры, гостиницы, отели"
       :marginTop="130"
       :ButtonSecText="ButtonSecText"
       :modalData="modalData[1]"
       :rating="5"
       :reviewCount="30"
       :price="3000"
+      :lazyLoad="true"
+
     >
-      <template #image>
-        <img src="@/public/images/hero-poster.webp" alt="Аренда квартиры Владикавказ" class="main-content__image">
-      </template>
+    <template #image>
+          <picture>
+            <!-- WebP форматы -->
+            <source 
+              srcset="
+                /images/hotel-480.webp 480w,
+                /images/hotel-768.webp 768w,
+                /images/hotel-960.webp 960w,
+                /images/hotel-1400.webp 1400w 
+              "
+              sizes="(max-width: 480px) 480px, 
+                      (max-width: 768px) 768px, 
+                      960px"
+              type="image/webp"
+            >
+          
+            <!-- JPEG fallback -->
+            <source 
+              srcset="
+                /images/hotel-480.jpg 480w,
+                /images/hotel-768.jpg 768w,
+                /images/hotel-960.jpg 960w,
+                /images/hotel-1400.jpg 1400w 
+              "
+              sizes="(max-width: 480px) 480px, 
+                      (max-width: 768px) 768px, 
+                      960px"
+              type="image/jpeg"
+            >
+          
+            <!-- Fallback <img> -->
+            <img 
+              src="/images/hotel-960.jpg" 
+              alt="Коттедж в Осетии для аренды"
+              loading="lazy" 
+              decoding="async" 
+              class="main-content__image-small">
+          </picture>
+        </template>
     </MainContent>
     <Footer></Footer>
   </div>
@@ -89,18 +163,25 @@ const modalData = ref([
 <style scoped>
 
 
-.living {
+/* .living {
   display: flex;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
 .main-content {
   margin-bottom: 20px; 
 }
 
 .main-content__image {
+  width: 100%;
+  height: 580px;
+  object-fit: cover;
+  filter: brightness(70%) contrast(100%);
+}
+
+.main-content__image-small {
   width: 100%;
   height: 580px;
   object-fit: cover;

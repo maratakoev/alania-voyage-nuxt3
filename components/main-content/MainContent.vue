@@ -25,7 +25,7 @@
       <template v-else>
       <div class="poster-fallback">
         <template v-if="videoSrc">
-          <img alt="Яблоко нартов в Inst"  :src="videoPoster">
+          <img alt="Отдых в Осетии"  :src="videoPoster">
         </template>
         <template v-else>
           <slot name="image"></slot>
