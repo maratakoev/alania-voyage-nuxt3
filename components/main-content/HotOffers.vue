@@ -28,32 +28,32 @@ import { ref, computed, onMounted } from 'vue';
 
 const allOffers = ref([
   {
-    title: "Индивидуальная экскурсия в Фиагдон",
+    title: "Древние тропы",
     image: "/images/locations/Alagir.webp",
     oldPrice: 15000,
-    price: 12000,
-    discount: 12
-  },
-  {
-    title: "Экскурсия в Даргавс",
-    image: "/images/locations/Dargavs.webp",
-    oldPrice: 15000,
-    price: 9900,
+    price: 12750,
     discount: 15
   },
   {
-    title: "Экскурсия к Урсдоской Крепости",
+    title: "Высота 1800",
+    image: "/images/locations/Dargavs.webp",
+    oldPrice: 11000,
+    price: 9900,
+    discount: 10
+  },
+  {
+    title: "Дорога пяти рек",
     image: "/images/locations/Fiagdon.webp",
     oldPrice: 18000,
     price: 12400,
     discount: 20
   },
   {
-    title: "Мамисон",
+    title: "Мамисон: дорога к новому курорту",
     image: "/images/locations/Darial.webp",
     oldPrice: 18000,
-    price: 11950,
-    discount: 20
+    price: 15300,
+    discount: 15
   }
 ]);
 

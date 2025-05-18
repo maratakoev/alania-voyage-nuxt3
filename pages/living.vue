@@ -142,7 +142,9 @@ const modalData = ref([
 
     <p><strong>Ваш горный дом уже ждёт — осталось выбрать характер приключения.</strong></p>
 `,
-  "button1Text": "Написать в чат"
+  "button1Text": "Написать в чат",
+  "button2Text": 'Закрыть',
+
 },
 {
   "title": "Точка тишины",
@@ -163,11 +165,18 @@ const modalData = ref([
 
     <p><strong>Это не просто ночлег — это пропуск в ритм города, где каждое окно смотрит в прошлое, а дверь ведёт к новым открытиям.</strong></p>  
 `  ,
-  "button1Text": "Перейти в чат"
+  "button1Text": "Перейти в чат",
+  "button2Text": 'Закрыть',
+
 }
 
 
 ])
+
+const openTelegram = () => {
+  window.open("https://t.me/maratakoev", "_blank", "noopener,noreferrer");
+};
+
 </script>
 
 

@@ -240,7 +240,9 @@ const modalData = ref([
 
   <p>Посетите must-see локации: <em>Город мёртвых, Цейское ущелье, Дзивгисская крепость</em>. Добавьте экстрим, гастротуры или фотосессию — мы реализуем любые идеи!</p>  
 `  ,
-    button1Text: 'Перейти в раздел',
+    button1Text: 'Написать в чат',
+    button2Text: 'Закрыть',
+
   },
   {
     title: 'Экскурсия по горным вершинам',
@@ -272,12 +274,9 @@ const modalData = ref([
   ➕ Ужин с дегустацией сыров — 1 500 ₽/чел<br>
   ➕ Фотосессия в традиционной одежде — 3 000 ₽/час</p>
 `,
-    button1Text: 'Забронировать',
+    button1Text: 'Написать в чат',
     button2Text: 'Закрыть',
-    button1BgColor: '#4CAF50',
-    button2BgColor: '#f44336',
-    button1FontColor: '#fff',
-    button2FontColor: '#fff',
+ 
   },
   {
     title: 'Экскурсии на внедорожнике',
@@ -312,10 +311,10 @@ const modalData = ref([
 `,
     button1Text: 'Бронировать номер',
     button2Text: 'Закрыть',
-    button1BgColor: '#1D68F0',
-    button2BgColor: '#f44336',
-    button1FontColor: '#fff',
-    button2FontColor: '#fff',
+    // button1BgColor: '#1D68F0',
+    // button2BgColor: '#f44336',
+    // button1FontColor: '#fff',
+    // button2FontColor: '#fff',
   },
   {
     title: 'Эксплорация водопадов',
@@ -360,10 +359,7 @@ const modalData = ref([
 `,
     button1Text: 'Забронировать тур',
     button2Text: 'Закрыть',
-    button1BgColor: '#FF9800',
-    button2BgColor: '#f44336',
-    button1FontColor: '#fff',
-    button2FontColor: '#fff',
+
   },
 ]);
 

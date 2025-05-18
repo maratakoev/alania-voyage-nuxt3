@@ -173,13 +173,18 @@ function closeModal() {
 
 function onButton1Click() {
   console.log('Перехожу на секцию 1');
-  closeModal();  
+  openTelegram();  
 }
 
 function onButton2Click() {
   console.log('Закрываю модалку');
   closeModal();
 }
+
+const openTelegram = () => {
+  window.open("https://t.me/maratakoev", "_blank", "noopener,noreferrer");
+};
+
 
 const props = defineProps({
   lazyLoad: { type: Boolean, default: true },
