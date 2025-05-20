@@ -42,7 +42,10 @@ const menuItems = [
     route: '', 
     
   },
-  
+  { label: 'Login', 
+    route: '/login', 
+    
+  },
 
 ];
 
