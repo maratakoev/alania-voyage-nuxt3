@@ -1,24 +1,15 @@
 <template>
-  <form class="register-form" @submit.prevent="handleSubmit">
-    <BaseInput v-model="form.name" label="Имя" name="name" id="name" required />
+  <form class="login-form" @submit.prevent="handleSubmit">
     <BaseInput v-model="form.email" label="Email" name="email" id="email" type="email" required />
     <BaseInput v-model="form.password" label="Пароль" name="password" id="password" type="password" required />
-    <BaseInput
-      v-model="form.confirmPassword"
-      label="Повторите пароль"
-      name="confirmPassword"
-      id="confirmPassword"
-      type="password"
-      required
-    />
 
     <label class="register-form__checkbox">
       <input type="checkbox" v-model="form.agree" required />
-      Я согласен с условиями
+      Запомнить меня
     </label>
-    <BtnOne buttonText="Зарегистрироваться"  type="submit" class="register-form__submit"></BtnOne>
+    <BtnOne buttonText="Войти"  type="submit" class="register-form__submit"></BtnOne>
     <div class="login__footer-text">
-      Уже есть аккаунт? <router-link to="/login">Войти</router-link>
+      Хотите создать аккаунт? <router-link to="/registration">Зарегистрироваться</router-link>
     </div>
   </form>
 </template>
@@ -37,22 +28,22 @@ const form = reactive({
 });
 
 
-const handleSubmit = () => {
-  if (form.password !== form.confirmPassword) {
-    alert('Пароли не совпадают');
-    return;
-  }
-  if (!form.agree) {
-    alert('Нужно согласиться с условиями');
-    return;
-  }
+// const handleSubmit = () => {
+//   if (form.password !== form.confirmPassword) {
+//     alert('Пароли не совпадают');
+//     return;
+//   }
+//   if (!form.agree) {
+//     alert('Нужно согласиться с условиями');
+//     return;
+//   }
   // Отправка данных на сервер
-  console.log('Регистрация:', form);
-};
+//   console.log('Регистрация:', form);
+// };
 </script>
 
 <style scoped>
-.register-form {
+.login-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;

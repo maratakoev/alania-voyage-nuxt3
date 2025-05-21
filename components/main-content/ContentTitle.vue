@@ -46,7 +46,7 @@ const contentSubTitle = 'Увидеть своими глазами.';
 }
 
 .content-title__title {
-  font-size: 80px;
+  font-size: 60px;
   color: black;
   word-spacing: 2px;
 }

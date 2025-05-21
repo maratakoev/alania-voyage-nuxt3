@@ -42,10 +42,11 @@ const menuItems = [
     route: '', 
     
   },
-  { label: 'Login', 
-    route: '/login', 
+  { label: 'Личный кабинет', 
+    route: '/registration', 
     
   },
+
 
 ];
 

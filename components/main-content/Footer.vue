@@ -32,6 +32,8 @@
           <a href="/living" class="footer__link">Проживание</a>
           <a href="/tours" class="footer__link">Тур под ключ</a>
           <a href="/about" class="footer__link">О нас</a>
+          <a href="/login" class="footer__link">Личный кабинет</a>
+
         </div>
       </nav>
 

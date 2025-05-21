@@ -1,8 +1,9 @@
 <template>
-  <div class="login">
+  <div class="reg-container">
     <NavMenu class="nav" />
     <Content-title :title="contentTitle" :discription="contentTitleDiscription" class="content-title"/>
-    <log-in-form class="reg-form"></log-in-form>
+
+    <RegistrationForm class="reg-form"></RegistrationForm>
 
 
     <Footer>
@@ -15,10 +16,9 @@
 import NavMenu from '@/components/header/NavMenu.vue';
 import ContentTitle from '@/components/main-content/ContentTitle.vue';
 import Footer from '@/components/main-content/Footer.vue';
-import LogInForm from '~/components/LogInForm.vue';
-
-const contentTitle = 'Авторизация';
-const contentTitleDiscription='Введите свои данные'
+import RegistrationForm from '~/components/RegistrationForm.vue';
+const contentTitle = 'Присоединяйтесь';
+const contentTitleDiscription='Ваши данные'
 
 
 
@@ -27,7 +27,7 @@ const contentTitleDiscription='Введите свои данные'
 
 <style scoped>
 
-.login {
+.reg-container {
   padding-top: 70px;
 
 }

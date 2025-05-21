@@ -36,15 +36,15 @@
 
 ## 📸 Скриншоты
 
-!\[Снимок экрана 1]\(screenshots/screenshot-1.png)
+![Снимок экрана 1](screenshots/screenshot-1.png)
 
-!\[Снимок экрана 2]\(screenshots/screenshot-2.png)
+![Снимок экрана 2](screenshots/screenshot-2.png)
 
-!\[Снимок экрана 3]\(screenshots/screenshot-3.png)
+![Снимок экрана 3](screenshots/screenshot-3.png)
 
-!\[Снимок экрана 4]\(screenshots/screenshot-4.png)
+![Снимок экрана 4](screenshots/screenshot-4.png)
 
-!\[Снимок экрана 5]\(screenshots/screenshot-5.png)
+![Снимок экрана 5](screenshots/screenshot-5.png)
 
 ## 🚀 Установка и запуск и запуск
 
