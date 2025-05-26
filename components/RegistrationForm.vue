@@ -27,6 +27,10 @@
 import { reactive } from 'vue';
 import BaseInput from '@/components/BaseInput.vue';
 import BtnOne from './buttons/BtnOne.vue';
+import { useAuth } from '~/composables/useAuth';
+
+const router = useRouter();
+
 
 const form = reactive({
   name: '',
@@ -36,8 +40,11 @@ const form = reactive({
   agree: false,
 });
 
+const { register } = useAuth();
 
-const handleSubmit = () => {
+
+
+const handleSubmit = async () => {
   if (form.password !== form.confirmPassword) {
     alert('Пароли не совпадают');
     return;
@@ -47,7 +54,18 @@ const handleSubmit = () => {
     return;
   }
   // Отправка данных на сервер
-  console.log('Регистрация:', form);
+  try {
+    await register({
+      username: form.name,
+      email: form.email,
+      password: form.password,
+      confirmPassword: form.confirmPassword,
+    });
+    alert('Регистрация успешна');
+    router.push('/login');
+  } catch (error) {
+    alert(error);
+  }
 };
 </script>
 
