@@ -131,9 +131,9 @@ const pastOrders = ref([
 const favorites = ref([
   {
     id: 1,
-    title: 'Горный тур "Армхи"',
+    title: 'Горный тур "Аlanos"',
     image: '/images/favorites/armhi.jpg',
-    description: '7-дневное путешествие в Ингушетии'
+    description: '7-дневное путешествие в Осетии'
   },
   {
     id: 2,

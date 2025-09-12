@@ -50,13 +50,13 @@
       <div class="footer__section footer__section--social">
         <h3 class="footer__title">Социальные сети</h3>
         <div class="footer__social-links">
-          <a href="https://vk.com/ossetours" target="_blank" class="footer__social-link">
+          <a href="https://vk.com/marat_akoev" target="_blank" class="footer__social-link">
             <img src="/images/icons/vk.png" alt="Яблоко нартов в VK" class="footer__social-img">
           </a>
-          <a href="https://t.me/ossetours" target="_blank" class="footer__social-link">
+          <a href="https://t.me/MaratAkoev" target="_blank" class="footer__social-link">
             <img src="/images/icons/tg.png" alt="Яблоко нартов в Telegram" class="footer__social-img">
           </a>
-          <a href="https://wa.me/79880000000" target="_blank" class="footer__social-link">
+          <a href="https://wa.me/79888357227" target="_blank" class="footer__social-link">
             <img src="/images/icons/inst.png" alt="Яблоко нартов в Inst" class="footer__social-img">
           </a>
         </div>
