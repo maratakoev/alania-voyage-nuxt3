@@ -95,7 +95,24 @@
         <!-- Suspense для модала -->
         <Suspense>
       <template #default>
-        <Modal
+        <!-- <Modal
+          :isOpen="isModalOpen"
+          :modalData="modalData"
+          @close="closeModal"
+          @button1-click="onButton1Click"
+          @button2-click="onButton2Click"
+        /> -->
+      </template>
+      <template #fallback>
+        <div class="loading-overlay">
+          Загрузка...
+        </div>
+      </template>
+    </Suspense>
+
+    <Suspense>
+      <template #default>
+        <BookingForm
           :isOpen="isModalOpen"
           :modalData="modalData"
           @close="closeModal"
@@ -117,6 +134,7 @@ import { ref,onMounted, onBeforeUnmount, watchEffect  } from 'vue';
 import BtnOne from '../buttons/BtnOne.vue';
 import BtnSecond from '../buttons/BtnSecond.vue';
 import Modal from '../Modal.vue'; 
+import BookingForm from '../BookingForm.vue';
 
 const isMobile = ref(false);
 const showVideo = ref(false);
@@ -207,6 +225,21 @@ const props = defineProps({
   reviewCount: {
     type: Number,
     default: 0
+  },
+
+  bookingData: {
+    type: Object,
+    required: true,
+    default: () => ({
+      title: '',
+      content: '',
+      button1Text: 'Забронировать',
+      button2Text: 'Закрыть',
+      button1BgColor: '#1D68F0',
+      button2BgColor: '#f44336',
+      button1FontColor: '#fff',
+      button2FontColor: '#fff',
+    })
   },
 
   modalData: {
