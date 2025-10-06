@@ -81,13 +81,13 @@
         buttonText="Узнать больше"
         :buttonBgColor="buttonColor"
         :buttonFontColor="buttonFontColor"
-        @click="openModal"
+        @click="openInfoModal"
         />
         <btn-second
         :buttonText="ButtonSecText"
         :buttonBgColor="buttonColor" 
         
-        telegramUrl="https://t.me/maratakoev"
+        @click="openBookingModal"
 
         />
       </div> 
@@ -95,13 +95,13 @@
         <!-- Suspense для модала -->
         <Suspense>
       <template #default>
-        <!-- <Modal
-          :isOpen="isModalOpen"
+        <Modal
+          :isOpen="isInfoModalOpen"
           :modalData="modalData"
-          @close="closeModal"
-          @button1-click="onButton1Click"
-          @button2-click="onButton2Click"
-        /> -->
+          @close="closeInfoModal"
+          @button1-click="onInfoButton1Click"
+          @button2-click="onInfoButton2Click"
+        />
       </template>
       <template #fallback>
         <div class="loading-overlay">
@@ -113,9 +113,9 @@
     <Suspense>
       <template #default>
         <BookingForm
-          :isOpen="isModalOpen"
-          :modalData="modalData"
-          @close="closeModal"
+          :isOpen="isBookingModalOpen"
+          :serviceData="props.modalData" 
+          @close="closeBookingModal"
           @button1-click="onButton1Click"
           @button2-click="onButton2Click"
         />
@@ -158,20 +158,13 @@ const handleVideoError = () => {
   showPoster.value = true;
 };
 
-const isModalOpen = ref(false);
-const isBookingModal = ref (false);
+const isInfoModalOpen = ref(false);
+const isBookingModalOpen = ref (false);
 const container = ref(null);
 
 const observer = ref(null);
 
 
-function openBookingModal () {
-  isBookingModal.value = true;
-}
-
-function closeBookingModal () {
-  isBookingModal.value = false
-}
 
 const updateVideoStatus = () => {
   // Проверяем, если видео не загружено, показываем изображение.
@@ -180,23 +173,30 @@ const updateVideoStatus = () => {
   }
 };
 
-
-function openModal() {
-  isModalOpen.value = true;
+function openBookingModal() {
+  isBookingModalOpen.value = true;
 }
 
-function closeModal() {
-  isModalOpen.value = false;
+function closeBookingModal() {
+  isBookingModalOpen.value = false;
 }
 
-function onButton1Click() {
-  console.log('Перехожу на секцию 1');
-  openTelegram();  
+
+function openInfoModal() {
+  isInfoModalOpen.value = true;
 }
 
-function onButton2Click() {
-  console.log('Закрываю модалку');
-  closeModal();
+function closeInfoModal() {
+  isInfoModalOpen.value = false;
+}
+
+function onInfoButton1Click() {
+  closeInfoModal();
+  openBookingModal();
+}
+
+function onInfoButton2Click() {
+  closeInfoModal();
 }
 
 const openTelegram = () => {

@@ -10,7 +10,9 @@
         
         <!-- Основная форма -->
         <div v-if="!isSubmitted">
-          <h3 class="booking-title">Форма бронирования</h3>
+          <h3 class="booking-title">
+            Бронирование: {{ props.serviceData?.title || 'услуги' }}
+          </h3>
           
           <form @submit.prevent="submitForm" class="booking-form">
             <!-- Поле имени -->
@@ -38,67 +40,74 @@
               />
             </div>
 
-            <!-- Выбор дат -->
-            <div class="form-group">
-              <label class="booking-body__label">Желаемые даты</label>
-              
-              <!-- Выбранные даты -->
-              <div class="selected-dates" v-if="formData.selectedDates.length > 0">
-                <div 
-                  v-for="(date, index) in formData.selectedDates" 
-                  :key="index"
-                  class="date-tag"
-                >
-                  <span class="date-text">{{ formatDate(date) }}</span>
-                  <button 
-                    type="button" 
-                    class="date-remove"
-                    @click="removeSelectedDate(index)"
-                  >
-                    &times;
-                  </button>
-                </div>
-              </div>
-              
-              <div class="date-input-container">
-                <input 
-                  type="date" 
-                  class="booking-body__input date-input"
-                  v-model="newDate"
-                  :min="today"
-                />
-                <button 
-                  type="button" 
-                  class="add-date-btn"
-                  @click="addSelectedDate"
-                  :disabled="!newDate"
-                >
-                  Добавить дату
-                </button>
-              </div>
-              <div class="date-hint">
-                💡 Можно поочередно выбрать несколько дат для разных маршрутов
-              </div>
-            </div>
-
-            <!-- Количество человек -->
-            <div class="form-group">
-              <label for="people" class="booking-body__label">Количество человек</label>
-              <select 
-                id="people" 
-                class="booking-body__input booking-body__select"
-                v-model="formData.people"
-              >
-                <option value="" selected>Выберите количество</option>
-                <option value="1">от 1 до 4</option>
-                <option value="2">5 и более</option>
-
+            <!-- Для GENERAL - выбор типа услуги -->
+            <div v-if="showGeneralFields" class="form-group">
+              <label class="booking-body__label">Выберите тип услуги</label>
+              <select class="booking-body__input booking-body__select" v-model="formData.selectedServiceType">
+                <option value="">Выберите услугу</option>
+                <option value="excursion">🎯 Экскурсия</option>
+                <option value="accommodation">🏠 Проживание</option>
+                <option value="combo">🌟 Тур "всё включено"</option>
               </select>
             </div>
 
-            <!-- Выбор маршрутов -->
+            <!-- Для EXCURSION - даты экскурсии -->
+            <div v-if="showExcursionFields" class="form-group">
+              <label class="booking-body__label">🗓️ Дата экскурсии</label>
+              <input 
+                type="date" 
+                class="booking-body__input"
+                v-model="formData.excursionDate"
+                :min="today"
+              />
+            </div>
+
+            <!-- Для ACCOMMODATION - даты проживания -->
+            <div v-if="showAccommodationFields" class="form-group">
+              <label class="booking-body__label">🏨 Даты проживания</label>
+              <div class="date-row">
+                <div class="date-col">
+                  <label class="booking-body__label date-sublabel">Заезд</label>
+                  <input type="date" class="booking-body__input" v-model="formData.checkIn" :min="today">
+                </div>
+                <div class="date-col">
+                  <label class="booking-body__label date-sublabel">Выезд</label>
+                  <input type="date" class="booking-body__input" v-model="formData.checkOut" :min="formData.checkIn || today">
+                </div>
+              </div>
+            </div>
+
+            <!-- Для COMBO - даты тура -->
+            <div v-if="showComboFields" class="form-group">
+              <label class="booking-body__label">📅 Даты тура</label>
+              <div class="date-row">
+                <div class="date-col">
+                  <label class="booking-body__label date-sublabel">Начало тура</label>
+                  <input type="date" class="booking-body__input" v-model="formData.tourStart" :min="today">
+                </div>
+                <div class="date-col">
+                  <label class="booking-body__label date-sublabel">Окончание тура</label>
+                  <input type="date" class="booking-body__input" v-model="formData.tourEnd" :min="formData.tourStart || today">
+                </div>
+              </div>
+            </div>
+
+            <!-- Количество человек (для всех) -->
             <div class="form-group">
-              <label class="booking-body__label">Выберите маршруты</label>
+              <label for="people" class="booking-body__label">👥 Количество человек</label>
+              <select id="people" class="booking-body__input booking-body__select" v-model="formData.people">
+                <option value="">Выберите количество</option>
+                <option value="1">1 человек</option>
+                <option value="2">2 человека</option>
+                <option value="3">3 человека</option>
+                <option value="4">4 человека</option>
+                <option value="5+">5 и более</option>
+              </select>
+            </div>
+
+            <!-- Выбор маршрутов (только для экскурсий и комбо) -->
+            <div class="form-group" v-if="showExcursionFields ">
+              <label class="booking-body__label">🗺️ Выберите маршруты</label>
               
               <!-- Основной маршрут -->
               <div class="route-item" v-if="formData.mainRoute">
@@ -126,14 +135,14 @@
                 type="button" 
                 class="add-route-btn"
                 @click="showRouteSelector = true"
-                v-if="!showRouteSelector"
+  v-if="!showRouteSelector && showExcursionFields"
               >
                 + Добавить маршрут
               </button>
             </div>
 
             <!-- Селектор дополнительных маршрутов -->
-            <div class="form-group" v-if="showRouteSelector">
+            <div class="form-group" v-if="showRouteSelector && (showExcursionFields || showComboFields)">
               <label class="booking-body__label">Выберите маршрут</label>
               <div class="route-selector">
                 <select 
@@ -145,6 +154,7 @@
                     v-for="route in availableRoutes" 
                     :value="route"
                     :disabled="isRouteSelected(route)"
+                    :key="route"
                   >
                     {{ route }}
                   </option>
@@ -169,7 +179,7 @@
 
             <!-- Комментарий -->
             <div class="form-group">
-              <label for="comment" class="booking-body__label">Комментарий</label>
+              <label for="comment" class="booking-body__label">💬 Комментарий</label>
               <textarea 
                 id="comment" 
                 class="booking-body__input booking-body__textarea"
@@ -216,22 +226,28 @@
 </template>
 
 <script setup>
-import { ref, reactive, watch } from 'vue';
+import { ref, reactive, watch, computed } from 'vue';
 import BtnOne from './buttons/BtnOne.vue';
 
 const props = defineProps({
   isOpen: Boolean,
   selectedRoute: String,
-  modalData: {
-    type: Object,
-    default: () => ({})
-  }
+  serviceData: Object,
 });
 
 const emit = defineEmits(['close']);
 
 // Текущая дата для ограничения выбора
 const today = new Date().toISOString().split('T')[0];
+
+// Определяем тип услуги
+const serviceType = computed(() => props.serviceData?.serviceType)
+
+// Computed свойства для показа нужных секций
+const showGeneralFields = computed(() => serviceType.value === 'general')
+const showExcursionFields = computed(() => serviceType.value === 'excursion')
+const showAccommodationFields = computed(() => serviceType.value === 'accommodation')
+const showComboFields = computed(() => serviceType.value === 'combo')
 
 // Данные формы
 const formData = reactive({
@@ -241,7 +257,14 @@ const formData = reactive({
   people: '',
   mainRoute: '',
   additionalRoutes: [],
-  comment: ''
+  comment: '',
+  // Новые поля для разных типов услуг
+  selectedServiceType: '',
+  excursionDate: '',
+  checkIn: '',
+  checkOut: '',
+  tourStart: '',
+  tourEnd: ''
 });
 
 // Состояние UI
@@ -317,14 +340,110 @@ function removeSelectedDate(index) {
 }
 
 // Отправка формы
-function submitForm() {
+async function submitForm() {
   if (!formData.contact) {
     alert('Пожалуйста, укажите телефон для связи');
     return;
   }
+
+  // --- Проверка и автоподстановка телефона ---
+  let phone = formData.contact.trim();
+
+  // если номер начинается не с +7 или 8 — добавляем +7
+  if (!phone.startsWith('+7') && !phone.startsWith('8')) {
+    phone = '+7' + phone.replace(/\D/g, '');
+  }
+
+  // убираем все лишние символы
+  phone = phone.replace(/\D/g, '');
+
+  // приводим к формату +7XXXXXXXXXX
+  if (phone.startsWith('8')) phone = '+7' + phone.slice(1);
+  else if (!phone.startsWith('+7')) phone = '+7' + phone;
+
+  // ✅ проверяем уже нормализованный номер
+  const phoneRegex = /^\+7\d{10}$/;
+  if (!phoneRegex.test(phone)) {
+    alert('Введите корректный номер телефона (пример: +7(999)999-99-99)');
+    return;
+  }
+
+  // сохраняем нормализованный номер в форму
+  formData.contact = phone;
+
+  try {
+    const nameParts = formData.name.split(' ');
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+
+    const serviceSpecificData = getServiceSpecificData();
+
+    const requestData = {
+      firstName,
+      lastName,
+      phone,
+      serviceType: serviceType.value || formData.selectedServiceType,
+      serviceTitle: props.serviceData?.title || 'Общая заявка',
+      people: formData.people,
+      comment: formData.comment || '',
+      ...serviceSpecificData
+    };
+
+    console.log('Отправляемые данные:', requestData);
+
+    const response = await fetch('http://localhost:3000/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestData)
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Ошибка сервера: ${response.status} - ${errorText}`);
+    }
+
+    const result = await response.json();
+    console.log('Успешно отправлено:', result);
+    isSubmitted.value = true;
+
+  } catch (error) {
+    console.error('Ошибка отправки:', error);
+    alert(`Ошибка отправки: ${error.message}. Пожалуйста, свяжитесь с нами напрямую.`);
+  }
+}
+
+
+// Функция для получения специфичных данных услуги
+function getServiceSpecificData() {
+  if (showExcursionFields.value) {
+    return {
+      excursionDate: formData.excursionDate,
+      routes: [formData.mainRoute, ...formData.additionalRoutes].filter(r => r).join(', ')
+    };
+  }
   
-  console.log('Данные формы:', formData);
-  isSubmitted.value = true;
+  if (showAccommodationFields.value) {
+    return {
+      checkIn: formData.checkIn,
+      checkOut: formData.checkOut
+    };
+  }
+  
+  if (showComboFields.value) {
+    return {
+      tourStart: formData.tourStart,
+      tourEnd: formData.tourEnd,
+      routes: [formData.mainRoute, ...formData.additionalRoutes].filter(r => r).join(', ')
+    };
+  }
+  
+  if (showGeneralFields.value) {
+    return {
+      selectedServiceType: formData.selectedServiceType
+    };
+  }
+  
+  return {};
 }
 
 // Сброс формы
@@ -340,7 +459,13 @@ function resetForm() {
     people: '',
     mainRoute: props.selectedRoute || '',
     additionalRoutes: [],
-    comment: ''
+    comment: '',
+    selectedServiceType: '',
+    excursionDate: '',
+    checkIn: '',
+    checkOut: '',
+    tourStart: '',
+    tourEnd: ''
   });
 }
 
@@ -411,6 +536,13 @@ function makeCall() {
   display: block;
 }
 
+.date-sublabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 4px;
+}
+
 .booking-body__input {
   width: 100%;
   padding: 12px 16px;
@@ -443,6 +575,18 @@ function makeCall() {
   min-height: 80px;
   font-family: inherit;
   line-height: 1.4;
+}
+
+/* Стили для строки с датами */
+.date-row {
+  display: flex;
+  gap: 12px;
+}
+
+.date-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Стили для выбранных дат */
@@ -744,6 +888,11 @@ function makeCall() {
   
   .booking-title {
     font-size: 24px;
+  }
+  
+  .date-row {
+    flex-direction: column;
+    gap: 8px;
   }
   
   .date-input-container {

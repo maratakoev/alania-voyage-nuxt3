@@ -121,13 +121,14 @@ import { ref } from 'vue';
 
 const contentTitle = 'Проживание';
 const contentTitleDiscription = 'Сказочные панорамы';
-const ButtonSecText = 'Написать в чат'
+const ButtonSecText = 'Забронировать'
 
 
 
 const modalData = ref([
 {
   "title": "Точка тишины",
+  serviceType: 'accommodation', 
   "content": `
     <p><strong>Подберём идеальное жильё в горах Осетии — от уединённых хижин до комфортных резиденций с панорамными видами.</strong></p>
 
@@ -142,12 +143,13 @@ const modalData = ref([
 
     <p><strong>Ваш горный дом уже ждёт — осталось выбрать характер приключения.</strong></p>
 `,
-  "button1Text": "Написать в чат",
+  "button1Text": "Забронировать",
   "button2Text": 'Закрыть',
 
 },
 {
   "title": "Точка тишины",
+  serviceType: 'accommodation', 
   "content": `  
     <p><strong>«Окно в культуру» — проверенные варианты жилья в центре Владикавказа, где история становится частью вашего путешествия.</strong></p>  
 
@@ -165,7 +167,7 @@ const modalData = ref([
 
     <p><strong>Это не просто ночлег — это пропуск в ритм города, где каждое окно смотрит в прошлое, а дверь ведёт к новым открытиям.</strong></p>  
 `  ,
-  "button1Text": "Перейти в чат",
+  "button1Text": "Забронировать",
   "button2Text": 'Закрыть',
 
 }
