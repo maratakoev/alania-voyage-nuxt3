@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxt/image": "^1.10.0",
     "@pinia/nuxt": "^0.11.0",
+    "axios": "^1.12.2",
     "cors": "^2.8.5",
     "firebase": "^11.8.1",
     "nuxt": "^3.17.2",

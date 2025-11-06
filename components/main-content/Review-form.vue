@@ -1,57 +1,54 @@
 <template>
   <div class="reviews-container">
     <h2 class="reviews-title">Что говорят наши гости</h2>
-        <!-- Кнопка для открытия формы -->
-    
-    
 
     <div class="reviews-list">
-      <div v-for="(review, index) in reviewsStore.reviews" :key="index" class="review-item">
+<div v-for="review in reviewsStore.sortedReviews" :key="review.id">
         <div class="review-header">
-          <span class="review-author">{{ review.author }}</span>
+          <span class="review-author">{{ review.name }}</span>
         </div>
         <div class="review-date">{{ formatDate(review.date) }}</div>
 
-
         <star-rating
-            :model-value="Math.ceil(review.rating)" 
-            :read-only="true"
-            :star-size="20"
-            active-color="#FFD700"
-            :inactive-color="'#e0e0e0'"
-            :show-rating="false"
-            :increment="1"
-            :round-start-rating="true"
-          />
+          :model-value="Math.ceil(review.rating)" 
+          :read-only="true"
+          :star-size="20"
+          active-color="#FFD700"
+          :inactive-color="'#e0e0e0'"
+          :show-rating="false"
+          :increment="1"
+          :round-start-rating="true"
+        />
         <div class="review-text">{{ review.text }}</div>
         <div v-if="review.image" class="review-image">
           <img 
             :src="review.image" 
-            :alt="'Фото от ' + review.author"
+            :alt="'Фото от ' + review.name"
             @click="toggleZoom($event)"
             :class="{zoomed: zoomedImage === review.image}"
           />
         </div>
       </div>
     </div>
+
+    <!-- Обновленное модальное окно ошибки -->
     <div v-if="showErrorModal" class="modal-overlay" @click.self="showErrorModal = false">
       <div class="modal">
-        <p>Пожалуйста, заполните все поля и поставьте оценку</p>
+        <p>{{ errorMessage }}</p>
         <button @click="showErrorModal = false" class="modal-button">OK</button>
       </div>
     </div>
-    <transition name="zoom-fade">
-      <div v-if="zoomedImage" class="zoom-overlay" 
-      @click.self="zoomedImage = null"
 
-      >
-      <img 
-        :src="zoomedImage" 
-        class="zoomed-image"
-        @click.stop="zoomedImage = null"
-      />
+    <transition name="zoom-fade">
+      <div v-if="zoomedImage" class="zoom-overlay" @click.self="zoomedImage = null">
+        <img 
+          :src="zoomedImage" 
+          class="zoomed-image"
+          @click.stop="zoomedImage = null"
+        />
       </div>
     </transition>
+
     <button 
       @click="toggleReviewForm" 
       class="create-review-button"
@@ -59,125 +56,204 @@
     >
       Оставить свой отзыв
     </button>
-    <transition name="slide-fade">
 
+    <transition name="slide-fade">
       <div v-if="newReviewOpen" class="add-review">
-      <h3>Расскажите о вашем впечатлении</h3>
-      <div class="rating-input">
-        <span>Оценка:</span>
-        <star-rating
-          v-model="newReview.rating"
-          :show-rating="true"
-          :star-size="30"
-          active-color="#FFD700"
-          :increment="1"
-        />
-      </div>
-      <textarea
-        v-model="newReview.text"
-        placeholder="Напишите ваш отзыв..."
-        class="review-textarea"
-        rows="4"
-      ></textarea>
-      <input
-        v-model="newReview.author"
-        type="text"
-        placeholder="Ваше имя"
-        class="review-author-input"
-      />
-      <div class="image-upload">
-        <label for="review-image" class="upload-label">
-          <span v-if="!newReview.image">Добавить фото</span>
-          <span v-else>Изменить фото</span>
+        <h3>Расскажите о вашем впечатлении</h3>
+        
+        <!-- Валидация email в реальном времени -->
+        <div class="input-group">
           <input
-            id="review-image"
-            type="file"
-            accept="image/*"
-            @change="handleImageUpload"
-            class="file-input"
+            v-model="newReview.author"
+            type="text"
+            placeholder="Ваше имя *"
+            class="review-author-input"
+            :class="{ error: !newReview.author && formTouched }"
           />
-        </label>
-        <div v-if="newReview.imagePreview" class="image-preview">
-          <img :src="newReview.imagePreview" alt="Предпросмотр фото" />
-          <button @click="removeImage" class="remove-image-btn">×</button>
+        </div>
+
+        <div class="input-group">
+          <input
+            v-model="newReview.email"
+            type="email"
+            placeholder="Ваш Email *"
+            class="review-author-input"
+            :class="{ error: (!newReview.email || !isValidEmail) && formTouched }"
+          />
+          <small v-if="formTouched && newReview.email && !isValidEmail" class="error-text">
+            Введите корректный email
+          </small>
+        </div>
+
+        <div class="rating-input">
+          <span>Оценка *:</span>
+          <star-rating
+            v-model="newReview.rating"
+            :show-rating="true"
+            :star-size="30"
+            active-color="#FFD700"
+            :increment="1"
+          />
+          <small v-if="formTouched && newReview.rating === null" class="error-text">
+            Укажите оценку
+          </small>
+        </div>
+
+        <div class="input-group">
+          <textarea
+            v-model="newReview.text"
+            placeholder="Напишите ваш отзыв... *"
+            class="review-textarea"
+            rows="4"
+            :class="{ error: !newReview.text && formTouched }"
+          ></textarea>
+        </div>
+
+        <div class="image-upload">
+          <label for="review-image" class="upload-label">
+            <span v-if="!newReview.image">Добавить фото</span>
+            <span v-else>Изменить фото</span>
+            <input
+              id="review-image"
+              type="file"
+              accept="image/*"
+              @change="handleImageUpload"
+              class="file-input"
+            />
+          </label>
+          <div v-if="newReview.imagePreview" class="image-preview">
+            <img :src="newReview.imagePreview" alt="Предпросмотр фото" />
+            <button @click="removeImage" class="remove-image-btn">×</button>
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button @click="submitReview" class="submit-button" :disabled="isSubmitting">
+            {{ isSubmitting ? 'Отправка...' : 'Отправить отзыв' }}
+          </button>
+          <button @click="cancelReview" class="cancel-button">Отмена</button>
         </div>
       </div>
-      <button @click="submitReview" class="submit-button">Отправить отзыв</button>
-        <button @click="toggleReviewForm" class="cancel-button">Отмена</button>
-      
-    </div>
     </transition>
   </div>
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted, computed } from 'vue'
 import StarRating from 'vue3-star-ratings'
 import { useReviewsStore } from '~/stores/reviews'
 
 const reviewsStore = useReviewsStore()
-
 const showErrorModal = ref(false)
-
-const toggleReviewForm = () => {
-  newReviewOpen.value = !newReviewOpen.value
-}
+const newReviewOpen = ref(false)
+const zoomedImage = ref(null)
+const formTouched = ref(false)
+const isSubmitting = ref(false)
+const errorMessage = ref('')
 
 const newReview = reactive({
   author: '',
   text: '',
-  rating: null,
+  email: '',
+  rating: 5, // изменено с null на 5
   image: null,
-  imagePreview: null,
+  imagePreview: null
 })
-const newReviewOpen = ref(false) // Теперь это реактивная переменная
+
+// Валидация email
+const isValidEmail = computed(() => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(newReview.email)
+})
+
+// Проверка всей формы
+const isFormValid = computed(() => {
+  return newReview.author && 
+         newReview.email && 
+         isValidEmail.value && 
+         newReview.text && 
+         newReview.rating !== null
+})
+
+onMounted(() => {
+  reviewsStore.fetchReviews()
+})
+
+const toggleReviewForm = () => {
+  newReviewOpen.value = !newReviewOpen.value
+  formTouched.value = false
+}
 
 const handleImageUpload = (event) => {
   const file = event.target.files[0]
-  if (file) {
-    if (file.size > 5 * 1024 * 1024) {
-      alert('Файл слишком большой. Максимальный размер - 5MB')
-      return
-    }
-
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      newReview.imagePreview = e.target.result
-      newReview.image = e.target.result
-    }
-    reader.readAsDataURL(file)
+  if (!file) return
+  
+  if (file.size > 5 * 1024 * 1024) {
+    errorMessage.value = 'Файл слишком большой. Максимальный размер - 5MB'
+    showErrorModal.value = true
+    return
   }
+  
+  if (!file.type.startsWith('image/')) {
+    errorMessage.value = 'Выберите файл изображения'
+    showErrorModal.value = true
+    return
+  }
+  
+  newReview.image = file
+  newReview.imagePreview = URL.createObjectURL(file)
 }
 
 const removeImage = () => {
   newReview.image = null
+  if (newReview.imagePreview) URL.revokeObjectURL(newReview.imagePreview)
   newReview.imagePreview = null
 }
 
-const submitReview = () => {
-  if (!newReview.text || !newReview.author || newReview.rating == null) {
+const submitReview = async () => {
+  formTouched.value = true
+  
+  if (!isFormValid.value) {
+    errorMessage.value = 'Пожалуйста, заполните все обязательные поля (*)'
     showErrorModal.value = true
     return
   }
 
-  const reviewToAdd = {
-    author: newReview.author,
-    text: newReview.text,
-    rating: newReview.rating,
-    date: new Date(),
-    image: newReview.image,
+  isSubmitting.value = true
+
+  try {
+    await reviewsStore.addReviewServer({
+      author: newReview.author.trim(),
+      email: newReview.email.trim().toLowerCase(),
+      text: newReview.text.trim(),
+      rating: newReview.rating,
+      image: newReview.image
+    })
+
+    // Сброс формы
+    resetForm()
+    
+  } catch (error) {
+    errorMessage.value = error.message
+    showErrorModal.value = true
+  } finally {
+    isSubmitting.value = false
   }
+}
 
-  reviewsStore.addReview(reviewToAdd)
-    // Логируем данные, которые отправляются
-  console.log("Отправляемые данные отзыва:", reviewToAdd)
+const cancelReview = () => {
+  resetForm()
+}
 
-  // Сброс формы
+const resetForm = () => {
   newReview.author = ''
+  newReview.email = ''
   newReview.text = ''
-  newReview.rating = null
-  newReview.image = null
-  newReview.imagePreview = null
+  newReview.rating = 5
+  removeImage()
+  newReviewOpen.value = false
+  formTouched.value = false
+  errorMessage.value = ''
 }
 
 const formatDate = (date) => {
@@ -188,40 +264,9 @@ const formatDate = (date) => {
   })
 }
 
-const zoomedImage = ref(null)
-
 const toggleZoom = (event) => {
-  if (zoomedImage.value === event.target.src) {
-    zoomedImage.value = null
-  } else {
-    zoomedImage.value = event.target.src
-  }
+  zoomedImage.value = zoomedImage.value === event.target.src ? null : event.target.src
 }
-
-const touchStartX = ref(0)
-const touchStartY = ref(0)
-
-const handleTouchStart = (e) => {
-  touchStartX.value = e.touches[0].clientX
-  touchStartY.value = e.touches[0].clientY
-}
-
-const handleTouchMove = (e) => {
-  e.preventDefault() // Предотвращаем скролл страницы
-}
-
-const handleTouchEnd = (e) => {
-  const touchEndX = e.changedTouches[0].clientX
-  const touchEndY = e.changedTouches[0].clientY
-  const diffX = Math.abs(touchEndX - touchStartX.value)
-  const diffY = Math.abs(touchEndY - touchStartY.value)
-
-  // Закрываем при свайпе вниз или вверх (если движение преимущественно вертикальное)
-  if (diffY > 50 && diffY > diffX) {
-    zoomedImage.value = null
-  }
-}
-
 </script>
 
 
@@ -286,7 +331,31 @@ const handleTouchEnd = (e) => {
   --ios-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+.input-group {
+  margin-bottom: 15px;
+}
 
+.error-text {
+  color: #ff3b30;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+.review-author-input.error,
+.review-textarea.error {
+  border-color: #ff3b30;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 .reviews-container {
   max-width: 1075px;

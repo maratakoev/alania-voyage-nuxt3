@@ -35,6 +35,7 @@
                 type="tel" 
                 class="booking-body__input"
                 v-model="formData.contact"
+                @input="formatPhone"
                 placeholder="+7 (___) ___-__-__"
                 required
               />
@@ -362,9 +363,9 @@ async function submitForm() {
   else if (!phone.startsWith('+7')) phone = '+7' + phone;
 
   // ✅ проверяем уже нормализованный номер
-  const phoneRegex = /^\+7\d{10}$/;
+  const phoneRegex = /^(?:\+7|8)\d{10}$/;
   if (!phoneRegex.test(phone)) {
-    alert('Введите корректный номер телефона (пример: +7(999)999-99-99)');
+    alert('Введите корректный номер телефона (пример: +7(999)999-99-99');
     return;
   }
 
