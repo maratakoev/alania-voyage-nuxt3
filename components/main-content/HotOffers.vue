@@ -16,7 +16,7 @@
     @click="openTelegram" 
     class="book-button"
   >
-    Забронировать
+    Чат с менеджером
   </button>        </div>
       </div>
     </div>
@@ -28,29 +28,29 @@ import { ref, computed, onMounted } from 'vue';
 
 const allOffers = ref([
   {
-    title: "Древние тропы",
-    image: "/images/locations/Alagir.webp",
-    oldPrice: 15000,
-    price: 12750,
+    title: "Insta-марафон",
+    image: "/images/insta.webp",
+    oldPrice: 18000,
+    price: 15300,
     discount: 15
   },
   {
     title: "Высота 1800",
-    image: "/images/locations/Dargavs.webp",
+    image: "/images/karmadon.webp",
     oldPrice: 11000,
     price: 9900,
     discount: 10
   },
   {
-    title: "Дорога пяти рек",
+    title: "Золотое кольцо Осетии",
     image: "/images/locations/Fiagdon.webp",
-    oldPrice: 18000,
-    price: 12400,
-    discount: 20
+    oldPrice: 15000,
+    price: 12750,
+    discount: 15
   },
   {
-    title: "Мамисон: дорога к новому курорту",
-    image: "/images/locations/Darial.webp",
+    title: "Згидский перевал",
+    image: "/images/zgid-poster.webp",
     oldPrice: 18000,
     price: 15300,
     discount: 15

@@ -30,7 +30,7 @@
               </div>
               <div class="tour-price-block">
                 <span class="tour-price">{{ tour.price }} ₽</span>
-                <button @click="openTelegram" class="book-button">Выбрать</button>
+                <button @click="openTelegram" class="book-button">Задать вопрос</button>
               </div>
             </div>
           </div>

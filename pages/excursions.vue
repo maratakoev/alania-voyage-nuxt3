@@ -3,7 +3,7 @@
     <NavMenu class="nav" />
     <Content-title :title="contentTitle" :discription="contentTitleDiscription" class="content-title"/>
     <MainContent      
-      title="Древние тропы"
+      title="Золотое кольцо Осетии"
       sub-title="Ближе к небу, ближе к легендам"
       :marginTop="-150"
       :price="15000"
