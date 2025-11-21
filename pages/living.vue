@@ -14,7 +14,8 @@
       :reviewCount="30"
       :price="12000"
       :lazyLoad="true"
-
+      @info-modal-change="infoModalState"
+      @booking-modal-change="bookingModalState"
     >
     <template #image>
           <picture>
@@ -66,7 +67,8 @@
       :reviewCount="30"
       :price="3000"
       :lazyLoad="true"
-
+      @info-modal-change="infoModalState"
+      @booking-modal-change="bookingModalState"
     >
     <template #image>
           <picture>
@@ -123,7 +125,13 @@ const contentTitle = 'Проживание';
 const contentTitleDiscription = 'Сказочные панорамы';
 const ButtonSecText = 'Забронировать'
 
+function infoModalState(isOpen){
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+}
 
+function bookingModalState(isOpen) {
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+}
 
 const modalData = ref([
 {

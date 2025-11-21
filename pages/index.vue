@@ -13,6 +13,8 @@
       videoPoster="/images/complecs.webp"
       :lazyLoad="false"
       :ButtonSecText="ButtonSecText"
+      @info-modal-change="infoModalState"
+      @booking-modal-change="bookingModalState"
 
     >
     </MainContent>
@@ -30,6 +32,8 @@
       :modalData="modalData[1]"
       :lazyLoad="true"
       :ButtonSecText="ButtonSecText"
+      @info-modal-change="infoModalState"
+      @booking-modal-change="bookingModalState"
     >
     
     </MainContent>
@@ -45,6 +49,8 @@
           :modalData="modalData[2]"
           :ButtonSecText="ButtonSecText"
           :lazyLoad="true"
+          @info-modal-change="infoModalState"
+          @booking-modal-change="bookingModalState"
 
         >
         <template #image>
@@ -95,6 +101,8 @@
           :marginTop="-235"
           :ButtonSecText="ButtonSecText"
           :lazyLoad="true"
+          @info-modal-change="infoModalState"
+          @booking-modal-change="bookingModalState"
 
         >
         <template #image>
@@ -208,6 +216,15 @@ const isFAQVisible = ref (false)
 
 const footerObserver = ref (null)
 const isFooterVisible = ref (false)
+
+
+function infoModalState(isOpen){
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+}
+
+function bookingModalState(isOpen) {
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+}
 
 
 

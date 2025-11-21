@@ -136,74 +136,6 @@ import BtnSecond from '../buttons/BtnSecond.vue';
 import Modal from '../Modal.vue'; 
 import BookingForm from '../BookingForm.vue';
 
-const isMobile = ref(false);
-const showVideo = ref(false);
-const showPoster = ref(false);
-const videoLoaded = ref(false);
-const videoError = ref(false);
-
-const updateMobileStatus = () => {
-  isMobile.value = window.innerWidth <= 768;
-};
-
-
-const handleVideoLoaded = () => {
-  videoLoaded.value = true;
-  videoError.value = false;
-};
-
-const handleVideoError = () => {
-  videoError.value = true;
-  showVideo.value = false;
-  showPoster.value = true;
-};
-
-const isInfoModalOpen = ref(false);
-const isBookingModalOpen = ref (false);
-const container = ref(null);
-
-const observer = ref(null);
-
-
-
-const updateVideoStatus = () => {
-  // Проверяем, если видео не загружено, показываем изображение.
-  if (!showVideo.value) {
-    showPoster.value = true;
-  }
-};
-
-function openBookingModal() {
-  isBookingModalOpen.value = true;
-}
-
-function closeBookingModal() {
-  isBookingModalOpen.value = false;
-}
-
-
-function openInfoModal() {
-  isInfoModalOpen.value = true;
-}
-
-function closeInfoModal() {
-  isInfoModalOpen.value = false;
-}
-
-function onInfoButton1Click() {
-  closeInfoModal();
-  openBookingModal();
-}
-
-function onInfoButton2Click() {
-  closeInfoModal();
-}
-
-const openTelegram = () => {
-  window.open("https://t.me/maratakoev", "_blank", "noopener,noreferrer");
-};
-
-
 const props = defineProps({
   lazyLoad: { type: Boolean, default: true },
   title: String,
@@ -270,6 +202,85 @@ const props = defineProps({
       default: false
     }
 });
+
+const emit = defineEmits(['info-modal-change', 'booking-modal-change'])
+
+
+const isMobile = ref(false);
+const showVideo = ref(false);
+const showPoster = ref(false);
+const videoLoaded = ref(false);
+const videoError = ref(false);
+
+const updateMobileStatus = () => {
+  isMobile.value = window.innerWidth <= 768;
+};
+
+
+const handleVideoLoaded = () => {
+  videoLoaded.value = true;
+  videoError.value = false;
+};
+
+const handleVideoError = () => {
+  videoError.value = true;
+  showVideo.value = false;
+  showPoster.value = true;
+};
+
+const isInfoModalOpen = ref(false);
+const isBookingModalOpen = ref (false);
+const container = ref(null);
+
+const observer = ref(null);
+
+
+
+const updateVideoStatus = () => {
+  // Проверяем, если видео не загружено, показываем изображение.
+  if (!showVideo.value) {
+    showPoster.value = true;
+  }
+};
+
+function openBookingModal() {
+  isBookingModalOpen.value = true;
+  emit('booking-modal-change', true)
+
+}
+
+function closeBookingModal() {
+  isBookingModalOpen.value = false;
+  emit('booking-modal-change', false)
+}
+
+
+function openInfoModal() {
+  isInfoModalOpen.value = true;
+  emit('info-modal-change', true)
+}
+
+function closeInfoModal() {
+  isInfoModalOpen.value = false;
+    emit('info-modal-change', false)
+
+}
+
+function onInfoButton1Click() {
+  closeInfoModal();
+  openBookingModal();
+}
+
+function onInfoButton2Click() {
+  closeInfoModal();
+}
+
+const openTelegram = () => {
+  window.open("https://t.me/maratakoev", "_blank", "noopener,noreferrer");
+};
+
+
+
 
 const shouldLoadVideo = ref(!props.lazyLoad);
 const shouldLoadPoster = ref(!props.lazyLoad);

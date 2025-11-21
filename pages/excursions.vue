@@ -16,6 +16,8 @@
       :buttonColor="'white'"
       :buttonFontColor="'black'"
       :lazyLoad="false"
+      @info-modal-change="infoModalState"
+      @booking-modal-change="bookingModalState"
     >
       <template #image>
         <img 
@@ -41,7 +43,8 @@
         shortDescription="Увлекательная экскурсия по живописным горным тропам с профессиональным гидом"
         :modalData="modalData[1]"
         :lazyLoad="true"
-
+        @info-modal-change="infoModalState"
+        @booking-modal-change="bookingModalState"
         >
         <template #image>
           <img 
@@ -64,7 +67,8 @@
         :buttonColor="'white'"
         :buttonFontColor="'black'"
         :lazyLoad="true"
-
+        @info-modal-change="infoModalState"
+        @booking-modal-change="bookingModalState"
       >
         <template #image>
           <img 
@@ -89,7 +93,8 @@
         :buttonColor="'white'"
         :buttonFontColor="'black'"
         :lazyLoad="true"
-
+        @info-modal-change="infoModalState"
+        @booking-modal-change="bookingModalState"
       >
         <template #image>
           <img 
@@ -112,7 +117,8 @@
         :buttonColor="'white'"
         :buttonFontColor="'black'"
         :lazyLoad="true"
-
+        @info-modal-change="infoModalState"
+        @booking-modal-change="bookingModalState"
       >
         <template #image>
           <img 
@@ -137,7 +143,8 @@
         :modalData="modalData[5]"
         :ButtonSecText="ButtonSecText"
         :lazyLoad="true"
-
+        @info-modal-change="infoModalState"
+        @booking-modal-change="bookingModalState"
       >
         <template #image>
           <img 
@@ -160,7 +167,8 @@
         :buttonColor="'white'"
         :buttonFontColor="'black'"
         :lazyLoad="true"
-
+        @info-modal-change="infoModalState"
+        @booking-modal-change="bookingModalState"
       >
       <template #image>
           <img 
@@ -185,7 +193,8 @@
         :modalData="modalData[7]"
         :ButtonSecText="ButtonSecText"
         :lazyLoad="true"
-
+        @info-modal-change="infoModalState"
+        @booking-modal-change="bookingModalState"
       >
         <template #image>
           <img 
@@ -208,7 +217,8 @@
         :modalData="modalData[8]"
         :ButtonSecText="ButtonSecText"
         :lazyLoad="true"
-
+        @info-modal-change="infoModalState"
+        @booking-modal-change="bookingModalState"
       >
         <template #image>
           <img 
@@ -234,6 +244,14 @@ import FAQ from '@/components/main-content/FAQ.vue';
 const contentTitle = 'Экскурсии';
 const contentTitleDiscription = 'Увидеть своими глазами.';
 const ButtonSecText = 'Забронировать'
+
+function infoModalState(isOpen){
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+}
+
+function bookingModalState(isOpen) {
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+}
 
 const modalData = ref([
 {
