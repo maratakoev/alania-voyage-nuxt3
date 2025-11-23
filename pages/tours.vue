@@ -14,6 +14,8 @@
       :reviewCount="5"
       :price="49000"
       :lazyLoad="true"
+      @info-modal-change="infoModalState"
+      @booking-modal-change="bookingModalState"
 
     >
       <template #image>
@@ -32,6 +34,8 @@
       :reviewCount="30"
       :price="49000"
       :lazyLoad="true"
+      @info-modal-change="infoModalState"
+      @booking-modal-change="bookingModalState"
 
     >
       <template #image>
@@ -50,6 +54,8 @@
       :reviewCount="30"
       :price="29000"
       :lazyLoad="true"
+      @info-modal-change="infoModalState"
+      @booking-modal-change="bookingModalState"
 
     >
       <template #image>
@@ -154,6 +160,13 @@ const currentItem = ref({});
 
 const ButtonSecText = 'Написать в чат'
 
+function infoModalState(isOpen){
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+}
+
+function bookingModalState(isOpen) {
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+}
 
 const modalData = ref([
 {

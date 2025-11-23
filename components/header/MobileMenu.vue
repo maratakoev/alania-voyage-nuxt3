@@ -58,7 +58,8 @@ const menuStyle = computed(() => ({
 
 <style scoped>
   .mobile-menu {
-    background-color: #073487;
+    background-color: rgba(0, 0, 0, 0.1); /* или rgba(10, 10, 10, 0.6) */
+    backdrop-filter: blur(25px);
     width: 100%;
     z-index: 2;
     display: flex;
