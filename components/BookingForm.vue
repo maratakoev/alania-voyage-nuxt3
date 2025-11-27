@@ -36,7 +36,7 @@
                 class="booking-body__input"
                 v-model="formData.contact"
                 @input="formatPhone"
-                placeholder="+7 (___) ___-__-__"
+                placeholder="_(___) ___-__-__"
                 required
               />
             </div>
@@ -406,6 +406,9 @@ async function submitForm() {
     const result = await response.json();
     console.log('Успешно отправлено:', result);
     isSubmitted.value = true;
+        if (typeof ym !== 'undefined') {
+      ym(105535314, 'reachGoal', 'form_send_telegram');
+    }
 
   } catch (error) {
     console.error('Ошибка отправки:', error);
