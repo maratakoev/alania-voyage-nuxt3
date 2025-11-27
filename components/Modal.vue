@@ -10,13 +10,22 @@
         <h3 class="modal-title">{{ modalData.title }}</h3>
         <div class="modal-body" v-html="modalData.content"></div>
         <div class="modal-buttons">
+          <template v-if="modalData.button1Text">
           <btn-one
-            v-if="modalData.button1Text"
+            v-if="!buttonLink"
             :buttonText="modalData.button1Text"
             :buttonBgColor="modalData.button1BgColor"
             :buttonFontColor="modalData.button1FontColor"
             @click="emitButton1Click"
           />
+          <a v-else :href="buttonLink">
+            <btn-one
+              :buttonText="modalData.button1Text"
+              :buttonBgColor="modalData.button1BgColor"
+              :buttonFontColor="modalData.button1FontColor"
+            />
+          </a>
+        </template>
           <btn-second
             v-if="modalData.button2Text"
             :buttonText="modalData.button2Text"
@@ -39,6 +48,10 @@ defineProps({
   modalData: {
     type: Object,
     required: true
+  },
+  buttonLink: {
+    type: String,
+    default: ''
   }
 });
 

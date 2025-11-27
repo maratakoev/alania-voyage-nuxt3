@@ -3,6 +3,7 @@
     <NavMenu class="nav" />
     <section aria-label="Организуем отдых в Осетии">
       <MainContent 
+      :buttonLink="'https://t.me/maratakoev'"
       class="hero-section"
       title="Отдых в Осетии!"
       sub-title="Приключение начинается..."
@@ -12,7 +13,7 @@
       videoSrc="/videos/hero-background.mp4"
       videoPoster="/images/complecs.webp"
       :lazyLoad="false"
-      :ButtonSecText="ButtonSecText"
+      :ButtonSecText="'Задать вопрос'"
       @info-modal-change="infoModalState"
       @booking-modal-change="bookingModalState"
 
@@ -27,8 +28,8 @@
       :marginTop="-110"
       videoSrc="/videos/tours.mp4"
       videoPoster="/images/alagir-ardon.webp"
-      title="Выходные в горах"
-      sub-title="Прочувствуй энергию гор" 
+      title="Тур под ключ"
+      sub-title="В горы на выходные" 
       :modalData="modalData[1]"
       :lazyLoad="true"
       :ButtonSecText="ButtonSecText"
@@ -95,7 +96,7 @@
         </MainContent> 
         <MainContent 
           title="Проживание"
-          sub-title="Лучшие виды из окна"
+          sub-title="Со сказочными видами"
           :buttonColor="'#1D68F0'"
           :modalData="modalData[3]"
           :marginTop="-235"
@@ -254,7 +255,7 @@ const modalData = ref([
 
     <p><em>Все фото на сайте — сделаны в наших турах. Ниже — отзывы гостей.</em></p>
   `,
-    button1Text: 'Забронировать',
+    button1Text: 'Задать вопрос',
     button2Text: 'Закрыть',
   },
 

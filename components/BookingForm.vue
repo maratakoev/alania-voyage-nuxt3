@@ -408,6 +408,7 @@ async function submitForm() {
     isSubmitted.value = true;
         if (typeof ym !== 'undefined') {
       ym(105535314, 'reachGoal', 'form_send_telegram');
+      
     }
 
   } catch (error) {

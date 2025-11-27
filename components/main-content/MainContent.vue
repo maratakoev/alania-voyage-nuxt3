@@ -83,19 +83,27 @@
         :buttonFontColor="buttonFontColor"
         @click="openInfoModal"
         />
+
         <btn-second
+        v-if="!buttonLink"
         :buttonText="ButtonSecText"
         :buttonBgColor="buttonColor" 
-        
         @click="openBookingModal"
-
         />
+        <a v-else :href="buttonLink">
+          <btn-second
+            :buttonText="ButtonSecText"
+            :buttonBgColor="buttonColor"
+          />
+        </a>
+
       </div> 
     </div>
         <!-- Suspense для модала -->
         <Suspense>
       <template #default>
         <Modal
+          :buttonLink="buttonLink" 
           :isOpen="isInfoModalOpen"
           :modalData="modalData"
           @close="closeInfoModal"
@@ -137,6 +145,7 @@ import Modal from '../Modal.vue';
 import BookingForm from '../BookingForm.vue';
 
 const props = defineProps({
+  buttonLink: { type: String, default: '' },
   lazyLoad: { type: Boolean, default: true },
   title: String,
   subTitle: String,
