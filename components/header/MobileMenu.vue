@@ -58,7 +58,7 @@ const menuStyle = computed(() => ({
 
 <style scoped>
   .mobile-menu {
-    background-color: rgba(0, 0, 0, 0.15); /* или rgba(10, 10, 10, 0.6) */
+    background-color: rgba(255, 255, 255, 0.4); /* или rgba(10, 10, 10, 0.6) */
     backdrop-filter: blur(25px);
     width: 100%;
     z-index: 2;
@@ -81,8 +81,8 @@ const menuStyle = computed(() => ({
 
   .mobile-menu__img {
     z-index: 150;
-    height: 40px;
-    width: 40px;
+    height: 45px;
+    width: 190px;
   }
 
   /* Плавная анимация для исчезновения */
@@ -118,7 +118,7 @@ const menuStyle = computed(() => ({
   
 
   .mobile-menu__item {
-    color: white;
+    color: rgb(16, 14, 73);
     text-decoration: none;
     letter-spacing: 2px;
     font-size: 35px;

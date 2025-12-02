@@ -48,7 +48,7 @@ const toggle = () => {
 .burger__line {
   width: 30px;
   height: 3px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(16, 14, 73);
   position: absolute;
   transition: transform 0.2s ease, opacity 0.1s ease;
 }

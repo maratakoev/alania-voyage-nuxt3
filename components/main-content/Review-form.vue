@@ -1,6 +1,6 @@
 <template>
   <div class="reviews-container">
-    <h2 class="reviews-title">Что говорят наши гости</h2>
+    <!-- <h2 class="reviews-title">Что говорят наши гости</h2> -->
 
     <div class="reviews-list">
 <div v-for="review in reviewsStore.sortedReviews" :key="review.id">

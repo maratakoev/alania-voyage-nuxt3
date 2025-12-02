@@ -1,0 +1,27 @@
+/* assets/css/main.css */
+
+/* 1. Прямое начертание (font-style: normal) */
+@font-face {
+  font-family: 'Inter'; 
+  /* Важно: указывать путь от корня CSS-файла до шрифта (../fonts/...) */
+  src: url('~/assets/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype-variations');
+  font-weight: 100 900; /* Указываем, что шрифт поддерживает все веса от 100 до 900 */
+  font-style: normal;
+  font-display: swap; /* Показывает запасной шрифт, пока этот загружается */
+}
+
+/* 2. Курсивное начертание (font-style: italic) */
+@font-face {
+  font-family: 'Inter'; 
+  src: url('~/assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic; /* Указываем, что этот файл предназначен для курсива */
+  font-display: swap;
+}
+
+/* 3. Применение шрифта ко всему телу документа */
+body {
+  font-family: 'Inter', sans-serif;
+  /* Добавьте базовые настройки, например, убрать отступы */
+  margin: 0; 
+}

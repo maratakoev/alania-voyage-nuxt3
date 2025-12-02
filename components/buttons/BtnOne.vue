@@ -1,11 +1,15 @@
 <template>
-  <button class="button" :style="{ backgroundColor: buttonBgColor, color: buttonFontColor}">
+  <button class="button" :style="{ backgroundColor: buttonBgColor, color: buttonFontColor, fontSize:fontSize} ">
     {{ buttonText }}
   </button>
 </template>
 
 <script setup>
 defineProps({
+  fontSize: {
+    type: String,
+    
+  },
   buttonText: String,
   buttonBgColor: {
     type: String,
@@ -21,7 +25,7 @@ defineProps({
 <style scoped>
 .button {
   padding: 15px 30px;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 500;
   color: white;
   border-radius: 30px;
@@ -46,7 +50,15 @@ defineProps({
 
 @media (max-width: 600px) {
   .button {
-  font-size: 0.8rem;
+  font-size: 15px;
+  padding: 15px 20px;
+  letter-spacing: 1.1px;
+  }   
+}
+
+@media (max-width: 430px) {
+  .button {
+  font-size: 14px;
   padding: 15px 20px;
   letter-spacing: 1.1px;
   }   

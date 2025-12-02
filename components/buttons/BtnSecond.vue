@@ -1,7 +1,7 @@
 <template>
   <button 
     class="transparent-button" 
-    :style="{ border: '2px solid ' + buttonBgColor, color: buttonBgColor }"
+    :style="{ border: '2px solid ' + buttonBgColor, color: buttonBgColor, fontSize:fontSize}"
     @click="handleClick">
       {{ buttonText }}
 <!-- Кнопка с переходом в Telegram:
@@ -25,6 +25,10 @@ vue
 
 <script setup>
 const props = defineProps({
+  fontSize: {
+    type: String,
+    
+  },
   buttonText: String,
   buttonBgColor: {
     type: String,
@@ -63,7 +67,7 @@ const handleClick = (event) => {
 <style scoped>
 .transparent-button {
   padding: 15px 30px;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 500;
   color: rgb(0, 0, 0);
   border: 2px solid rgb(0, 0, 0);
@@ -91,9 +95,16 @@ const handleClick = (event) => {
 
 @media (max-width: 600px) {
   .transparent-button {
-  font-size: 0.8rem;
+  font-size: 15px;
   padding: 15px 20px;
   letter-spacing: 1.1px;
   }   
 } 
+@media (max-width: 430px) {
+  .transparent-button {
+  font-size: 14px;
+  padding: 15px 20px;
+  letter-spacing: 1.1px;
+  }   
+}
 </style>

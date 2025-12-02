@@ -93,7 +93,8 @@ const emit = defineEmits();
 }
 
 .header__logo {
-  width: 50px;
+  width: 160px;
+  margin-right: 140px;
   /* backdrop-filter: blur(25px); */
   border-radius: 8px;
   /* border: 2px solid rgb(214, 165, 83); */

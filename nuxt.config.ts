@@ -5,6 +5,9 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@pinia/nuxt'
   ],
+  css: [
+    '~/assets/main.css', // Путь к вашему файлу с @font-face
+  ],
   app: {
     head: {
       title: 'Яблоко Нартов - туры под ключ, экскурсии, проживание в Осетии',

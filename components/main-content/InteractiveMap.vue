@@ -1,8 +1,8 @@
 <template>
   <section class="map-section">
-    <div class="map-header">
+    <!-- <div class="map-header">
       <h2 class="section-title">Основные ущелья на Яндекс картах</h2>
-    </div>
+    </div> -->
 
     <div  id="yandex-map" ref="mapContainer"></div>
 

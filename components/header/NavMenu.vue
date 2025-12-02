@@ -16,7 +16,7 @@ import MobileMenu from './MobileMenu.vue';
 import Header from './Header.vue';
 
 const name = ref('');
-const logo = '/images/logo.webp';  // Логотип
+const logo = '/images/logo.png';  // Логотип
 const menuItems = [
 {
     label: 'Главная',

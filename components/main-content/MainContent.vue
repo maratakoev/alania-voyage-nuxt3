@@ -39,8 +39,8 @@
 
     </div>
     <div class="main-content__content" :style="{ marginTop: marginTop + 'px' }">
-      <h2 class="main-content__title">{{ title }}</h2>
-      <h3 class="main-content__subtitle"> {{subTitle}}</h3>
+      <h2 class="main-content__title"   :style="{ fontSize: titleFontSize, fontWeight:fontWeight  }">{{ title }}</h2>
+      <h3 class="main-content__subtitle"   :style="{ fontSize: subtitleFontSize, }"> {{subTitle}}</h3>
 
       <div v-if="rating" class="tour-meta">
         <div class="meta-item">
@@ -78,6 +78,7 @@
       </div>
       <div class="buttons">
         <btn-one 
+        :fontSize="buttonFontSize"
         buttonText="Узнать больше"
         :buttonBgColor="buttonColor"
         :buttonFontColor="buttonFontColor"
@@ -86,6 +87,7 @@
 
         <btn-second
         v-if="!buttonLink"
+        :fontSize="buttonFontSize"
         :buttonText="ButtonSecText"
         :buttonBgColor="buttonColor" 
         @click="openBookingModal"
@@ -145,6 +147,10 @@ import Modal from '../Modal.vue';
 import BookingForm from '../BookingForm.vue';
 
 const props = defineProps({
+  fontWeight: {type: String, default: 600},
+  buttonFontSize:{type: String, },
+  titleFontSize: { type: String, default: '50px' },
+  subtitleFontSize: { type: String, default: '28px' },
   buttonLink: { type: String, default: '' },
   lazyLoad: { type: Boolean, default: true },
   title: String,
@@ -422,7 +428,7 @@ watchEffect(() => {
 }
 
 .main-content__content {
-  max-width: 450px;
+  max-width: 740px;
   position: absolute;
   z-index: 1; 
   margin-top: 110px;
@@ -457,6 +463,8 @@ watchEffect(() => {
   z-index: 2;
   color: white;
   font-size: 28px;
+  font-weight: 200;
+
 }
 
 .tour-meta {
