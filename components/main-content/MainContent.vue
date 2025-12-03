@@ -38,9 +38,9 @@
       <div v-if="videoSrc" class="video-overlay"></div>
 
     </div>
-    <div class="main-content__content" :style="{ marginTop: marginTop + 'px' }">
-      <h2 class="main-content__title"   :style="{ fontSize: titleFontSize, fontWeight:fontWeight  }">{{ title }}</h2>
-      <h3 class="main-content__subtitle"   :style="{ fontSize: subtitleFontSize, }"> {{subTitle}}</h3>
+    <div class="main-content__content" :style="{ marginTop: actualMarginTop }">
+      <h2 class="main-content__title"   :style="{ fontSize: actualTitleFontSize, fontWeight:fontWeight  }">{{ title }}</h2>
+      <h3 class="main-content__subtitle"   :style="{ fontSize: actualSubtitleFontSize, }"> {{subTitle}}</h3>
 
       <div v-if="rating" class="tour-meta">
         <div class="meta-item">
@@ -78,7 +78,7 @@
       </div>
       <div class="buttons">
         <btn-one 
-        :fontSize="buttonFontSize"
+        :fontSize="actualButtonFontSize"
         buttonText="Узнать больше"
         :buttonBgColor="buttonColor"
         :buttonFontColor="buttonFontColor"
@@ -87,13 +87,14 @@
 
         <btn-second
         v-if="!buttonLink"
-        :fontSize="buttonFontSize"
+        :fontSize="actualButtonFontSize"
         :buttonText="ButtonSecText"
         :buttonBgColor="buttonColor" 
         @click="openBookingModal"
         />
         <a v-else :href="buttonLink">
           <btn-second
+          :fontSize="actualButtonFontSize"
             :buttonText="ButtonSecText"
             :buttonBgColor="buttonColor"
           />
@@ -140,7 +141,7 @@
 </template>
 
 <script setup>
-import { ref,onMounted, onBeforeUnmount, watchEffect  } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount, watchEffect  } from 'vue';
 import BtnOne from '../buttons/BtnOne.vue';
 import BtnSecond from '../buttons/BtnSecond.vue';
 import Modal from '../Modal.vue'; 
@@ -148,14 +149,25 @@ import BookingForm from '../BookingForm.vue';
 
 const props = defineProps({
   fontWeight: {type: String, default: 600},
-  buttonFontSize:{type: String, },
-  titleFontSize: { type: String, default: '50px' },
-  subtitleFontSize: { type: String, default: '28px' },
+  buttonFontSize:{
+    type: Object,
+    default: () => ({ desktop: '16px', mobile: '12px'})},
+  titleFontSize: { 
+    type: Object, 
+    default: () => ({desktop: '50px', mobile: '35px'}) },
+  subtitleFontSize: { 
+    type: Object, 
+    default: ()=>({desktop: '28px', mobile: '18px'}) },
+
   buttonLink: { type: String, default: '' },
   lazyLoad: { type: Boolean, default: true },
   title: String,
   subTitle: String,
-  marginTop: { type: Number, default: 70 },
+
+  marginTop: { 
+    type: Object, 
+    default: () => ({ desktop: 70, mobile: 50 }) },
+
   buttonColor: String,
   buttonFontColor: String,
   videoSrc: { type: String, default: '' },
@@ -212,10 +224,10 @@ const props = defineProps({
     type: Array,
     default: () => []
   },
-  isHero: {
-      type: Boolean,
-      default: false
-    }
+  // isHero: {
+  //     type: Boolean,
+  //     default: false
+  //   }
 });
 
 const emit = defineEmits(['info-modal-change', 'booking-modal-change'])
@@ -299,6 +311,56 @@ const openTelegram = () => {
 
 const shouldLoadVideo = ref(!props.lazyLoad);
 const shouldLoadPoster = ref(!props.lazyLoad);
+
+// 1. Вычисляемое свойство для размера шрифта заголовка
+const actualTitleFontSize = computed(() => {
+    // Если isMobile.value == true, возвращаем mobile, иначе desktop
+    if (isMobile.value) {
+        return props.titleFontSize.mobile;
+    }
+    return props.titleFontSize.desktop;
+});
+
+// 2. Вычисляемое свойство для размера шрифта подзаголовка
+const actualSubtitleFontSize = computed(() => {
+    if (isMobile.value) {
+        return props.subtitleFontSize.mobile;
+    }
+    return props.subtitleFontSize.desktop;
+});
+
+// 3. Вычисляемое свойство для отступа сверху
+const actualMarginTop = computed(() => {
+    // Проверяем, является ли пропс объектом (для новой логики)
+    if (typeof props.marginTop === 'object' && props.marginTop !== null) {
+        if (isMobile.value) {
+            // Возвращаем значение для мобильного экрана
+            return props.marginTop.mobile;
+        }
+        // Возвращаем значение для десктопа
+        return props.marginTop.desktop;
+    }
+
+    // Запасной вариант, если пропс — просто число
+    return props.marginTop;
+});
+// 4. Вычисляемое свойство для размера шрифта в кнопке
+const actualButtonFontSize = computed(() => {
+  // Проверяем, является ли пропс объектом
+  if (typeof props.buttonFontSize === 'object' && props.buttonFontSize !== null) {
+    if (isMobile.value) {
+      // Возвращаем значение для мобильного экрана
+      return props.buttonFontSize.mobile;
+    }
+    // Возвращаем значение для десктопа
+    return props.buttonFontSize.desktop;
+  }
+  // Запасной вариант, если пропс — строка (например)
+  return props.buttonFontSize;
+});
+
+
+
 onMounted(() => {
   updateMobileStatus();
   window.addEventListener('resize', updateMobileStatus);
@@ -663,6 +725,7 @@ watchEffect(() => {
   font-size: 20px;
 }
 }
+
 
 
 

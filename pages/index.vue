@@ -9,7 +9,7 @@
       sub-title="Организуем трансфер, проживание, логистику, экскурсии, а вы просто наслаждайтесь отдыхом."
       :buttonColor="gold"
       :buttonFontColor="black"
-      :marginTop="-220"
+      :marginTop="{desktop: '-200px', mobile: '100px'}"
       :modalData="modalData[0]"
       videoSrc="/videos/hero-background.mp4"
       videoPoster="/images/whiteWoman.png"
@@ -18,7 +18,8 @@
       :ButtonSecText="'Начать чат'"
       @info-modal-change="infoModalState"
       @booking-modal-change="bookingModalState"
-
+      :titleFontSize="{ desktop: '64px', mobile: '40px' }"
+      :subtitleFontSize="{ desktop: '30px', mobile: '20px' }"
     >
     </MainContent>
     </section>
@@ -77,7 +78,8 @@
           :reviewCount="8"
           :titleFontSize="'39px'"
           :subtitleFontSize="'18px'"
-          :buttonFontSize="buttonFontSize"
+          :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
+
         >
         <template #image>
           <picture>
@@ -137,7 +139,7 @@
           :price="18000"
           :titleFontSize="'39px'"
           :subtitleFontSize="'18px'"
-          :buttonFontSize="buttonFontSize"
+          :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
 
 
 
@@ -200,7 +202,7 @@
           :price="18000"
           :titleFontSize="'39px'"
           :subtitleFontSize="'18px'"
-          :buttonFontSize="buttonFontSize"
+          :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
 
         >
         <template #image>
@@ -268,7 +270,7 @@
           :price="18000"
           :titleFontSize="'44px'"
           :subtitleFontSize="'22px'"
-          :buttonFontSize="buttonFontSize"
+          :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
 
         >
         <template #image>
@@ -327,7 +329,7 @@
           :price="18000"
           :titleFontSize="'44px'"
           :subtitleFontSize="'22px'"
-          :buttonFontSize="buttonFontSize"
+          :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
 
         >
         <template #image>
@@ -711,5 +713,25 @@ onMounted(() => {
     width: 60px;
     height: 2px;
   }
+  .home__table {
+    flex-direction: row;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding: 0 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .home__table::-webkit-scrollbar {
+        display: none; 
+    }
+  .home__table > * {
+        /* Ключевое свойство: запрещаем карточкам сжиматься */
+        flex-shrink: 0; 
+        
+        /* Задаем фиксированную ширину, чтобы они не занимали 100% контейнера */
+        width: 80vw; /* Например, 80% ширины экрана */
+        max-width: 400px; /* Ограничиваем максимальный размер */
+    }
 }
 </style>

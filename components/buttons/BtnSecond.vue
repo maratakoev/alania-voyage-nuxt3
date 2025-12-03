@@ -27,7 +27,6 @@ vue
 const props = defineProps({
   fontSize: {
     type: String,
-    
   },
   buttonText: String,
   buttonBgColor: {
@@ -102,7 +101,7 @@ const handleClick = (event) => {
 } 
 @media (max-width: 430px) {
   .transparent-button {
-  font-size: 14px;
+  /* font-size: 14px; */
   padding: 15px 20px;
   letter-spacing: 1.1px;
   }   

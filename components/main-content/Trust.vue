@@ -13,7 +13,6 @@
           <div class="badge-content">
             <h3 class="title">{{ item.title }}</h3>
             <p class="description">{{ item.description }}</p>
-
           </div>
         </div>
       </div>
@@ -24,41 +23,28 @@
 <script setup>
 import { ref } from 'vue';
 
-const gradientBackground = {
-  background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)'
-};
-
+// Использование ref для данных, которые могут быть получены асинхронно
 const trustItems = ref([
   {
     title: "Местные гиды.",
     description: "Местный гид это доверие, безопасность, настоящее знакомство с культурой.",
-
-    icon: "/images/family.png" // Путь к вашему изображению
+    icon: "/images/family.png"
   },
   {
     title: "Лучшие фото-моменты.",
     description: "Мы покажем лучшие ресурсы для создания потрясающего контента, который соберет лайки.",
-
-    icon: "/images/ladyRed.png" // Путь к вашему изображению
+    icon: "/images/ladyRed.png"
   },
   {
     title: "Путешествие в кругу друзей. ",
     description: "Мы чувствуем наших гостей и создаем для них идеальную атмосферу для отдыха",
-    
-    
-    icon: "/images/happy.png" // Путь к вашему изображению
+    icon: "/images/happy.png"
   },
-  // {
-  //   title: "Без посторонних",
-  //   description: "На экскурсиях только ваша компания, без сборных групп незнакомых людей",
-  //   link: "/guides",
-  //   linkText: "Подробнее",
-  //   icon: "/images/happy.png" // Путь к вашему изображению
-  // }
 ]);
 </script>
 
 <style scoped>
+/* -------------------- ОБЩИЕ СТИЛИ -------------------- */
 .trust-section {
   background: linear-gradient(to bottom, #ffffff, #f9fafb);
   padding: 0rem 1rem 3rem 1rem;
@@ -67,24 +53,27 @@ const trustItems = ref([
 .container {
   max-width: 1064px;
   margin: 0 auto;
+  /* Уберем горизонтальный padding в контейнере, чтобы карточки 
+     начинались от края экрана на мобильных. */
+  padding: 0 1rem; 
 }
 
+/* -------------------- СТИЛИ ДЛЯ ДЕСКТОПА (Grid) -------------------- */
 .badges-grid {
-  /* Сетка осталась, чтобы элементы красиво располагались */
   display: grid;
+  /* Три колонки на широком экране */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: 2rem; /* Увеличим отступы */
+  gap: 2rem;
 }
 
 .badge-card {
   display: flex;
   flex-direction: column;
-  /* Убрали "align-items: center;" чтобы текст не центрировался */
   align-items: flex-start; 
-  text-align: left; /* Текст слева */
+  text-align: left;
   background: white;
   border-radius: 0.75rem;
-  padding: 1rem; /* Уменьшим паддинг, так как изображение внутри */
+  padding: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
   border: 1px solid rgba(0, 0, 0, 0.03);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -95,22 +84,15 @@ const trustItems = ref([
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* --- НОВЫЕ СТИЛИ ДЛЯ ИЗОБРАЖЕНИЯ --- */
 .feature-image {
-  /* Принудительно устанавливаем размеры */
-  width: 100%; /* Занимает всю ширину карточки */
-  /* max-width: 200px; Ограничиваем максимальную ширину */
+  width: 100%;
   height: 300px; 
-  object-fit: cover; /* Изображение будет обрезаться, чтобы заполнить область */
-  border-radius: 0.5rem; /* Немного скругляем края изображения */
+  object-fit: cover;
+  border-radius: 0.5rem;
   margin-bottom: 1rem;
 }
-/* ------------------------------------- */
-
-/* УДАЛЕНЫ СТИЛИ ДЛЯ .badge-icon И .icon-image */
 
 .badge-content {
-  /* ... стили остались без изменений ... */
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -128,30 +110,48 @@ const trustItems = ref([
   line-height: 1.5;
 }
 
-.link {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #2563eb;
-  margin-top: 0.5rem;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.link:hover {
-  color: #1d4ed8;
-  text-decoration: underline;
-}
-
+/* -------------------- СТИЛИ ДЛЯ МОБИЛЬНЫХ (Horizontal Scroll) -------------------- */
 @media (max-width: 640px) {
-  .badges-grid {
-    grid-template-columns: 1fr;
+  
+  /* Отменяем padding в контейнере, чтобы прокрутка была от самого края */
+  .container {
+      padding: 0;
   }
   
   .trust-section {
-    padding: 2rem 1rem;
+    padding: 2rem 0 2rem 0; /* Убираем горизонтальные паддинги здесь */
   }
-  /* На мобильных устройствах изображение будет занимать всю ширину карточки (100%) */
+  
+  .badges-grid {
+    /* Меняем Grid на Flexbox для горизонтальной прокрутки */
+    display: flex;
+    gap: 1rem; /* Отступ между карточками */
+    overflow-x: scroll; /* Главное свойство: разрешаем горизонтальную прокрутку */
+    grid-template-columns: none; /* Отключаем Grid */
+    
+    /* Свойства для улучшения опыта прокрутки на мобильных */
+    -webkit-overflow-scrolling: touch;
+    padding: 0 1rem; /* Возвращаем padding, но уже внутри скроллируемого контейнера */
+    padding-bottom: 1rem; /* Немного места для скроллбара/пальца */
+  }
+
+  /* Скрытие стандартного скроллбара (необязательно, но улучшает вид) */
+  .badges-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+  .badges-grid {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .badge-card {
+    /* Делаем ширину карточки фиксированной, чтобы она не растягивалась */
+    min-width: 60vw; /* Например, 85% ширины экрана, чтобы намекнуть на следующий элемент */
+    max-width: 60vw;
+    /* Важно: отключаем сжимание Flex-элемента */
+    flex-shrink: 0; 
+  }
+  
   .feature-image {
     max-width: 100%;
   }
