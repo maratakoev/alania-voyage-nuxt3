@@ -5,7 +5,7 @@
     <MainContent      
       title="Золотое кольцо Осетии"
       sub-title="Ближе к крастоте, в атмосфере спокойствия"
-      :marginTop="-150"
+      :marginTop="{desktop: '-130px', mobile: '31px'}"
       :price="15000"
       duration="5 часов"
       distance="120 км"
@@ -23,14 +23,14 @@
         <img 
         loading="lazy"
         decoding="async"
-        src="/images/dargavs.jpeg" alt="Фиагдон, Даргавс, Кармадон" class="main-content__image">
+        src="/images/darg.png" alt="Фиагдон, Даргавс, Кармадон" class="main-content__image">
       </template>
     </MainContent>
     <div class="home__table">
       <MainContent 
         title="Высота 1800"
         sub-title="От Кармадона до Даргавса"
-        :marginTop="200"
+        :marginTop="{desktop: '100px', mobile: '31px'}"
         :ButtonSecText="ButtonSecText"
         :buttonFontColor="'black'"
         :buttonColor="'white'"
@@ -50,13 +50,13 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/karmadon.webp" alt="Индивидуальные экскурсии в Осетии" class="main-content__image">
+          src="/images/mayli.png" alt="Индивидуальные экскурсии в Осетии" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
         title="Insta-марафон"
         sub-title="ТОП-5 локаций для фото"
-        :marginTop="200"
+        :marginTop="{desktop: '100px', mobile: '31px'}"
         :price="20000"
         duration="5 часов"
         distance="150км"
@@ -74,7 +74,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/insta.webp" alt="Фото тур в Осетию" class="main-content__image-small">
+          src="/images/ins.png" alt="Фото тур в Осетию" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
@@ -82,7 +82,7 @@
       <MainContent 
         title="Зарамаг"
         sub-title="Почувствуй свободу мысли"
-        :marginTop="-80"
+        :marginTop="{desktop: '150px', mobile: '31px'}"
         :price="15000"
         duration="5 часа"
         distance="190 км"
@@ -100,7 +100,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/alagirskoe.webp" alt="Горы Осетии" class="main-content__image">
+          src="/images/zar.png" alt="Горы Осетии" class="main-content__image">
         </template>
       </MainContent>
       <!-- <MainContent 
@@ -156,7 +156,7 @@
       <MainContent 
         title="Згидский перевал"
         sub-title="Выше облаков на внедорожнике"
-        :marginTop="170"
+        :marginTop="{desktop: '-130px', mobile: '31px'}"
         :price="18000"
         duration="7 часов"
         distance="220 км"
@@ -174,7 +174,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/zgid-poster.webp" alt="Над облаками в Осетии" class="main-content__image">
+          src="/images/zg.png" alt="Над облаками в Осетии" class="main-content__image">
         </template>
       </MainContent> 
       <MainContent 
@@ -182,7 +182,7 @@
         sub-title="До водопада Жемчужина по эко тропе"
         :buttonFontColor="'black'"
         :buttonColor="'white'"
-        :marginTop="-270"
+        :marginTop="{desktop: '-130px', mobile: '31px'}"
         :price="18000"
         duration="10 часов"
         distance="275 км"
@@ -198,7 +198,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/zadalesk.webp" alt="Горная Дигория" class="main-content__image">
+          src="/images/gem.png" alt="Горная Дигория" class="main-content__image">
         </template>
       </MainContent>
       
@@ -207,7 +207,7 @@
       <MainContent 
         title="От рассвета - до заката"
         sub-title="Осетия по максимуму"
-        :marginTop="-190"
+        :marginTop="{desktop: '-130px', mobile: '31px'}"
         :buttonFontColor="'black'"
         :buttonColor="'white'"
         :price="25000"
@@ -225,7 +225,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/darial.webp" alt="Все ущелья Северной Осетии" class="main-content__image-small">
+          src="/images/mid.png" alt="Все ущелья Северной Осетии" class="main-content__image-small">
         </template>
       </MainContent> 
       

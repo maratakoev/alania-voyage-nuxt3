@@ -22,9 +22,9 @@
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/fiagdon-house-480.webp 480w,
-                /images/fiagdon-house-768.webp 768w,
-                /images/fiagdon-house-960.webp 960w
+                /images/room.png 480w,
+                /images/room.png 768w,
+                /images/room.png 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -35,9 +35,9 @@
             <!-- JPEG fallback -->
             <source 
               srcset="
-                /images/fiagdon-house-480.jpg 480w,
-                /images/fiagdon-house-768.jpg 768w,
-                /images/fiagdon-house-960.jpg 960w
+                /images/room.png 480w,
+                /images/room.png 768w,
+                /images/room.png 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -47,7 +47,7 @@
           
             <!-- Fallback <img> -->
             <img 
-              src="/images/fiagdon-house-960.jpg" 
+              src="/images/room.png" 
               alt="Коттедж в Осетии для аренды"
               loading="lazy" 
               decoding="async" 
@@ -75,10 +75,10 @@
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/hotel-480.webp 480w,
-                /images/hotel-768.webp 768w,
-                /images/hotel-960.webp 960w,
-                /images/hotel-1400.webp 1400w 
+                /images/vl.png 480w,
+                /images/vl.png 768w,
+                /images/vl.png 960w,
+                /images/vl.png 1400w 
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 

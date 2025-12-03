@@ -726,7 +726,21 @@ watchEffect(() => {
 }
 }
 
+@media (max-width: 450px) {
+  .tour-meta {
+    
+    gap: 10px;
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+  .main-content__content {
+  padding: 14px;
+  }
+  .main-content__subtitle {
+        margin-top: 200px;
+    }
 
+}
 
 
 </style>

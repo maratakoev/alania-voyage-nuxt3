@@ -9,7 +9,7 @@
       sub-title="Организуем трансфер, проживание, логистику, экскурсии, а вы просто наслаждайтесь отдыхом."
       :buttonColor="gold"
       :buttonFontColor="black"
-      :marginTop="{desktop: '-200px', mobile: '100px'}"
+      :marginTop="{desktop: '-200px', mobile: '31px'}"
       :modalData="modalData[0]"
       videoSrc="/videos/hero-background.mp4"
       videoPoster="/images/whiteWoman.png"
@@ -61,8 +61,8 @@
 
       <div class="home__table"> 
         <MainContent 
-          :fontWeight="300"
-          :marginTop="210"
+          :fontWeight="500"
+          :marginTop="{desktop: '130px', mobile: '28px'}"
           :buttonColor="'#1D68F0'"
           title="Выходные в Осетии"
           sub-title="Идеальный способ перезагрузиться без необходимости брать отпуск."
@@ -76,8 +76,8 @@
           distance="275 км"
           :rating="5"
           :reviewCount="8"
-          :titleFontSize="'39px'"
-          :subtitleFontSize="'18px'"
+          :titleFontSize="{ desktop: '39px', mobile: '36px' }"
+          :subtitleFontSize="{ desktop: '20px', mobile: '18px' }"
           :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
 
         >
@@ -86,9 +86,9 @@
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/zgid-480.webp 480w,
-                /images/zgid-768.webp 768w,
-                /images/whiteWoman.png 960w
+                /images/atmo.png 480w,
+                /images/atmo.png 768w,
+                /images/atmo.png 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -122,8 +122,8 @@
 
         </MainContent> 
         <MainContent 
-          :fontWeight="300"
-          :marginTop="150"
+          :fontWeight="500"
+          :marginTop="{desktop: '150px', mobile: '62px'}"
           :buttonColor="'#1D68F0'"
           title="Осетия за 3 дня"
           sub-title="Сбалансированный маршрут — от древних башен до невероятных панорам."
@@ -137,10 +137,9 @@
           :rating="5"
           :reviewCount="8"
           :price="18000"
-          :titleFontSize="'39px'"
-          :subtitleFontSize="'18px'"
+          :titleFontSize="{ desktop: '39px', mobile: '36px' }"
+          :subtitleFontSize="{ desktop: '20px', mobile: '18px' }"
           :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
-
 
 
         >
@@ -185,12 +184,12 @@
 
         </MainContent> 
         <MainContent 
-          :fontWeight="300"
+          :fontWeight="500"
           title="Осетия-Полное погружение"
           sub-title="Максимум впечатлений от Осетии"
           :buttonColor="'#1D68F0'"
           :modalData="modalData[3]"
-          :marginTop="150"
+          :marginTop="{desktop: '150px', mobile: '34px'}"
           :ButtonSecText="ButtonSecText"
           :lazyLoad="true"
           @info-modal-change="infoModalState"
@@ -200,10 +199,9 @@
           :rating="5"
           :reviewCount="8"
           :price="18000"
-          :titleFontSize="'39px'"
-          :subtitleFontSize="'18px'"
+          :titleFontSize="{ desktop: '39px', mobile: '36px' }"
+          :subtitleFontSize="{ desktop: '20px', mobile: '18px' }"
           :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
-
         >
         <template #image>
           <picture>
@@ -253,7 +251,7 @@
       <!-- <h2 class="subtitle"> Экскурсии и проживание</h2> -->
       <div class="home__table"> 
         <MainContent 
-          :fontWeight="300"
+          :fontWeight="500"
           :marginTop="-115"
           :buttonColor="'#1D68F0'"
           title="Экскурсия"
@@ -268,19 +266,18 @@
           :rating="5"
           :reviewCount="8"
           :price="18000"
-          :titleFontSize="'44px'"
-          :subtitleFontSize="'22px'"
+          :titleFontSize="{ desktop: '39px', mobile: '36px' }"
+          :subtitleFontSize="{ desktop: '20px', mobile: '18px' }"
           :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
-
         >
         <template #image>
           <picture>
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/zgid-480.webp 480w,
-                /images/zgid-768.webp 768w,
-                /images/friends.png 960w
+                /images/eks.png 480w,
+                /images/eks.png 768w,
+                /images/eks.png 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -314,7 +311,7 @@
 
         </MainContent> 
         <MainContent 
-          :fontWeight="300"
+          :fontWeight="500"
           title="Проживание"
           sub-title="Со сказочными видами"
           :buttonColor="'#1D68F0'"
@@ -327,18 +324,17 @@
           :rating="5"
           :reviewCount="8"
           :price="18000"
-          :titleFontSize="'44px'"
-          :subtitleFontSize="'22px'"
+          :titleFontSize="{ desktop: '39px', mobile: '36px' }"
+          :subtitleFontSize="{ desktop: '20px', mobile: '18px' }"
           :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
-
         >
         <template #image>
           <picture>
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/fiagdon-house-480.webp 480w,
-                /images/fiagdon-house-768.webp 768w,
+                /images/room.png 480w,
+                /images/room.png 768w,
                 /images/room.png 960w
               "
               sizes="(max-width: 480px) 480px, 

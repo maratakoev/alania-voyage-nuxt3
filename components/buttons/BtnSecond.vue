@@ -102,7 +102,7 @@ const handleClick = (event) => {
 @media (max-width: 430px) {
   .transparent-button {
   /* font-size: 14px; */
-  padding: 15px 20px;
+  padding: 15px 14px;
   letter-spacing: 1.1px;
   }   
 }

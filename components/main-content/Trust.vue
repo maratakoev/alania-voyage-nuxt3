@@ -28,17 +28,17 @@ const trustItems = ref([
   {
     title: "Местные гиды.",
     description: "Местный гид это доверие, безопасность, настоящее знакомство с культурой.",
-    icon: "/images/family.png"
+    icon: "/images/horse.png"
   },
   {
     title: "Лучшие фото-моменты.",
     description: "Мы покажем лучшие ресурсы для создания потрясающего контента, который соберет лайки.",
-    icon: "/images/ladyRed.png"
+    icon: "/images/inst.png"
   },
   {
     title: "Путешествие в кругу друзей. ",
     description: "Мы чувствуем наших гостей и создаем для них идеальную атмосферу для отдыха",
-    icon: "/images/happy.png"
+    icon: "/images/fri.png"
   },
 ]);
 </script>
