@@ -404,7 +404,7 @@ async function submitForm() {
     }
 
     const result = await response.json();
-    console.log('Успешно отправлено:', result);
+    console.log('Успешно отправлено :', result);
     isSubmitted.value = true;
         if (typeof ym !== 'undefined') {
       ym(105535314, 'reachGoal', 'form_send_telegram');
