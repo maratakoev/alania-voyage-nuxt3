@@ -12,7 +12,7 @@
       :marginTop="{desktop: '-200px', mobile: '31px'}"
       :modalData="modalData[0]"
       videoSrc="/videos/hero-background.mp4"
-      videoPoster="/images/whiteWoman.png"
+      videoPoster="/images/whiteWoman.webp"
       :lazyLoad="false"
       :buttonText="'Узнать подробности'"
       :ButtonSecText="'Начать чат'"
