@@ -15,6 +15,7 @@
       videoPoster="/images/whiteWoman.webp"
       
       :lazyLoad="false"
+      :isLCP="true"
       :buttonText="'Узнать подробности'"
       :ButtonSecText="'Начать чат'"
       @info-modal-change="infoModalState"

@@ -4,28 +4,28 @@
       
       <template v-if="!isMobile">
         <slot v-if="!showVideo" name="image"></slot>
-      <video 
-        v-if="showVideo"
-        class="video-background"
-        autoplay
-        loop
-        muted
-        playsinline
-        :poster="showPoster ? videoPoster : undefined"
-        preload="none"
-        alt="Видео отдыха в Осетии"
-        aria-label="Видео отдыха в Осетии"
-        @loadeddata="handleVideoLoaded"
-        @error="handleVideoError"
-      >
-        <source :src="videoSrc" type="video/webm">
-        Ваш браузер не поддерживает видео теги.
-      </video>
+        <video 
+          v-if="showVideo"
+          class="video-background"
+          autoplay
+          loop
+          muted
+          playsinline
+          :poster="showPoster ? videoPoster : undefined"
+          preload="none"
+          alt="Видео отдыха в Осетии"
+          aria-label="Видео отдыха в Осетии"
+          @loadeddata="handleVideoLoaded"
+          @error="handleVideoError"
+        >
+          <source :src="videoSrc" type="video/webm">
+          Ваш браузер не поддерживает видео теги.
+        </video>
       </template>
       <template v-else>
       <div class="poster-fallback">
         <template v-if="videoSrc">
-          <img class="poster-img" alt="Отдых в Осетии"  :src="videoPoster" >
+          <img class="poster-img" alt="Отдых в Осетии"  :src="videoPoster" :fetchpriority="imagePriority" >
         </template>
         <template v-else>
           <slot  name="image"></slot>
@@ -148,6 +148,10 @@ import Modal from '../Modal.vue';
 import BookingForm from '../BookingForm.vue';
 
 const props = defineProps({
+  isLCP: {
+    type: Boolean,
+    default: false
+  },
   fontWeight: {type: String, default: 600},
   buttonFontSize:{
     type: Object,
@@ -358,7 +362,11 @@ const actualButtonFontSize = computed(() => {
   // Запасной вариант, если пропс — строка (например)
   return props.buttonFontSize;
 });
-
+// НОВОЕ ВЫЧИСЛЯЕМОЕ СВОЙСТВО: Определяет значение fetchpriority
+const imagePriority = computed(() => {
+  // Если isLCP истинно, возвращаем 'high', иначе 'auto' (значение по умолчанию)
+  return props.isLCP ? 'high' : 'auto';
+});
 
 
 onMounted(() => {
