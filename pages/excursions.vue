@@ -23,7 +23,7 @@
         <img 
         loading="lazy"
         decoding="async"
-        src="/images/darg.png" alt="Фиагдон, Даргавс, Кармадон" class="main-content__image">
+        src="/images/darg.webp" alt="Фиагдон, Даргавс, Кармадон" class="main-content__image">
       </template>
     </MainContent>
     <div class="home__table">
