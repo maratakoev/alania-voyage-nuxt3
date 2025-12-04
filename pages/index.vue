@@ -1,7 +1,7 @@
 <template>
   <main class="home">
     <NavMenu class="nav" />
-    <section aria-label="Организуем отдых в Осетии">
+    <section aria-label="Организуем отдых в Осетии" fetchpriority="high">
       <MainContent 
       :buttonLink="'https://t.me/maratakoev'"
       class="hero-section"
@@ -13,6 +13,7 @@
       :modalData="modalData[0]"
       videoSrc="/videos/hero-background.mp4"
       videoPoster="/images/whiteWoman.webp"
+      
       :lazyLoad="false"
       :buttonText="'Узнать подробности'"
       :ButtonSecText="'Начать чат'"
