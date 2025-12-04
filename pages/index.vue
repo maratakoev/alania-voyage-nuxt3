@@ -78,7 +78,7 @@
           :reviewCount="8"
           :titleFontSize="{ desktop: '39px', mobile: '36px' }"
           :subtitleFontSize="{ desktop: '20px', mobile: '18px' }"
-          :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
+          :buttonFontSize="{ desktop: '16px', mobile: '10px' }"
 
         >
         <template #image>
@@ -139,7 +139,7 @@
           :price="18000"
           :titleFontSize="{ desktop: '39px', mobile: '36px' }"
           :subtitleFontSize="{ desktop: '20px', mobile: '18px' }"
-          :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
+          :buttonFontSize="{ desktop: '16px', mobile: '10px' }"
 
 
         >
@@ -201,7 +201,7 @@
           :price="18000"
           :titleFontSize="{ desktop: '39px', mobile: '36px' }"
           :subtitleFontSize="{ desktop: '20px', mobile: '18px' }"
-          :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
+          :buttonFontSize="{ desktop: '16px', mobile: '10px' }"
         >
         <template #image>
           <picture>
@@ -268,7 +268,7 @@
           :price="18000"
           :titleFontSize="{ desktop: '39px', mobile: '36px' }"
           :subtitleFontSize="{ desktop: '20px', mobile: '18px' }"
-          :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
+          :buttonFontSize="{ desktop: '16px', mobile: '10px' }"
         >
         <template #image>
           <picture>
@@ -326,7 +326,7 @@
           :price="18000"
           :titleFontSize="{ desktop: '39px', mobile: '36px' }"
           :subtitleFontSize="{ desktop: '20px', mobile: '18px' }"
-          :buttonFontSize="{ desktop: '16px', mobile: '11px' }"
+          :buttonFontSize="{ desktop: '16px', mobile: '10px' }"
         >
         <template #image>
           <picture>
@@ -335,7 +335,7 @@
               srcset="
                 /images/room.png 480w,
                 /images/room.png 768w,
-                /images/room.png 960w
+                /images/fi.png 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -348,7 +348,7 @@
               srcset="
                 /images/fiagdon-house-480.jpg 480w,
                 /images/fiagdon-house-768.jpg 768w,
-                /images/fiagdon-house-960.jpg 960w
+                /images/fi.png 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 

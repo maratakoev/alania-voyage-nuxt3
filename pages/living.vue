@@ -24,7 +24,7 @@
               srcset="
                 /images/room.png 480w,
                 /images/room.png 768w,
-                /images/room.png 960w
+                /images/fi.png 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -37,7 +37,7 @@
               srcset="
                 /images/room.png 480w,
                 /images/room.png 768w,
-                /images/room.png 960w
+                /images/fi.png 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
