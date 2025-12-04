@@ -43,7 +43,7 @@ export default defineNuxtConfig({
           // Если Nuxt его обрабатывает, используем публичный путь, который он генерирует.
           // Если вы используете '~/assets/fonts/...' в CSS, то после сборки
           // этот шрифт должен быть доступен по прямому пути, например:
-          href: '~/assets/fonts/Inter-VariableFont_opsz,wght.ttf', 
+          href: '/fonts/Inter-VariableFont_opsz,wght.ttf', 
           as: 'font', 
           type: 'font/ttf',
           crossorigin: 'anonymous' // Обязательно для предзагрузки шрифтов
