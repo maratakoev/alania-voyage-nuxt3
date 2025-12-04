@@ -334,9 +334,9 @@
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/fi.png 480w,
-                /images/fi.png 768w,
-                /images/fi.png 960w
+                /images/fi.webp 480w,
+                /images/fi.webp 768w,
+                /images/fi.webp 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -347,9 +347,9 @@
             <!-- JPEG fallback -->
             <source 
               srcset="
-                /images/fi.png 480w,
-                /images/fi.png 768w,
-                /images/fi.png 960w
+                /images/fi.webp 480w,
+                /images/fi.webp 768w,
+                /images/fi.webp 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -359,7 +359,7 @@
           
             <!-- Fallback <img> -->
             <img 
-              src="/images/fi.png" 
+              src="/images/fi.webp" 
               alt="Коттедж в Осетии для аренды"
               loading="lazy" 
               decoding="async" 

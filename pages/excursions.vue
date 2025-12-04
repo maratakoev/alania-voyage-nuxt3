@@ -50,7 +50,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/mayli.png" alt="Индивидуальные экскурсии в Осетии" class="main-content__image">
+          src="/images/mayli.webp" alt="Индивидуальные экскурсии в Осетии" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -74,7 +74,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/ins.png" alt="Фото тур в Осетию" class="main-content__image-small">
+          src="/images/ins.webp" alt="Фото тур в Осетию" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
@@ -100,7 +100,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/zar.png" alt="Горы Осетии" class="main-content__image">
+          src="/images/zar.webp" alt="Горы Осетии" class="main-content__image">
         </template>
       </MainContent>
       <!-- <MainContent 
@@ -198,7 +198,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/gem.png" alt="Горная Дигория" class="main-content__image">
+          src="/images/gem.webp" alt="Горная Дигория" class="main-content__image">
         </template>
       </MainContent>
       
@@ -225,7 +225,7 @@
           <img 
           loading="lazy"
           decoding="async"
-          src="/images/mid.png" alt="Все ущелья Северной Осетии" class="main-content__image-small">
+          src="/images/mid.webp" alt="Все ущелья Северной Осетии" class="main-content__image-small">
         </template>
       </MainContent> 
       
