@@ -19,7 +19,7 @@
 
     >
       <template #image>
-        <img src="/images/complecs.webp" alt="Кармадон, Даргавс, Фиагдон" class="main-content__image">
+        <img src="/images/fr.webp " alt="Кармадон, Даргавс, Фиагдон" class="main-content__image">
       </template>
     </MainContent>
     <MainContent 
@@ -39,7 +39,7 @@
 
     >
       <template #image>
-        <img src="/images/complecs2.webp" alt="Половина горной части Осетии" class="main-content__image">
+        <img src="/images/fam.webp " alt="Половина горной части Осетии" class="main-content__image">
       </template>
     </MainContent>
     <MainContent 
@@ -59,7 +59,7 @@
 
     >
       <template #image>
-        <img src="/images/hotel-960.webp" alt="Гастро тур в Осетию" class="main-content__image">
+        <img src="/images/wm.webp " alt="Гастро тур в Осетию" class="main-content__image">
       </template>
     </MainContent>
     <!-- <MainContent 

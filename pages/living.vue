@@ -22,8 +22,8 @@
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/room.png 480w,
-                /images/room.png 768w,
+                /images/fi.png 480w,
+                /images/fi.png 768w,
                 /images/fi.png 960w
               "
               sizes="(max-width: 480px) 480px, 
@@ -35,8 +35,8 @@
             <!-- JPEG fallback -->
             <source 
               srcset="
-                /images/room.png 480w,
-                /images/room.png 768w,
+                /images/fi.png 480w,
+                /images/fi.png 768w,
                 /images/fi.png 960w
               "
               sizes="(max-width: 480px) 480px, 
@@ -47,7 +47,7 @@
           
             <!-- Fallback <img> -->
             <img 
-              src="/images/room.png" 
+              src="/images/fi.png" 
               alt="Коттедж в Осетии для аренды"
               loading="lazy" 
               decoding="async" 
@@ -89,10 +89,10 @@
             <!-- JPEG fallback -->
             <source 
               srcset="
-                /images/hotel-480.jpg 480w,
-                /images/hotel-768.jpg 768w,
-                /images/hotel-960.jpg 960w,
-                /images/hotel-1400.jpg 1400w 
+                /images/vl.png 480w,
+                /images/vl.png 768w,
+                /images/vl.png 960w,
+                /images/vl.png 1400w 
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -102,7 +102,7 @@
           
             <!-- Fallback <img> -->
             <img 
-              src="/images/hotel-960.jpg" 
+              src="/images/vl.png" 
               alt="Коттедж в Осетии для аренды"
               loading="lazy" 
               decoding="async" 

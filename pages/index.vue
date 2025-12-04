@@ -86,9 +86,9 @@
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/atmo.png 480w,
-                /images/atmo.png 768w,
-                /images/atmo.png 960w
+                /images/atmo-600.webp 480w,
+                /images/atmo-900.webp 768w,
+                /images/atmo-1100.webp 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -99,9 +99,9 @@
             <!-- JPEG fallback -->
             <source 
               srcset="
-                /images/zgid-480.jpg 480w,
-                /images/zgid-768.jpg 768w,
-                /images/zgid-960.jpg 960w
+                /images/atmo-600.webp 480w,
+                /images/atmo-900.webp 768w,
+                /images/atmo-1100.webp 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -111,7 +111,7 @@
           
             <!-- Fallback <img> -->
             <img 
-              src="/images/zgid-960.jpg" 
+              src="/images/atmo-900.webp" 
               alt="Экскурсии по Осетии на Внедорожнике"
               loading="lazy" 
               decoding="async" 
@@ -148,8 +148,8 @@
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/zgid-480.webp 480w,
-                /images/zgid-768.webp 768w,
+                /images/forrest.png 480w,
+                /images/forrest.png 768w,
                 /images/forrest.png 960w
               "
               sizes="(max-width: 480px) 480px, 
@@ -161,9 +161,9 @@
             <!-- JPEG fallback -->
             <source 
               srcset="
-                /images/zgid-480.jpg 480w,
-                /images/zgid-768.jpg 768w,
-                /images/zgid-960.jpg 960w
+                /images/forrest.png 480w,
+                /images/forrest.png 768w,
+                /images/forrest.png 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -173,7 +173,7 @@
           
             <!-- Fallback <img> -->
             <img 
-              src="/images/zgid-960.jpg" 
+              src="/images/forrest.png" 
               alt="Экскурсии по Осетии на Внедорожнике"
               loading="lazy" 
               decoding="async" 
@@ -208,9 +208,9 @@
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/fiagdon-house-480.webp 480w,
-                /images/fiagdon-house-768.webp 768w,
-                /images/tsallag.png 960w
+                /images/tsallag.webp 480w,
+                /images/tsallag.webp 768w,
+                /images/tsallag.webp 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -221,9 +221,9 @@
             <!-- JPEG fallback -->
             <source 
               srcset="
-                /images/fiagdon-house-480.jpg 480w,
-                /images/fiagdon-house-768.jpg 768w,
-                /images/fiagdon-house-960.jpg 960w
+                /images/tsallag.webp 480w,
+                /images/tsallag.webp 768w,
+                /images/tsallag.webp 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -233,7 +233,7 @@
           
             <!-- Fallback <img> -->
             <img 
-              src="/images/fiagdon-house-960.jpg" 
+              src="/images/tsallag.webp" 
               alt="Коттедж в Осетии для аренды"
               loading="lazy" 
               decoding="async" 
@@ -275,9 +275,9 @@
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/eks.png 480w,
-                /images/eks.png 768w,
-                /images/eks.png 960w
+                /images/eks-500.webp 480w,
+                /images/eks.webp 768w,
+                /images/eks.webp 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -288,9 +288,9 @@
             <!-- JPEG fallback -->
             <source 
               srcset="
-                /images/zgid-480.jpg 480w,
-                /images/zgid-768.jpg 768w,
-                /images/zgid-960.jpg 960w
+                /images/eks-500.webp 480w,
+                /images/eks.webp 768w,
+                /images/eks.webp 960w
               "
               sizes="(max-width: 480px) 480px, 
                       (max-width: 768px) 768px, 
@@ -300,7 +300,7 @@
           
             <!-- Fallback <img> -->
             <img 
-              src="/images/zgid-960.jpg" 
+              src="/images/eks.webp" 
               alt="Экскурсии по Осетии на Внедорожнике"
               loading="lazy" 
               decoding="async" 
@@ -333,8 +333,8 @@
             <!-- WebP форматы -->
             <source 
               srcset="
-                /images/room.png 480w,
-                /images/room.png 768w,
+                /images/fi.png 480w,
+                /images/fi.png 768w,
                 /images/fi.png 960w
               "
               sizes="(max-width: 480px) 480px, 
@@ -346,8 +346,8 @@
             <!-- JPEG fallback -->
             <source 
               srcset="
-                /images/fiagdon-house-480.jpg 480w,
-                /images/fiagdon-house-768.jpg 768w,
+                /images/fi.png 480w,
+                /images/fi.png 768w,
                 /images/fi.png 960w
               "
               sizes="(max-width: 480px) 480px, 
@@ -358,7 +358,7 @@
           
             <!-- Fallback <img> -->
             <img 
-              src="/images/fiagdon-house-960.jpg" 
+              src="/images/fi.png" 
               alt="Коттедж в Осетии для аренды"
               loading="lazy" 
               decoding="async" 
